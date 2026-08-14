@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — Lumière Beauty Studio</title>
+  <meta name="description" content="Account settings — notifications, appearance, privacy, password and membership.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div class="dash">
+    <aside class="dash-side" id="dash-side" aria-label="Dashboard navigation"></aside>
+    <div class="dash-main">
+      <div class="dash-top" id="dash-top"></div>
+      <div class="dash-body">
+        <div class="container--narrow" style="max-width:820px">
+
+          <!-- appearance -->
+          <div class="panel mb-6" data-reveal="up">
+            <div class="panel__head"><h3><i data-icon="moon"></i>Appearance</h3></div>
+            <div class="panel__body">
+              <div class="settings-row">
+                <div class="settings-row__info"><b>Dark mode</b><p>Easier on the eyes for late-night booking sprees. Follows your system setting until you choose.</p></div>
+                <label class="switch"><input type="checkbox" id="st-dark"><span class="switch__track"></span></label>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row__info"><b>Reduce motion</b><p>Tones down animations and transitions across the site.</p></div>
+                <label class="switch"><input type="checkbox" id="st-motion"><span class="switch__track"></span></label>
+              </div>
+            </div>
+          </div>
+
+          <!-- notifications -->
+          <div class="panel mb-6" data-reveal="up">
+            <div class="panel__head"><h3><i data-icon="bell"></i>Notifications</h3></div>
+            <div class="panel__body" id="st-notifs"></div>
+          </div>
+
+          <!-- password -->
+          <div class="panel mb-6" data-reveal="up">
+            <div class="panel__head"><h3><i data-icon="lock"></i>Change password</h3></div>
+            <div class="panel__body">
+              <form id="st-pw-form" novalidate>
+                <div class="form-grid form-grid--2">
+                  <label class="field has-label has-action form-row-full"><span class="field__label">Current password <span class="req">*</span></span>
+                    <input class="input" type="password" id="st-pw-old" data-rules="required" autocomplete="current-password">
+                    <button type="button" class="field__action" data-pw-toggle="#st-pw-old" aria-label="Show password"><i data-icon="eye"></i></button></label>
+                  <label class="field has-label has-action"><span class="field__label">New password <span class="req">*</span></span>
+                    <input class="input" type="password" id="st-pw-new" data-rules="required|min:8" autocomplete="new-password">
+                    <button type="button" class="field__action" data-pw-toggle="#st-pw-new" aria-label="Show password"><i data-icon="eye"></i></button></label>
+                  <label class="field has-label"><span class="field__label">Confirm new password <span class="req">*</span></span>
+                    <input class="input" type="password" id="st-pw-new2" data-rules="required|match:#st-pw-new" autocomplete="new-password"></label>
+                </div>
+                <div class="pw-strength mt-4" data-pw-strength="#st-pw-new" data-level="0">
+                  <div class="pw-strength__bars"><i></i><i></i><i></i><i></i></div>
+                  <span class="pw-strength__label">Use 8+ characters with a mix of types</span>
+                </div>
+                <button class="btn btn--primary mt-5" type="submit"><i data-icon="key"></i>Update Password</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- membership -->
+          <div class="panel mb-6" data-reveal="up">
+            <div class="panel__head"><h3><i data-icon="diamond"></i>Membership</h3></div>
+            <div class="panel__body">
+              <div class="settings-row">
+                <div class="settings-row__info"><b>Current plan: <span class="text-rose" id="st-plan">Gold</span></b>
+                  <p>12% off all services, priority booking, 2× loyalty points and a free birthday service.</p></div>
+                <div class="btn-group">
+                  <a class="btn btn--soft btn--sm" href="pricing.html">Change Plan</a>
+                  <button class="btn btn--ghost btn--sm" id="st-cancel-plan">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- privacy / danger -->
+          <div class="panel mb-6" data-reveal="up">
+            <div class="panel__head"><h3><i data-icon="shield"></i>Privacy &amp; data</h3></div>
+            <div class="panel__body">
+              <div class="settings-row">
+                <div class="settings-row__info"><b>Download my data</b><p>Get a copy of your appointments, favourites and profile as a file.</p></div>
+                <button class="btn btn--ghost btn--sm" id="st-export"><i data-icon="download"></i>Export</button>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row__info"><b>Clear local demo data</b><p>Resets appointments, favourites and preferences saved on this device.</p></div>
+                <button class="btn btn--soft btn--sm" id="st-clear"><i data-icon="refresh"></i>Reset Demo</button>
+              </div>
+              <div class="settings-row">
+                <div class="settings-row__info"><b class="text-danger">Delete account</b><p>Removes your account and history permanently. This cannot be undone.</p></div>
+                <button class="btn btn--danger btn--sm" id="st-delete"><i data-icon="trash"></i>Delete</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      var user = Dash.mount({ role: 'client', active: 'settings', title: 'Settings', sub: 'Make Lumière yours' });
+      document.getElementById('st-plan').textContent = user.tier || 'Gold';
+
+      /* dark mode switch reflects current theme */
+      var darkSwitch = document.getElementById('st-dark');
+      darkSwitch.checked = Dark.current() === 'dark';
+      darkSwitch.addEventListener('change', function () {
+        Dark.set(darkSwitch.checked ? 'dark' : 'light');
+        Toast.info(darkSwitch.checked ? 'Dark mode on.' : 'Light mode on.', 'Theme changed');
+      });
+      /* keep in sync with topbar toggle */
+      document.addEventListener('click', function (e) {
+        if (e.target.closest('#theme-toggle')) {
+          setTimeout(function () { darkSwitch.checked = Dark.current() === 'dark'; }, 50);
+        }
+      });
+
+      document.getElementById('st-motion').addEventListener('change', function () {
+        document.documentElement.style.setProperty('--t-base', this.checked ? '.01ms' : '.28s cubic-bezier(.22,.8,.3,1)');
+        document.documentElement.style.setProperty('--t-slow', this.checked ? '.01ms' : '.48s cubic-bezier(.22,.8,.3,1)');
+        Toast.info(this.checked ? 'Animations reduced.' : 'Animations restored.');
+      });
+
+      /* notification prefs */
+      document.getElementById('st-notifs').innerHTML = [
+        ['Appointment reminders', 'The evening before and one hour before your slot.', true],
+        ['Booking confirmations', 'Instant confirmation when a booking succeeds or changes.', true],
+        ['Offers & promotions', 'Seasonal deals and member-only codes. Never more than weekly.', true],
+        ['Stylist updates', 'When a favourite stylist posts new work or opens slots.', false],
+        ['Review requests', 'A gentle nudge to rate your visit after each appointment.', true]
+      ].map(function (n, i) {
+        return '<div class="settings-row"><div class="settings-row__info"><b>' + n[0] + '</b><p>' + n[1] + '</p></div>' +
+          '<label class="switch"><input type="checkbox" data-notif="' + i + '"' + (n[2] ? ' checked' : '') + '><span class="switch__track"></span></label></div>';
+      }).join('');
+      document.getElementById('st-notifs').addEventListener('change', function (e) {
+        if (e.target.dataset.notif !== undefined) {
+          Toast.success('Notification preference saved.');
+        }
+      });
+
+      /* password */
+      document.getElementById('st-pw-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!Validate.form(this)) return;
+        this.reset();
+        this.querySelectorAll('.is-valid').forEach(function (f) { f.classList.remove('is-valid'); });
+        document.querySelector('[data-pw-strength]').setAttribute('data-level', '0');
+        Toast.success('Password updated. You\'ll use it from your next sign-in.', 'Secure ✔');
+      });
+
+      /* membership cancel */
+      document.getElementById('st-cancel-plan').addEventListener('click', function () {
+        Modal.confirm({
+          title: 'Cancel ' + (user.tier || 'Gold') + ' membership?',
+          message: 'Your benefits stay active until the end of the current billing period, and your loyalty points are safe.',
+          confirmText: 'Cancel membership', danger: true, icon: 'diamond',
+          onConfirm: function () {
+            Store.updateUser({ tier: 'Basic' });
+            document.getElementById('st-plan').textContent = 'Basic';
+            Toast.info('Membership cancelled. You\'re on the free Basic plan now — rejoin anytime.', 'Done');
+          }
+        });
+      });
+
+      /* export */
+      document.getElementById('st-export').addEventListener('click', function () {
+        var data = {
+          user: Store.getUser(),
+          appointments: Store.getAppointments(),
+          wishlist: {
+            services: Store.getWishlist('service'),
+            salons: Store.getWishlist('salon'),
+            stylists: Store.getWishlist('stylist')
+          },
+          points: Store.getPoints()
+        };
+        var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'lumiere-my-data.json';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        Toast.success('Your data has been exported as JSON.', 'Export ready');
+      });
+
+      /* clear demo */
+      document.getElementById('st-clear').addEventListener('click', function () {
+        Modal.confirm({
+          title: 'Reset all demo data?',
+          message: 'Appointments, favourites, points and preferences saved on this device will be cleared and re-seeded.',
+          confirmText: 'Reset everything', danger: true, icon: 'refresh',
+          onConfirm: function () {
+            Object.keys(localStorage).forEach(function (k) {
+              if (k.indexOf('lumiere.') === 0) localStorage.removeItem(k);
+            });
+            Toast.success('Demo data reset. Reloading…');
+            setTimeout(function () { location.reload(); }, 900);
+          }
+        });
+      });
+
+      /* delete */
+      document.getElementById('st-delete').addEventListener('click', function () {
+        Modal.confirm({
+          title: 'Delete your account?',
+          message: 'This permanently removes your profile, history and points. There is no undo. We\'d genuinely miss you.',
+          confirmText: 'Delete forever', danger: true, icon: 'alert-triangle',
+          onConfirm: function () {
+            Object.keys(localStorage).forEach(function (k) {
+              if (k.indexOf('lumiere.') === 0) localStorage.removeItem(k);
+            });
+            Toast.info('Account deleted. Take care of that gorgeous hair.', 'Goodbye 👋');
+            setTimeout(function () { location.href = 'index.html'; }, 1200);
+          }
+        });
+      });
+    };
+  </script>
+</body>
+</html>

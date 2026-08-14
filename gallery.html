@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Lumière Beauty Studio</title>
+  <meta name="description" content="Our work in pictures — hair transformations, bridal looks, nail art, salon interiors, before &amp; after results and studio films.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="ga-hero"></div>
+
+    <section class="section">
+      <div class="container">
+        <div class="tabs tabs--center mb-7" id="ga-filters" role="tablist" aria-label="Gallery filters"></div>
+        <div class="gallery-grid" id="ga-grid" data-lightbox-group aria-live="polite"></div>
+
+        <!-- before & after feature -->
+        <div class="mt-10">
+          <div class="sec-head sec-head--center">
+            <span class="eyebrow">Drag to compare</span>
+            <h2>Before &amp; after, honestly shown</h2>
+            <p>No filters, no ring lights doing the heavy lifting — one session, same camera, same daylight.</p>
+          </div>
+          <div class="grid grid-2" style="gap:20px">
+            <div>
+              <div class="ba-slider" aria-label="Colour correction before and after — drag to compare">
+                <img id="ba1-before" alt="Hair before colour correction">
+                <img class="ba-slider__after" id="ba1-after" alt="Hair after colour correction">
+                <div class="ba-slider__handle"><div class="ba-slider__grip"><i data-icon="move-horizontal"></i></div></div>
+                <span class="ba-label ba-label--before">Before</span><span class="ba-label ba-label--after">After</span>
+              </div>
+              <p class="text-center text-sm text-muted mt-3">Colour correction · Aarohi Mehta · one session</p>
+            </div>
+            <div>
+              <div class="ba-slider" aria-label="Skin treatment before and after — drag to compare">
+                <img id="ba2-before" alt="Skin before brightening course">
+                <img class="ba-slider__after" id="ba2-after" alt="Skin after brightening course">
+                <div class="ba-slider__handle"><div class="ba-slider__grip"><i data-icon="move-horizontal"></i></div></div>
+                <span class="ba-label ba-label--before">Before</span><span class="ba-label ba-label--after">After</span>
+              </div>
+              <p class="text-center text-sm text-muted mt-3">Brightening course · Priya Nair · 8 weeks</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      document.getElementById('ga-hero').outerHTML = UI.pageHero(
+        'Our work, in <span class="grad-text">pictures</span>',
+        'Transformations, salon interiors and films — filter by speciality or just scroll and enjoy.',
+        [['Gallery']]
+      );
+
+      /* filters */
+      document.getElementById('ga-filters').innerHTML = DATA.GALLERY_FILTERS.map(function (f, i) {
+        return '<button type="button" class="tab' + (i === 0 ? ' is-active' : '') + '" data-gal-filter="' + f.id + '" role="tab" aria-selected="' + (i === 0) + '">' + f.label + '</button>';
+      }).join('');
+
+      /* grid */
+      document.getElementById('ga-grid').innerHTML = DATA.GALLERY.map(function (g, i) {
+        var cls = 'gal-item' + (g.tall ? ' gal-item--tall' : '') + (g.wide ? ' gal-item--wide' : '');
+        var full = Img.get(g.seed, g.kind, 1300, g.tall ? 1700 : 900);
+        var thumb = Img.get(g.seed, g.kind, 560, g.tall ? 740 : 420);
+        var badge = g.ba ? '<span class="gal-item__tag badge badge--solid">Before / After</span>'
+          : g.video ? '<span class="gal-item__tag badge badge--glass">' + Icon.get('film') + 'Video</span>' : '';
+        var videoOverlay = g.video ? '<span class="gal-item__video-badge"><span>' + Icon.get('play') + '</span></span>' : '';
+        return '<figure class="' + cls + '" data-gal-cat="' + g.cat + '" data-lb-src="' + full + '" data-lb-title="' + g.title + '" data-lb-sub="' + g.sub + '" data-reveal="up" data-reveal-delay="' + Math.min(i * 0.04, 0.4) + '" tabindex="0" role="button" aria-label="View ' + g.title + '">' +
+          '<img src="' + thumb + '" alt="' + g.title + ' — ' + g.sub + '" loading="lazy">' +
+          badge + videoOverlay +
+          '<figcaption class="gal-item__overlay"><b>' + g.title + '</b><span>' + g.sub + '</span></figcaption>' +
+          '<span class="gal-item__icon">' + Icon.get('zoom-in') + '</span></figure>';
+      }).join('');
+
+      Gallery.bindFilterGrid('#ga-filters', '#ga-grid');
+
+      /* keyboard support for gallery items */
+      document.getElementById('ga-grid').addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          var f = e.target.closest('[data-lb-src]');
+          if (f) { e.preventDefault(); f.click(); }
+        }
+      });
+
+      /* before/after images */
+      document.getElementById('ba1-before').src = Img.get('ba-color-before', 'hair', 900, 560);
+      document.getElementById('ba1-after').src = Img.get('ba-color-after', 'sparkles-hair', 900, 560);
+      document.getElementById('ba2-before').src = Img.get('ba-skin-before', 'skin', 900, 560);
+      document.getElementById('ba2-after').src = Img.get('ba-skin-after', 'sparkles-skin', 900, 560);
+      Gallery.bindBASliders(document);
+    };
+  </script>
+</body>
+</html>

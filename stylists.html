@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Stylists — Lumière Beauty Studio</title>
+  <meta name="description" content="Meet 10 certified beauty experts — hair, skin, makeup, nails, spa and bridal specialists with real client ratings.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="st-hero"></div>
+
+    <section class="section">
+      <div class="container">
+        <div class="toolbar" data-reveal="up">
+          <div class="tabs" id="st-tabs" role="tablist" aria-label="Filter by speciality"></div>
+          <div class="flex items-center gap-3 flex-wrap">
+            <label class="field field--icon" style="width:230px">
+              <input class="input" type="search" id="st-search" placeholder="Search stylists…" aria-label="Search stylists" style="padding-block:10px">
+              <span class="field__icon"><i data-icon="search"></i></span>
+            </label>
+            <select class="select" id="st-sort" aria-label="Sort stylists" style="width:auto;padding-block:10px">
+              <option value="rating">Top rated</option>
+              <option value="exp">Most experienced</option>
+              <option value="reviews">Most reviewed</option>
+              <option value="available">Available first</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="toolbar__count mb-5" id="st-count" aria-live="polite"></div>
+        <div class="grid grid-auto" id="st-grid" aria-live="polite"></div>
+        <nav class="pagination" id="st-pager" aria-label="Stylists pagination"></nav>
+      </div>
+    </section>
+
+    <!-- join CTA -->
+    <section class="section section--tint">
+      <div class="container">
+        <div class="split">
+          <div data-reveal="right">
+            <span class="eyebrow eyebrow--line">Join the team</span>
+            <h2 class="mb-4">Talented stylist? We're hiring across all 8 cities</h2>
+            <p class="lead mb-6">Fair pay, real training, and clients who arrive on time because the platform reminds them. Send us your portfolio and we'll be in touch within a week.</p>
+            <div class="btn-group">
+              <a class="btn btn--primary" href="contact.html"><i data-icon="send"></i>Apply Now</a>
+              <a class="btn btn--ghost" href="about.html">Life at Lumière</a>
+            </div>
+          </div>
+          <div class="split__media" data-reveal="left">
+            <div class="media media--ratio-43">
+              <img data-img="join-team" data-kind="salon" data-w="640" data-h="480" alt="Lumière stylists collaborating at the colour bar">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      document.getElementById('st-hero').outerHTML = UI.pageHero(
+        'Experts behind every <span class="grad-text">great look</span>',
+        'Ten specialists, one shared standard — certified, background-checked, and rated only by verified visits.',
+        [['Stylists']]
+      );
+
+      var lc = new ListController({
+        items: DATA.STYLISTS,
+        pageSize: 9,
+        host: '#st-grid',
+        pagerHost: '#st-pager',
+        countHost: '#st-count',
+        defaultSort: 'rating',
+        render: UI.stylistCard,
+        filters: {
+          spec: function (s, v) { return s.specialties.indexOf(v) > -1; },
+          q: function (s, v) { return (s.name + ' ' + s.role).toLowerCase().indexOf(v) > -1; }
+        },
+        sorters: {
+          rating: function (a, b) { return b.rating - a.rating; },
+          exp: function (a, b) { return b.exp - a.exp; },
+          reviews: function (a, b) { return b.reviews - a.reviews; },
+          available: function (a, b) {
+            var rank = { available: 0, busy: 1, leave: 2 };
+            return rank[a.status] - rank[b.status] || b.rating - a.rating;
+          }
+        }
+      });
+
+      var tabs = document.getElementById('st-tabs');
+      var specs = [{ id: 'all', name: 'All' }].concat(DATA.CATEGORIES.filter(function (c) {
+        return DATA.STYLISTS.some(function (s) { return s.specialties.indexOf(c.id) > -1; });
+      }));
+      tabs.innerHTML = specs.map(function (c, i) {
+        return '<button type="button" class="tab' + (i === 0 ? ' is-active' : '') + '" data-spec="' + c.id + '" role="tab" aria-selected="' + (i === 0) + '">' + c.name + '</button>';
+      }).join('');
+      tabs.addEventListener('click', function (e) {
+        var t = e.target.closest('[data-spec]');
+        if (!t) return;
+        tabs.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('is-active'); x.setAttribute('aria-selected', 'false'); });
+        t.classList.add('is-active');
+        t.setAttribute('aria-selected', 'true');
+        lc.set('spec', t.dataset.spec === 'all' ? null : t.dataset.spec);
+      });
+
+      var si = document.getElementById('st-search');
+      si.addEventListener('input', Search.debounce(function () {
+        lc.set('q', si.value.trim().toLowerCase() || null);
+      }, 180));
+      document.getElementById('st-sort').addEventListener('change', function (e) { lc.sort(e.target.value); });
+    };
+  </script>
+</body>
+</html>

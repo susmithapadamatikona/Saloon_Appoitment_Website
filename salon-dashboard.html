@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salon Dashboard — Lumière Beauty Studio</title>
+  <meta name="description" content="Salon owner dashboard — bookings, revenue, popular services, customer growth, stylists and reviews.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div class="dash">
+    <aside class="dash-side" id="dash-side" aria-label="Dashboard navigation"></aside>
+    <div class="dash-main">
+      <div class="dash-top" id="dash-top"></div>
+      <div class="dash-body">
+
+        <!-- stats -->
+        <div class="stat-cards" id="od-stats"></div>
+
+        <div class="dash-grid dash-grid--2-1 mb-6">
+          <!-- revenue chart -->
+          <div class="panel" id="revenue">
+            <div class="panel__head">
+              <h3><i data-icon="trending-up"></i>Revenue overview</h3>
+              <div class="segmented" id="od-rev-range">
+                <button type="button" class="is-active" data-range="week">Week</button>
+                <button type="button" data-range="month">Month</button>
+                <button type="button" data-range="year">Year</button>
+              </div>
+            </div>
+            <div class="panel__body"><div class="chart-box" id="od-rev-chart"></div></div>
+          </div>
+
+          <!-- popular services donut -->
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="pie-chart"></i>Popular services</h3></div>
+            <div class="panel__body" id="od-donut"></div>
+          </div>
+        </div>
+
+        <div class="dash-grid dash-grid--1-1 mb-6">
+          <!-- daily bookings bars -->
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="bar-chart"></i>Daily bookings</h3><p>This week vs capacity</p></div>
+            <div class="panel__body"><div id="od-bookings-chart"></div></div>
+          </div>
+          <!-- customer growth -->
+          <div class="panel" id="customers">
+            <div class="panel__head"><h3><i data-icon="users"></i>Customer growth</h3><p>New vs returning, last 8 weeks</p></div>
+            <div class="panel__body"><div id="od-growth-chart"></div></div>
+          </div>
+        </div>
+
+        <!-- today's appointments -->
+        <div class="panel mb-6" id="appointments">
+          <div class="panel__head">
+            <h3><i data-icon="calendar-check"></i>Today's schedule</h3>
+            <button class="btn btn--soft btn--xs" id="od-add-slot"><i data-icon="plus"></i>Add Walk-in</button>
+          </div>
+          <div class="panel__body agenda" id="od-agenda"></div>
+        </div>
+
+        <div class="dash-grid dash-grid--2-1 mb-6">
+          <!-- appointments table -->
+          <div class="panel">
+            <div class="panel__head">
+              <h3><i data-icon="clipboard"></i>Recent bookings</h3>
+              <select class="select" id="od-tbl-filter" style="width:auto;padding-block:8px;font-size:var(--fs-sm)">
+                <option value="all">All statuses</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+            <div class="panel__body--flush table-wrap">
+              <table class="table" id="od-table">
+                <thead><tr><th>Client</th><th>Service</th><th>Stylist</th><th>Time</th><th>Amount</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="od-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- team -->
+          <div class="panel" id="stylists">
+            <div class="panel__head"><h3><i data-icon="scissors"></i>Team today</h3></div>
+            <div class="panel__body" style="display:grid;gap:12px" id="od-team"></div>
+          </div>
+        </div>
+
+        <!-- reviews -->
+        <div class="panel" id="reviews">
+          <div class="panel__head">
+            <h3><i data-icon="star"></i>Latest reviews</h3>
+            <span class="badge badge--coral"><i data-icon="star" data-icon-size="13"></i>4.9 average</span>
+          </div>
+          <div class="panel__body" id="od-reviews"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      Dash.mount({ role: 'owner', active: 'dashboard', title: 'Lumière Bandra Flagship', sub: 'Owner dashboard · today at a glance' });
+
+      /* stats */
+      document.getElementById('od-stats').innerHTML =
+        Dash.statCard({ label: "Today's bookings", count: 18, icon: 'calendar-check', delta: 12, spark: [10, 12, 9, 14, 16, 13, 18] }) +
+        Dash.statCard({ label: 'Revenue today', value: '₹42,350', icon: 'wallet', tone: 'mint', delta: 9, spark: [28, 31, 26, 38, 35, 39, 42], sparkColor: '#4DB6AC' }) +
+        Dash.statCard({ label: 'New customers', count: 6, icon: 'user-plus', tone: 'lav', delta: 20, spark: [2, 3, 2, 4, 5, 4, 6], sparkColor: '#9575CD' }) +
+        Dash.statCard({ label: 'Avg. rating', value: '4.9', icon: 'star', tone: 'coral', delta: 2, spark: [4.7, 4.7, 4.8, 4.8, 4.9, 4.9, 4.9], sparkColor: '#FFB74D' });
+      Dash.drawSparks(document);
+
+      /* revenue line chart */
+      var REV = {
+        week: { labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], vals: [31, 28, 34, 30, 44, 58, 39], prev: [26, 27, 29, 28, 38, 49, 35] },
+        month: { labels: ['W1', 'W2', 'W3', 'W4'], vals: [198, 226, 241, 262], prev: [176, 195, 210, 224] },
+        year: { labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'], vals: [640, 590, 720, 700, 810, 860, 905, 940], prev: [520, 540, 600, 610, 680, 720, 760, 800] }
+      };
+      function drawRev(range) {
+        var d = REV[range];
+        Anim.lineChart('#od-rev-chart', d.labels, [
+          { name: 'This ' + range, color: '#E91E63', values: d.vals },
+          { name: 'Last ' + range, color: '#9575CD', values: d.prev }
+        ], { fmt: function (v) { return '₹' + Math.round(v) + 'k'; }, label: 'Revenue trend' });
+      }
+      drawRev('week');
+      document.getElementById('od-rev-range').addEventListener('click', function (e) {
+        var b = e.target.closest('[data-range]');
+        if (!b) return;
+        this.querySelectorAll('button').forEach(function (x) { x.classList.remove('is-active'); });
+        b.classList.add('is-active');
+        drawRev(b.dataset.range);
+      });
+
+      /* donut */
+      Anim.donutChart('#od-donut', [
+        { label: 'Hair', value: 38, color: '#E91E63' },
+        { label: 'Skin', value: 22, color: '#9575CD' },
+        { label: 'Nails', value: 16, color: '#FFB74D' },
+        { label: 'Spa', value: 14, color: '#4DB6AC' },
+        { label: 'Makeup', value: 10, color: '#64B5F6' }
+      ], { center: '512', centerLabel: 'bookings / mo', label: 'Service mix' });
+
+      /* daily bookings bars */
+      Anim.barChart('#od-bookings-chart', [
+        { label: 'Mon', value: 14, tip: '14 bookings' }, { label: 'Tue', value: 11, tip: '11 bookings' },
+        { label: 'Wed', value: 16, tip: '16 bookings' }, { label: 'Thu', value: 13, tip: '13 bookings' },
+        { label: 'Fri', value: 19, tip: '19 bookings' }, { label: 'Sat', value: 24, tip: '24 bookings' },
+        { label: 'Sun', value: 17, tip: '17 bookings' }
+      ]);
+
+      /* growth chart */
+      Anim.lineChart('#od-growth-chart', ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8'], [
+        { name: 'New clients', color: '#4DB6AC', values: [12, 15, 14, 19, 22, 20, 26, 29] },
+        { name: 'Returning', color: '#E91E63', values: [34, 36, 41, 39, 45, 48, 52, 55] }
+      ], { label: 'Customer growth' });
+
+      /* agenda */
+      var tones = ['', 'agenda-item--lav', 'agenda-item--mint', 'agenda-item--coral', 'agenda-item--sky'];
+      document.getElementById('od-agenda').innerHTML = [
+        ['09:30', 'AM', 'Hair Spa Ritual', 'Kavya Reddy · with Aarohi', 'Confirmed', 'status-confirmed'],
+        ['11:00', 'AM', 'Signature Facial', 'Sneha Pillai · with Priya', 'Confirmed', 'status-confirmed'],
+        ['12:30', 'PM', 'Balayage + Cut', 'Nikita Joshi · with Aarohi', 'In progress', 'status-pending'],
+        ['02:00', 'PM', 'Bridal Trial', 'Ishita Malhotra · with Sana', 'Confirmed', 'status-confirmed'],
+        ['04:30', 'PM', 'Designer Nail Art', 'Meghana Rao · with Ritika', 'Awaiting payment', 'status-pending'],
+        ['06:00', 'PM', 'Keratin Smoothing', 'Aditi Sharma · with Ananya', 'Confirmed', 'status-confirmed']
+      ].map(function (a, i) {
+        return '<div class="agenda-item ' + tones[i % tones.length] + '">' +
+          '<div class="agenda-item__time">' + a[0] + '<span>' + a[1] + '</span></div>' +
+          '<div class="agenda-item__info"><b>' + a[2] + '</b><span>' + a[3] + '</span></div>' +
+          '<span class="badge ' + a[5] + ' badge--dot">' + a[4] + '</span></div>';
+      }).join('');
+
+      document.getElementById('od-add-slot').addEventListener('click', function () {
+        Toast.info('Walk-in entry opens the quick-booking form in production.', 'Add walk-in');
+      });
+
+      /* bookings table */
+      var ROWS = [
+        ['Kavya Reddy', 'KR', 'Hair Colouring', 'Aarohi M.', 'Today 3:00 PM', 2949, 'confirmed'],
+        ['Rohan Kapoor', 'RK', 'Groom Package', 'Kabir A.', 'Today 5:00 PM', 7079, 'pending'],
+        ['Fatima Sheikh', 'FS', 'Bridal Mehendi', 'Zoya K.', 'Tomorrow 10:00 AM', 4129, 'confirmed'],
+        ['Aditi Sharma', 'AS', 'Aroma Spa Massage', 'Meera I.', 'Yesterday 6:30 PM', 2713, 'completed'],
+        ['Nikita Joshi', 'NJ', 'Designer Nail Art', 'Ritika S.', 'Yesterday 4:00 PM', 1415, 'completed'],
+        ['Ishita Malhotra', 'IM', 'Party Makeup', 'Sana K.', 'Tomorrow 5:30 PM', 2949, 'pending']
+      ];
+      function renderTable(filter) {
+        var list = ROWS.filter(function (r) { return filter === 'all' || r[6] === filter; });
+        document.getElementById('od-table-body').innerHTML = list.map(function (r) {
+          var badge = { confirmed: 'status-confirmed', pending: 'status-pending', completed: 'status-completed' }[r[6]];
+          return '<tr><td><div class="table__user"><span class="avatar avatar--sm">' + r[1] + '</span><div><b>' + r[0] + '</b><span>Member</span></div></div></td>' +
+            '<td>' + r[2] + '</td><td>' + r[3] + '</td><td>' + r[4] + '</td><td><b>' + DATA.money(r[5]) + '</b></td>' +
+            '<td><span class="badge ' + badge + ' badge--dot">' + r[6].charAt(0).toUpperCase() + r[6].slice(1) + '</span></td>' +
+            '<td><div class="table__actions">' +
+            '<button class="btn-icon btn-icon--sm" data-row-view="' + r[0] + '" aria-label="View booking">' + Icon.get('eye') + '</button>' +
+            '<button class="btn-icon btn-icon--sm" data-row-edit="' + r[0] + '" aria-label="Edit booking">' + Icon.get('edit') + '</button>' +
+            '</div></td></tr>';
+        }).join('');
+        Icon.hydrate(document.getElementById('od-table-body'));
+      }
+      renderTable('all');
+      document.getElementById('od-tbl-filter').addEventListener('change', function () { renderTable(this.value); });
+      document.getElementById('od-table').addEventListener('click', function (e) {
+        var v = e.target.closest('[data-row-view]');
+        var ed = e.target.closest('[data-row-edit]');
+        if (v) Toast.info('Full booking detail for <b>' + v.dataset.rowView + '</b> opens here in production.');
+        if (ed) Toast.info('Edit flow for <b>' + ed.dataset.rowEdit + '</b>\'s booking opens here.');
+      });
+
+      /* team */
+      document.getElementById('od-team').innerHTML = DATA.stylistsAt('lumiere-bandra').map(function (st) {
+        var loads = { 1: 86, 2: 64, 8: 45 };
+        var pct = loads[st.id] || 50;
+        return '<div class="stylist-mini" style="cursor:default">' +
+          '<span class="avatar avatar--md"><img src="' + Img.get(st.slug, 'person', 120, 120) + '" alt=""></span>' +
+          '<span class="stylist-mini__info"><b>' + st.name + '</b>' +
+          '<span class="mt-1 block"><span class="progress progress--thin" style="width:120px;display:inline-block;vertical-align:middle"><span class="progress__bar" data-value="' + pct + '" style="display:block"></span></span> ' + pct + '% booked</span></span>' +
+          '<span class="avail-dot ' + (st.status === 'available' ? 'avail-dot--free">Free slots' : 'avail-dot--busy">Full') + '</span></div>';
+      }).join('');
+
+      /* reviews */
+      document.getElementById('od-reviews').innerHTML = DATA.TESTIMONIALS.slice(0, 3).map(function (r) {
+        return '<div class="review-item"><span class="avatar avatar--md">' + r.name.split(' ').map(function (w) { return w[0]; }).join('') + '</span>' +
+          '<div style="flex:1"><div class="review-item__head"><div><span class="review-item__name">' + r.name + '</span>' +
+          '<span class="badge badge--rose" style="margin-left:8px">' + r.service + '</span></div>' +
+          '<span class="review-item__date">' + DATA.dateShort(r.date) + '</span></div>' +
+          Icon.stars(r.rating) + '<p class="mt-2">' + r.text + '</p>' +
+          '<div class="review-item__actions"><button type="button" onclick="Toast.success(\'Reply sent — clients love hearing back.\')">' + Icon.get('message-circle') + 'Reply</button></div>' +
+          '</div></div>';
+      }).join('');
+    };
+  </script>
+</body>
+</html>

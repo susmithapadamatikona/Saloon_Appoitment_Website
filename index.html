@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STACKLY — Premium Salon &amp; Beauty Appointment Platform</title>
+  <meta name="description" content="Book premium salon and beauty services with expert stylists across 8 cities. Hair, skin, makeup, nails, spa and bridal — instant confirmation, free cancellation.">
+  <meta name="keywords" content="salon booking, beauty appointment, hair salon, spa, bridal makeup, nail art">
+  <meta property="og:title" content="STACKLY — Look Good. Feel Beautiful.">
+  <meta property="og:description" content="Premium salon appointments with 50+ expert stylists across 8 cities.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div id="page-loader" role="status" aria-label="Loading">
+    <div class="loader__mark">
+      <div class="loader__ring"></div>
+      <img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly">
+    </div>
+  </div>
+
+  <header id="site-header"></header>
+
+  <main id="main">
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" aria-label="Welcome">
+      <span class="spark spark--1"><i data-icon="sparkles"></i></span>
+      <span class="spark spark--2"><i data-icon="sparkles"></i></span>
+      <span class="spark spark--3"><i data-icon="sparkles"></i></span>
+
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <div class="hero__badge" data-reveal="up">
+            <i><i data-icon="award"></i></i>
+            <span>Rated <b>4.9/5</b> by 10,000+ happy clients</span>
+          </div>
+
+          <h1 data-reveal="up" data-reveal-delay=".05">
+            <span class="line">Look Good.</span>
+            <span class="line">Feel <em>Beautiful.</em></span>
+          </h1>
+
+          <p class="hero__sub" data-reveal="up" data-reveal-delay=".12">
+            Book your favourite beauty services with professional stylists and beauty
+            experts — hair, skin, makeup, nails, spa and bridal, all in one elegant place.
+          </p>
+
+          <div class="hero__cta" data-reveal="up" data-reveal-delay=".18">
+            <a class="btn btn--primary btn--lg" href="booking.html"><i data-icon="calendar-plus"></i>Book Appointment</a>
+            <a class="btn btn--ghost btn--lg" href="services.html">Explore Services<i data-icon="arrow-right"></i></a>
+          </div>
+
+          <div class="hero__trust" data-reveal="up" data-reveal-delay=".24">
+            <div class="avatar-stack" aria-hidden="true">
+              <span class="avatar avatar--sm">KR</span>
+              <span class="avatar avatar--sm">IM</span>
+              <span class="avatar avatar--sm">SP</span>
+              <span class="avatar avatar--sm avatar-stack__more">+9k</span>
+            </div>
+            <div class="hero__trust-text"><b>2,300+ appointments</b> booked this month</div>
+          </div>
+
+          <!-- search card -->
+          <form class="hero-search" id="hero-search" data-reveal="up" data-reveal-delay=".3" role="search" aria-label="Find a service">
+            <div class="hero-search__field">
+              <i data-icon="search"></i>
+              <div class="hero-search__wrap">
+                <label for="hero-q">Service or salon</label>
+                <input id="hero-q" type="text" placeholder="Try &quot;hair spa&quot; or &quot;bridal&quot;…" autocomplete="off">
+              </div>
+            </div>
+            <div class="hero-search__field">
+              <i data-icon="map-pin"></i>
+              <div class="hero-search__wrap">
+                <label for="hero-city">Location</label>
+                <select id="hero-city" aria-label="Choose city"></select>
+              </div>
+            </div>
+            <button class="btn btn--primary" type="submit"><i data-icon="search"></i>Search</button>
+            <div class="hero-search__suggest search-results" id="hero-suggest"></div>
+          </form>
+        </div>
+
+        <div class="hero__visual" data-reveal="zoom" data-reveal-delay=".15">
+          <div class="hero__frame" aria-hidden="true"></div>
+          <div class="hero__visual-main">
+            <img data-img="hero-main" data-kind="makeup" data-w="720" data-h="900" alt="Stylist finishing an elegant updo in a rose-lit salon" fetchpriority="high">
+          </div>
+
+          <div class="float-card float-card--tl">
+            <span class="icon-box icon-box--sm icon-box--grad"><i data-icon="calendar-check"></i></span>
+            <div><div class="float-card__label">Next slot free</div><div class="float-card__value">Today, 4:30 PM</div></div>
+          </div>
+          <div class="float-card float-card--br float-card--rating">
+            <div class="stars" id="hero-stars" aria-label="5 star rating"></div>
+            <div><div class="float-card__value">"Best salon app ever"</div><div class="float-card__label">Ishita · Bandra</div></div>
+          </div>
+          <div class="float-card float-card--bl">
+            <span class="icon-box icon-box--sm icon-box--mint"><i data-icon="shield-check"></i></span>
+            <div><div class="float-card__label">Free cancellation</div><div class="float-card__value">Up to 4h before</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= HERO FEATURE STRIP ======================= -->
+    <section class="hero-features" aria-label="Why book with Lumière">
+      <div class="container">
+        <div class="hero-features__inner" id="hero-features" data-reveal="up"></div>
+      </div>
+    </section>
+
+    <!-- ========================== CATEGORIES =========================== -->
+    <section class="section" aria-labelledby="cats-title">
+      <div class="container">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow">Browse by category</span>
+          <h2 id="cats-title">Everything beauty, <span class="grad-text">one booking away</span></h2>
+          <p>Seven specialities, one standard of care. Tap a category to explore its services.</p>
+        </div>
+        <div class="cat-grid" id="home-categories"></div>
+      </div>
+    </section>
+
+    <!-- ======================= FEATURED SERVICES ======================== -->
+    <section class="section section--sunken" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="sec-head sec-head--split">
+          <div class="sec-head__text">
+            <span class="eyebrow eyebrow--line">Featured services</span>
+            <h2 id="featured-title">Most-loved treatments</h2>
+            <p>The services our clients rebook again and again — with live pricing, duration and honest reviews.</p>
+          </div>
+          <a class="btn btn--outline" href="services.html">View All Services<i data-icon="arrow-right"></i></a>
+        </div>
+        <div class="grid grid-auto" id="home-featured"></div>
+      </div>
+    </section>
+
+    <!-- =========================== HOW IT WORKS ========================= -->
+    <section class="section" aria-labelledby="steps-title">
+      <div class="container">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow">Effortless by design</span>
+          <h2 id="steps-title">Booked in <span class="ink">four taps</span></h2>
+          <p>From "I need a haircut" to a confirmed slot — in under two minutes.</p>
+        </div>
+        <div class="grid grid-3" id="home-steps"></div>
+      </div>
+    </section>
+
+    <!-- =========================== STATS BAND =========================== -->
+    <section class="stats-band section--tight" aria-label="Lumière in numbers">
+      <div class="container">
+        <div class="stat-row" id="home-stats"></div>
+      </div>
+    </section>
+
+    <!-- ======================== POPULAR SERVICES ======================== -->
+    <section class="section" aria-labelledby="popular-title">
+      <div class="container">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow">Popular right now</span>
+          <h2 id="popular-title">Trending in your city</h2>
+          <p>Filter by category or search directly — every card books in a couple of clicks.</p>
+        </div>
+
+        <div class="toolbar" data-reveal="up">
+          <div class="tabs" id="popular-tabs" role="tablist" aria-label="Service categories"></div>
+          <label class="field field--icon" style="max-width:260px;width:100%">
+            <input class="input" type="search" id="popular-search" placeholder="Search services…" aria-label="Search popular services" style="padding-block:11px">
+            <span class="field__icon"><i data-icon="search"></i></span>
+          </label>
+        </div>
+
+        <div class="grid grid-auto" id="popular-grid"></div>
+        <div class="text-center mt-8">
+          <a class="btn btn--soft btn--lg" href="services.html">Browse the full menu<i data-icon="chevrons-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== MARQUEE ============================== -->
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon__track">
+        <div class="ribbon__item">
+          <span>Hair Styling</span><span>Bridal Makeup</span><span>Nail Art</span><span>Spa Rituals</span>
+          <span>Skin Therapy</span><span>Mehendi</span><span>Keratin</span><span>Grooming</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================= WHY CHOOSE US ========================== -->
+    <section class="section section--alt" aria-labelledby="why-title">
+      <div class="container">
+        <div class="split split--media-right">
+          <div>
+            <span class="eyebrow eyebrow--line">Why Lumière</span>
+            <h2 id="why-title" class="mb-4">A salon experience that respects your time — and your hair</h2>
+            <p class="lead mb-5">We built Lumière because booking beauty services shouldn't involve five phone calls and a prayer. Every stylist is vetted, every price is upfront, and every slot you see is genuinely available.</p>
+            <ul class="check-list" id="why-list"></ul>
+            <div class="btn-group mt-6">
+              <a class="btn btn--primary" href="about.html">Our Story<i data-icon="arrow-right"></i></a>
+              <a class="btn btn--ghost" href="testimonials.html"><i data-icon="quote"></i>Client Stories</a>
+            </div>
+          </div>
+          <div class="split__media relative" data-reveal="zoom">
+            <div class="blob-shape" style="inset:-24px -24px auto auto;width:65%;height:65%" aria-hidden="true"></div>
+            <div class="media media--ratio-34" data-tilt="4">
+              <img data-img="why-lumiere" data-kind="interior" data-w="640" data-h="850" alt="The softly lit interior of the Lumière Bandra flagship salon">
+            </div>
+            <div class="float-card" style="bottom:26px;left:-20px;position:absolute">
+              <span class="icon-box icon-box--sm icon-box--coral"><i data-icon="award"></i></span>
+              <div><div class="float-card__label">Since 2016</div><div class="float-card__value">78% clients return</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= STYLIST SHOWCASE ======================= -->
+    <section class="section" aria-labelledby="stylists-title">
+      <div class="container">
+        <div class="sec-head sec-head--split">
+          <div class="sec-head__text">
+            <span class="eyebrow eyebrow--line">Meet the experts</span>
+            <h2 id="stylists-title">Stylists worth the appointment</h2>
+            <p>Certified, experienced and reviewed by real clients after every single visit.</p>
+          </div>
+          <a class="btn btn--outline" href="stylists.html">All Stylists<i data-icon="arrow-right"></i></a>
+        </div>
+        <div class="grid grid-4" id="home-stylists"></div>
+      </div>
+    </section>
+
+    <!-- ========================= SALON LOCATIONS ======================== -->
+    <section class="section section--sunken" aria-labelledby="salons-title">
+      <div class="container">
+        <div class="sec-head sec-head--split">
+          <div class="sec-head__text">
+            <span class="eyebrow eyebrow--line">Find us near you</span>
+            <h2 id="salons-title">Our salons &amp; partner studios</h2>
+            <p>Eight cities and counting — each location holds the same Lumière standard.</p>
+          </div>
+          <a class="btn btn--outline" href="salons.html"><i data-icon="map"></i>View Map</a>
+        </div>
+        <div class="grid grid-3" id="home-salons"></div>
+      </div>
+    </section>
+
+    <!-- ============================ OFFERS ============================== -->
+    <section class="section" aria-labelledby="offers-title">
+      <div class="container">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow">Limited-time treats</span>
+          <h2 id="offers-title">Offers too good to <span class="grad-text">scroll past</span></h2>
+          <p>Copy a code, apply at checkout, glow for less. Simple as that.</p>
+        </div>
+        <div class="grid grid-3" id="home-offers"></div>
+        <div class="text-center mt-8">
+          <a class="btn btn--soft btn--lg" href="offers.html"><i data-icon="gift"></i>See All Offers</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================= TESTIMONIALS =========================== -->
+    <section class="section section--tint" aria-labelledby="tst-title">
+      <div class="container">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow">Client love</span>
+          <h2 id="tst-title">Ten thousand good hair days</h2>
+          <p>Real reviews from real appointments — unedited and occasionally emotional.</p>
+        </div>
+        <div class="slider" id="home-tst-slider">
+          <div class="slider__track" id="home-tst-track"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= BLOG =============================== -->
+    <section class="section" aria-labelledby="blog-title">
+      <div class="container">
+        <div class="sec-head sec-head--split">
+          <div class="sec-head__text">
+            <span class="eyebrow eyebrow--line">The glow journal</span>
+            <h2 id="blog-title">Beauty wisdom from our chairs</h2>
+            <p>Honest, expert-written guides — no ten-step routines you'll abandon by Thursday.</p>
+          </div>
+          <a class="btn btn--outline" href="blog.html">All Articles<i data-icon="arrow-right"></i></a>
+        </div>
+        <div class="grid grid-3" id="home-posts"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      /* hero stars */
+      document.getElementById('hero-stars').outerHTML = Icon.stars(5);
+
+      /* hero city select */
+      var citySel = document.getElementById('hero-city');
+      citySel.innerHTML = DATA.CITIES.map(function (c, i) {
+        return '<option' + (i === 0 ? ' selected' : '') + '>' + c + '</option>';
+      }).join('');
+
+      /* hero search + live suggestions */
+      var heroForm = document.getElementById('hero-search');
+      var heroQ = document.getElementById('hero-q');
+      var suggest = document.getElementById('hero-suggest');
+      Search.bindGlobal(heroQ, suggest);
+      heroForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var q = heroQ.value.trim();
+        location.href = 'services.html' + (q ? '?q=' + encodeURIComponent(q) : '');
+      });
+      document.addEventListener('click', function (e) {
+        if (!heroForm.contains(e.target)) suggest.classList.remove('is-visible');
+      });
+
+      /* hero features */
+      document.getElementById('hero-features').innerHTML = DATA.FEATURES.map(function (f, i) {
+        return '<div class="hero-feature">' +
+          '<span class="icon-box icon-box--md' + (f.tone ? ' icon-box--' + f.tone : ' icon-box--grad') + '">' + Icon.get(f.icon) + '</span>' +
+          '<div><h3>' + f.title + '</h3><p>' + f.desc + '</p></div></div>';
+      }).join('');
+
+      /* categories (+ an "All Services" tile so the grid always fills evenly) */
+      document.getElementById('home-categories').innerHTML = DATA.CATEGORIES.map(function (c, i) {
+        return '<a class="cat-tile" href="services.html?cat=' + c.id + '" data-reveal="up" data-reveal-delay="' + (i * 0.06) + '">' +
+          Img.tag({ seed: 'cat-' + c.id, kind: c.id === 'wellness' ? 'spa' : c.id, alt: c.name + ' services', w: 420, h: 560 }) +
+          '<span class="cat-tile__icon">' + Icon.get(c.icon) + '</span>' +
+          '<span class="cat-tile__body"><h3>' + c.name + '</h3><p>' + c.desc + '</p>' +
+          '<span class="cat-tile__go">Explore ' + Icon.get('arrow-right') + '</span></span></a>';
+      }).join('') +
+        '<a class="cat-tile" href="services.html" data-reveal="up" data-reveal-delay="' + (DATA.CATEGORIES.length * 0.06) + '">' +
+        Img.tag({ seed: 'cat-all-services', kind: 'salon', alt: 'Browse all Lumière services', w: 420, h: 560 }) +
+        '<span class="cat-tile__icon">' + Icon.get('grid') + '</span>' +
+        '<span class="cat-tile__body"><h3>All Services</h3><p>' + DATA.SERVICES.length + '+ treatments, one menu</p>' +
+        '<span class="cat-tile__go">Browse everything ' + Icon.get('arrow-right') + '</span></span></a>';
+
+      /* featured services */
+      document.getElementById('home-featured').innerHTML =
+        DATA.SERVICES.filter(function (s) { return s.popular; }).slice(0, 6).map(UI.serviceCard).join('');
+
+      /* steps */
+      document.getElementById('home-steps').innerHTML = DATA.STEPS.map(function (s, i) {
+        return '<div class="step-card" data-reveal="up" data-reveal-delay="' + (i * 0.08) + '">' +
+          (i % 3 !== 2 ? '<span class="step-card__arrow"><svg viewBox="0 0 44 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 5"><path d="M2 10h36m0 0l-6-6m6 6l-6 6"/></svg></span>' : '') +
+          '<div class="step-card__ring">' + Icon.get(s.icon) + '<span class="step-card__n">' + (i + 1) + '</span></div>' +
+          '<h3>' + s.title + '</h3><p>' + s.desc + '</p></div>';
+      }).join('');
+
+      /* stats */
+      document.getElementById('home-stats').innerHTML = DATA.STATS.map(function (s) {
+        return '<div class="stat" data-reveal="up"><div class="stat__icon">' + Icon.get(s.icon) + '</div>' +
+          '<div class="stat__num" data-count="' + s.value + '" data-suffix="' + s.suffix + '"' +
+          (s.divide ? ' data-divide="' + s.divide + '"' : '') + '>0</div>' +
+          '<div class="stat__label">' + s.label + '</div></div>';
+      }).join('');
+
+      /* popular services w/ tabs + search */
+      var tabsHost = document.getElementById('popular-tabs');
+      var cats = [{ id: 'all', name: 'All' }].concat(DATA.CATEGORIES.slice(0, 6));
+      tabsHost.innerHTML = cats.map(function (c, i) {
+        return '<button type="button" class="tab' + (i === 0 ? ' is-active' : '') + '" data-pcat="' + c.id + '" role="tab" aria-selected="' + (i === 0) + '">' + c.name + '</button>';
+      }).join('');
+
+      var pState = { cat: 'all', q: '' };
+      function renderPopular() {
+        var list = DATA.SERVICES.filter(function (s) {
+          var okCat = pState.cat === 'all' || s.cat === pState.cat;
+          var okQ = !pState.q || (s.name + ' ' + s.short).toLowerCase().indexOf(pState.q) > -1;
+          return okCat && okQ;
+        }).slice(0, 6);
+        var grid = document.getElementById('popular-grid');
+        grid.innerHTML = list.length ? list.map(UI.serviceCard).join('')
+          : '<div class="empty-state" style="grid-column:1/-1"><span class="icon-box icon-box--lg">' + Icon.get('search') + '</span>' +
+            '<h3>No matches here</h3><p>Try a different category or the full services page.</p>' +
+            '<a class="btn btn--soft" href="services.html">Browse everything</a></div>';
+        Icon.hydrate(grid); Img.hydrate(grid); Wishlist.refresh(grid);
+        grid.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-revealed'); });
+      }
+      tabsHost.addEventListener('click', function (e) {
+        var t = e.target.closest('[data-pcat]');
+        if (!t) return;
+        tabsHost.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('is-active'); x.setAttribute('aria-selected', 'false'); });
+        t.classList.add('is-active');
+        t.setAttribute('aria-selected', 'true');
+        pState.cat = t.dataset.pcat;
+        renderPopular();
+      });
+      document.getElementById('popular-search').addEventListener('input', Search.debounce(function (e) {
+        pState.q = e.target.value.trim().toLowerCase();
+        renderPopular();
+      }, 160));
+      renderPopular();
+
+      /* why list */
+      document.getElementById('why-list').innerHTML = [
+        'Transparent pricing — the number you see is the number you pay (plus GST, shown upfront)',
+        'Real-time availability synced across every salon and stylist',
+        'Certified stylists with public ratings from verified visits only',
+        'Free rescheduling and cancellation up to four hours before',
+        'Hospital-grade hygiene, audited quarterly at every location'
+      ].map(function (t) { return '<li>' + Icon.get('check') + t + '</li>'; }).join('');
+
+      /* stylists */
+      document.getElementById('home-stylists').innerHTML =
+        DATA.STYLISTS.slice(0, 4).map(UI.stylistCard).join('');
+
+      /* salons */
+      document.getElementById('home-salons').innerHTML =
+        DATA.SALONS.slice(0, 3).map(UI.salonCard).join('');
+
+      /* offers */
+      document.getElementById('home-offers').innerHTML =
+        DATA.OFFERS.slice(0, 3).map(UI.offerCard).join('');
+
+      /* testimonials slider */
+      document.getElementById('home-tst-track').innerHTML =
+        DATA.TESTIMONIALS.map(function (t) {
+          return '<div class="slider__slide">' + UI.testimonialCard(t) + '</div>';
+        }).join('');
+      new Slider(document.getElementById('home-tst-slider'), { autoplay: 6500 });
+
+      /* blog */
+      document.getElementById('home-posts').innerHTML =
+        DATA.POSTS.slice(0, 3).map(function (p) { return UI.postCard(p); }).join('');
+    };
+  </script>
+</body>
+</html>

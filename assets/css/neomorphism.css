@@ -1,0 +1,312 @@
+/* ==========================================================================
+   neomorphism.css — soft-UI (neumorphic) skin
+   Loaded after the component styles: retints the neutral surfaces so cards
+   share the page colour, then models every card with the classic dual
+   shadow (light top-left, dark bottom-right). Brand-gradient elements
+   (primary buttons, offer cards, hero bands) intentionally keep their pop.
+   ========================================================================== */
+
+:root {
+  /* soft rose-grey canvas — cards share this colour, shadows do the work */
+  --bg: #F2ECEF;
+  --bg-alt: #F2ECEF;
+  --off-white: #F2ECEF;
+  --bg-sunken: #E9E2E6;
+  --light-gray: #E9E2E6;
+  --surface: #F2ECEF;
+  --surface-2: #F6F0F3;
+  --surface-raised: #F6F0F3;
+
+  --neo-light: rgba(255, 255, 255, 0.92);
+  --neo-dark: rgba(178, 150, 163, 0.42);
+
+  --sh-neo-xs: 3px 3px 6px var(--neo-dark), -3px -3px 6px var(--neo-light);
+  --sh-neo-sm: 5px 5px 11px var(--neo-dark), -5px -5px 11px var(--neo-light);
+  --sh-neo: 9px 9px 20px var(--neo-dark), -9px -9px 20px var(--neo-light);
+  --sh-neo-lg: 14px 14px 30px var(--neo-dark), -14px -14px 30px var(--neo-light);
+  --sh-neo-inset: inset 4px 4px 8px var(--neo-dark), inset -4px -4px 8px var(--neo-light);
+  --sh-neo-inset-sm: inset 2px 2px 5px var(--neo-dark), inset -2px -2px 5px var(--neo-light);
+
+  --glass-bg: rgba(242, 236, 239, 0.62);
+  --glass-bg-strong: rgba(242, 236, 239, 0.85);
+}
+
+[data-theme="dark"] {
+  --bg: #201a26;
+  --bg-alt: #201a26;
+  --off-white: #201a26;
+  --bg-sunken: #181320;
+  --light-gray: #241d2b;
+  --surface: #201a26;
+  --surface-2: #251e2c;
+  --surface-raised: #2a2231;
+  --white: #241d2b;
+
+  --neo-light: rgba(255, 255, 255, 0.055);
+  --neo-dark: rgba(0, 0, 0, 0.55);
+
+  --glass-bg: rgba(32, 26, 38, 0.62);
+  --glass-bg-strong: rgba(32, 26, 38, 0.88);
+}
+
+/* ==========================================================================
+   Extruded cards — every neutral card surface across the site
+   ========================================================================== */
+.card,
+.svc-card,
+.salon-card,
+.stylist-card,
+.feature-card,
+.tst-card,
+.step-card,
+.post-card,
+.plan-card:not(.plan-card--featured),
+.pick-card,
+.stat-card,
+.panel,
+.widget,
+.contact-tile,
+.info-tile,
+.appt-card,
+.acc-item,
+.booking-aside,
+.summary-card,
+.ticket,
+.contact-form-card,
+.calendar,
+.toolbar,
+.stepper,
+.loc-search,
+.map-panel,
+.hero-features__inner,
+.rating-summary,
+.stylist-mini,
+.svc-row,
+.salon-row,
+.agenda-item,
+.empty-state {
+  background: var(--surface);
+  border-color: transparent;
+  box-shadow: var(--sh-neo);
+}
+
+/* softer relief for small / dense rows */
+.stylist-mini,
+.svc-row,
+.salon-row,
+.agenda-item,
+.info-tile,
+.acc-item,
+.pick-card,
+.stat-card {
+  box-shadow: var(--sh-neo-sm);
+}
+
+/* hover: lift with a deeper relief, never a flat drop shadow */
+.card--hover:hover,
+.svc-card:hover,
+.salon-card:hover,
+.stylist-card:hover,
+.feature-card:hover,
+.tst-card:hover,
+.step-card:hover,
+.plan-card:not(.plan-card--featured):hover,
+.contact-tile:hover,
+.stat-card:hover,
+.appt-card:hover {
+  box-shadow: var(--sh-neo-lg);
+  border-color: transparent;
+}
+.pick-card:hover,
+.stylist-mini:hover,
+.svc-row:hover,
+.salon-row:hover,
+.acc-item.is-open,
+.info-tile:hover,
+.agenda-item:hover {
+  box-shadow: var(--sh-neo);
+  border-color: transparent;
+}
+
+/* selected states keep the rose ring on top of the relief */
+.pick-card.is-selected,
+.stylist-mini.is-selected {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px var(--primary-rose), var(--sh-neo);
+  background: var(--surface);
+}
+.salon-row.is-active {
+  background: var(--surface);
+  box-shadow: 0 0 0 2px var(--primary-rose), var(--sh-neo-sm);
+  border-color: transparent;
+}
+
+/* keep dashed personality for empty states, just soften it */
+.empty-state { border: 0; }
+
+/* ==========================================================================
+   Pressed / carved-in surfaces
+   ========================================================================== */
+.input,
+.select,
+.textarea {
+  background: var(--surface);
+  border-color: transparent;
+  box-shadow: var(--sh-neo-inset-sm);
+}
+.input:hover, .select:hover, .textarea:hover { border-color: transparent; }
+.input:focus, .select:focus, .textarea:focus {
+  border-color: transparent;
+  box-shadow: var(--sh-neo-inset-sm), 0 0 0 3px rgba(233, 30, 99, 0.18);
+}
+.field.is-invalid .input,
+.field.is-invalid .select,
+.field.is-invalid .textarea {
+  box-shadow: var(--sh-neo-inset-sm), 0 0 0 3px rgba(229, 57, 53, 0.18);
+  background: var(--surface);
+}
+
+.tabs--pill,
+.segmented,
+.progress,
+.dash-search,
+.pw-strength__bars i,
+.billing-toggle__switch,
+.switch__track,
+.upload {
+  background: var(--bg-sunken);
+  box-shadow: var(--sh-neo-inset-sm);
+  border-color: transparent;
+}
+.switch input:checked + .switch__track,
+.billing-toggle.is-yearly .billing-toggle__switch {
+  background: var(--grad-primary);
+  box-shadow: none;
+}
+.upload { border-style: dashed; border-width: 2px; border-color: var(--line-strong); }
+
+/* time slots, calendar days, date chips: raised → pressed when picked */
+.slot,
+.date-chip,
+.cal-nav button,
+.chip,
+.cat-pill,
+.page-btn,
+.btn-icon {
+  background: var(--surface);
+  border-color: transparent;
+  box-shadow: var(--sh-neo-xs);
+}
+.slot:hover:not(:disabled),
+.date-chip:hover:not(:disabled),
+.chip:hover,
+.cat-pill:hover,
+.page-btn:hover:not(:disabled):not(.is-active),
+.btn-icon:hover {
+  border-color: transparent;
+  box-shadow: var(--sh-neo-sm);
+}
+.slot:disabled {
+  background: var(--bg-sunken);
+  box-shadow: var(--sh-neo-inset-sm);
+}
+.slot.is-selected,
+.date-chip.is-active,
+.chip.is-active,
+.cat-pill.is-active,
+.page-btn.is-active,
+.btn-icon.is-active,
+.btn-fav.is-active {
+  box-shadow: 0 6px 16px rgba(233, 30, 99, 0.32);
+  border-color: transparent;
+}
+.cal-day:hover:not(:disabled):not(.is-empty) { box-shadow: var(--sh-neo-xs); }
+
+/* neutral buttons join the soft-UI family; gradient CTAs keep their glow */
+.btn--ghost,
+.btn--soft {
+  background: var(--surface);
+  border-color: transparent;
+  box-shadow: var(--sh-neo-sm);
+}
+.btn--soft { color: var(--deep-rose); }
+.btn--ghost:hover,
+.btn--soft:hover {
+  border-color: transparent;
+  box-shadow: var(--sh-neo);
+  background: var(--surface);
+  color: var(--primary-rose);
+}
+.btn--ghost:active,
+.btn--soft:active,
+.btn-icon:active,
+.slot:active:not(:disabled),
+.chip:active { box-shadow: var(--sh-neo-inset-sm); }
+
+/* pay methods & filter boxes */
+.pay-method {
+  background: var(--surface);
+  border-color: transparent;
+  box-shadow: var(--sh-neo-sm);
+}
+.pay-method:has(input:checked) {
+  background: var(--surface);
+  box-shadow: 0 0 0 2px var(--primary-rose), var(--sh-neo-sm);
+  border-color: transparent;
+}
+.filter-check__box,
+.check__box,
+.filter-radio__dot,
+.pay-method__dot {
+  background: var(--surface);
+  border-color: transparent;
+  box-shadow: var(--sh-neo-inset-sm);
+}
+.filter-check input:checked + .filter-check__box,
+.check input:checked + .check__box { box-shadow: none; }
+
+/* dashboard chrome */
+.dash-side { border-right: 0; box-shadow: var(--sh-neo); }
+.dash-top { border-bottom: 0; box-shadow: 0 6px 18px var(--neo-dark); }
+.filter-sidebar { border-color: transparent; box-shadow: var(--sh-neo); }
+.blog-sidebar .widget { box-shadow: var(--sh-neo-sm); }
+.hours-table { border-color: transparent; box-shadow: var(--sh-neo-sm); }
+.hours-table li { background: var(--surface); }
+
+/* header dropdown panels sit on the tinted surface too */
+.nav__menu,
+.profile-menu__panel,
+.notif__panel,
+.lang-select__menu {
+  background: var(--surface-2);
+  border-color: transparent;
+  box-shadow: var(--sh-neo-lg);
+}
+.profile-menu__btn,
+.notif__btn {
+  background: var(--surface);
+  border-color: transparent;
+  box-shadow: var(--sh-neo-xs);
+}
+
+/* footer newsletter input keeps its dark-glass style — skip it */
+.news-form input { box-shadow: none; }
+
+/* avatars & icon boxes get a gentle emboss */
+.icon-box { box-shadow: var(--sh-neo-xs); }
+.icon-box--grad { box-shadow: var(--sh-rose); }
+
+/* media inside cards should stay flush — no double relief */
+.card__media, .svc-card__media, .salon-card__media, .stylist-card__media,
+.pick-card__media { box-shadow: none; }
+
+/* drawers / modals float above the relief system with real depth */
+.modal__dialog,
+.drawer {
+  background: var(--surface-2);
+  box-shadow: 24px 24px 60px rgba(0, 0, 0, 0.28), -8px -8px 24px var(--neo-light);
+}
+
+/* keep flat variants genuinely flat */
+.card--flat { box-shadow: none; }
+.card--tint { background: var(--bg-tint); box-shadow: var(--sh-neo-sm); }

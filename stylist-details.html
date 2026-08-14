@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylist Profile — Lumière Beauty Studio</title>
+  <meta name="description" content="Stylist profile — skills, services, working hours, portfolio and live availability at Lumière.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="section section--tight" style="padding-top:clamp(24px,4vw,44px)">
+      <div class="container">
+        <!-- profile hero -->
+        <div class="profile-hero" data-reveal="up">
+          <div class="profile-hero__grid">
+            <div class="profile-hero__avatar" id="stp-avatar"></div>
+            <div>
+              <div class="flex items-center gap-3 flex-wrap mb-2" id="stp-status"></div>
+              <h1 id="stp-name">Loading…</h1>
+              <div class="profile-hero__role" id="stp-role"></div>
+              <div class="profile-hero__meta" id="stp-meta"></div>
+            </div>
+            <div class="profile-hero__actions">
+              <a class="btn btn--white btn--lg" id="stp-book" href="booking.html"><i data-icon="calendar-plus"></i>Book Appointment</a>
+              <button class="btn btn--on-dark btn-fav" id="stp-fav"><i data-icon="heart"></i>Save to Favourites</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-layout mt-8">
+          <!-- main -->
+          <div>
+            <h2 class="mb-4" style="font-size:var(--fs-xl)">About</h2>
+            <p class="lead mb-8" id="stp-bio"></p>
+
+            <div class="grid grid-2 mb-8" style="gap:clamp(24px,3vw,40px)">
+              <div>
+                <h2 class="mb-5" style="font-size:var(--fs-xl)">Skills &amp; expertise</h2>
+                <div id="stp-skills"></div>
+              </div>
+              <div>
+                <h2 class="mb-5" style="font-size:var(--fs-xl)">Working hours</h2>
+                <ul class="hours-table" id="stp-hours"></ul>
+              </div>
+            </div>
+
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Services offered</h2>
+            <div class="grid mb-8" id="stp-services" style="gap:12px"></div>
+
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Portfolio</h2>
+            <div class="gallery-grid mb-8" id="stp-portfolio" data-lightbox-group style="grid-template-columns:repeat(auto-fill,minmax(min(200px,100%),1fr))"></div>
+
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Client reviews</h2>
+            <div id="stp-reviews"></div>
+          </div>
+
+          <!-- aside -->
+          <aside>
+            <div class="booking-aside" data-reveal="left">
+              <div class="booking-aside__head">
+                <div class="text-xs text-deep fw-700 uppercase mb-1">Next availability</div>
+                <h3 class="on-tint" id="stp-next-slot">Checking…</h3>
+              </div>
+              <div class="booking-aside__body">
+                <div id="stp-aside-rows"></div>
+                <div class="mt-5 mb-5">
+                  <div class="field__label mb-3">Available slots today</div>
+                  <div class="slots-grid" id="stp-slots" style="grid-template-columns:repeat(3,1fr)"></div>
+                </div>
+                <a class="btn btn--primary btn--lg btn--block" id="stp-book-2" href="booking.html"><i data-icon="calendar-plus"></i>Book with this Stylist</a>
+                <div class="secure-note"><i data-icon="shield-check"></i>Certified &amp; background-checked</div>
+              </div>
+            </div>
+
+            <div class="card card--pad mt-5" data-reveal="left">
+              <h3 class="text-md mb-4">Awards &amp; certifications</h3>
+              <div id="stp-awards" class="flex-col gap-3"></div>
+              <hr class="rule mt-5 mb-5">
+              <h3 class="text-md mb-3">Languages</h3>
+              <div class="chip-row" id="stp-langs"></div>
+              <hr class="rule mt-5 mb-5">
+              <h3 class="text-md mb-3">Follow</h3>
+              <div class="socials">
+                <a href="#" aria-label="Instagram" onclick="Toast.info('Social profiles open in the full release.');return false;"><i data-icon="instagram"></i></a>
+                <a href="#" aria-label="Facebook" onclick="Toast.info('Social profiles open in the full release.');return false;"><i data-icon="facebook"></i></a>
+                <a href="#" aria-label="YouTube" onclick="Toast.info('Social profiles open in the full release.');return false;"><i data-icon="youtube"></i></a>
+                <a href="#" aria-label="Pinterest" onclick="Toast.info('Social profiles open in the full release.');return false;"><i data-icon="pinterest"></i></a>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- other stylists -->
+        <div class="mt-10">
+          <div class="sec-head sec-head--split">
+            <div class="sec-head__text">
+              <span class="eyebrow eyebrow--line">More experts</span>
+              <h2>Other stylists you'll love</h2>
+            </div>
+            <a class="btn btn--outline" href="stylists.html">All Stylists<i data-icon="arrow-right"></i></a>
+          </div>
+          <div class="grid grid-4" id="stp-others"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      var st = DATA.stylist(App.param('s') || 'aarohi-mehta') || DATA.STYLISTS[0];
+      var salon = DATA.salon(st.salon);
+      document.title = st.name + ' — Lumière Beauty Studio';
+
+      document.getElementById('stp-avatar').innerHTML = '<img src="' + Img.get(st.slug, 'person', 360, 360) + '" alt="Portrait of ' + st.name + '">';
+      var statusMap = {
+        available: '<span class="badge badge--glass"><span class="avail-dot avail-dot--free">Available today</span></span>',
+        busy: '<span class="badge badge--glass"><span class="avail-dot avail-dot--busy">Fully booked today</span></span>',
+        leave: '<span class="badge badge--glass"><span class="avail-dot avail-dot--off">On leave</span></span>'
+      };
+      document.getElementById('stp-status').innerHTML = statusMap[st.status];
+      document.getElementById('stp-name').textContent = st.name;
+      document.getElementById('stp-role').textContent = st.role;
+      document.getElementById('stp-meta').innerHTML =
+        '<span class="profile-hero__meta-item">' + Icon.get('star') + st.rating + ' (' + st.reviews + ' reviews)</span>' +
+        '<span class="profile-hero__meta-item">' + Icon.get('briefcase') + st.exp + ' years experience</span>' +
+        '<span class="profile-hero__meta-item">' + Icon.get('users') + st.clients.toLocaleString('en-IN') + '+ clients</span>' +
+        (salon ? '<span class="profile-hero__meta-item">' + Icon.get('map-pin') + salon.area + ', ' + salon.city + '</span>' : '');
+
+      var bookUrl = 'booking.html?stylist=' + st.slug;
+      document.getElementById('stp-book').href = bookUrl;
+      document.getElementById('stp-book-2').href = bookUrl;
+
+      var fav = document.getElementById('stp-fav');
+      fav.dataset.wish = 'stylist';
+      fav.dataset.wishId = st.id;
+      Wishlist.refresh(document);
+
+      document.getElementById('stp-bio').textContent = st.bio;
+
+      document.getElementById('stp-skills').innerHTML = st.skills.map(function (sk) {
+        return '<div class="skill-bar"><div class="skill-bar__head"><b>' + sk.n + '</b><span>' + sk.v + '%</span></div>' +
+          '<div class="progress"><div class="progress__bar" data-value="' + sk.v + '"></div></div></div>';
+      }).join('');
+
+      var todayDow = new Date().getDay(); /* 0 = Sunday */
+      document.getElementById('stp-hours').innerHTML = DATA.WORKING_HOURS.map(function (w, i) {
+        var isToday = ((i + 1) % 7) === todayDow;
+        var closed = st.status === 'leave' && isToday;
+        return '<li class="' + (isToday ? 'is-today' : '') + (closed ? ' is-closed' : '') + '"><b>' + w.d +
+          (isToday ? '<span class="today-tag">Today</span>' : '') + '</b><span>' + (closed ? 'On leave' : w.h) + '</span></li>';
+      }).join('');
+
+      document.getElementById('stp-services').innerHTML = st.services.map(function (id) {
+        var s = DATA.service(id);
+        if (!s) return '';
+        return '<a class="stylist-mini" href="service-details.html?s=' + s.slug + '">' +
+          '<span class="avatar avatar--md" style="border-radius:12px"><img src="' + Img.get(s.slug, s.kind, 120, 120) + '" alt="" style="border-radius:12px"></span>' +
+          '<span class="stylist-mini__info"><b>' + s.name + '</b><span>' + DATA.duration(s.duration) + ' · ★ ' + s.rating + '</span></span>' +
+          '<span class="stylist-mini__right"><span class="price"><span class="price__cur">₹</span><span class="price__val" style="font-size:var(--fs-md)">' + s.price.toLocaleString('en-IN') + '</span></span></span></a>';
+      }).join('');
+
+      document.getElementById('stp-portfolio').innerHTML = Array.apply(null, Array(8)).map(function (_, i) {
+        var seed = st.slug + '-work-' + (i + 1);
+        var kind = ['hair', 'makeup', 'nails', 'bridal'][i % 4];
+        return '<div class="portfolio-item" style="aspect-ratio:1" data-lb-src="' + Img.get(seed, kind, 900, 900) + '" data-lb-title="' + st.name + ' — portfolio" data-lb-sub="Work ' + (i + 1) + ' of 8">' +
+          '<img src="' + Img.get(seed, kind, 400, 400) + '" alt="' + st.name + ' portfolio piece ' + (i + 1) + '" loading="lazy">' +
+          '<div class="portfolio-item__zoom"><span>' + Icon.get('zoom-in') + '</span></div></div>';
+      }).join('');
+
+      document.getElementById('stp-reviews').innerHTML = DATA.TESTIMONIALS.slice(0, 3).map(function (r) {
+        return '<div class="review-item"><span class="avatar avatar--md">' + r.name.split(' ').map(function (w) { return w[0]; }).join('') + '</span>' +
+          '<div style="flex:1"><div class="review-item__head"><span class="review-item__name">' + r.name + '</span>' +
+          '<span class="review-item__date">' + DATA.dateShort(r.date) + '</span></div>' +
+          Icon.stars(r.rating) + '<p class="mt-2">' + r.text + '</p></div></div>';
+      }).join('');
+
+      /* aside */
+      document.getElementById('stp-next-slot').textContent =
+        st.status === 'available' ? 'Today, 4:30 PM' : st.status === 'busy' ? 'Tomorrow, 10:00 AM' : 'Back next week';
+      document.getElementById('stp-aside-rows').innerHTML =
+        '<div class="booking-aside__row"><span>' + Icon.get('store') + 'Home salon</span><b>' + (salon ? salon.area : '—') + '</b></div>' +
+        '<div class="booking-aside__row"><span>' + Icon.get('tag') + 'Pricing</span><b>' + st.price + '</b></div>' +
+        '<div class="booking-aside__row"><span>' + Icon.get('sparkles') + 'Services</span><b>' + st.services.length + ' offered</b></div>';
+
+      var slots = document.getElementById('stp-slots');
+      slots.innerHTML = ['11:00 AM', '01:30 PM', '04:30 PM', '05:30 PM', '07:00 PM', '08:00 PM'].map(function (t, i) {
+        var busy = st.status !== 'available' || i === 1 || i === 4;
+        return '<button type="button" class="slot"' + (busy ? ' disabled' : '') + ' data-t="' + t + '">' + t + '</button>';
+      }).join('');
+      slots.addEventListener('click', function (e) {
+        var b = e.target.closest('.slot:not(:disabled)');
+        if (!b) return;
+        slots.querySelectorAll('.slot').forEach(function (x) { x.classList.remove('is-selected'); });
+        b.classList.add('is-selected');
+        Toast.success('Slot noted — confirm it in the booking flow.', b.dataset.t + ' with ' + st.name.split(' ')[0]);
+      });
+
+      document.getElementById('stp-awards').innerHTML = st.awards.map(function (a) {
+        return '<div class="flex items-center gap-3"><span class="icon-box icon-box--sm icon-box--coral">' + Icon.get('award') + '</span><b class="text-sm">' + a + '</b></div>';
+      }).join('');
+      document.getElementById('stp-langs').innerHTML = st.langs.map(function (l) {
+        return '<span class="chip" style="cursor:default">' + l + '</span>';
+      }).join('');
+
+      document.getElementById('stp-others').innerHTML =
+        DATA.STYLISTS.filter(function (x) { return x.id !== st.id; }).slice(0, 4).map(UI.stylistCard).join('');
+    };
+  </script>
+</body>
+</html>

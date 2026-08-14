@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — Lumière Beauty Studio</title>
+  <meta name="description" content="Sign in to Lumière to manage appointments, favourites and loyalty rewards.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <main class="auth-page">
+    <!-- visual side -->
+    <div class="auth-visual">
+      <div class="auth-visual__img"><img data-img="auth-login" data-kind="interior" data-w="900" data-h="1200" alt=""></div>
+      <a class="brand" href="index.html" aria-label="Stackly — home">
+        <img class="brand__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly" width="160" height="66">
+      </a>
+      <div class="auth-visual__body">
+        <h2>Welcome back to your best-hair-day era.</h2>
+        <p>Sign in to manage bookings, track loyalty points and rebook your favourite stylist in two taps.</p>
+        <ul class="auth-visual__points">
+          <li><i data-icon="check"></i>One-tap rebooking of past services</li>
+          <li><i data-icon="check"></i>Loyalty points on every visit</li>
+          <li><i data-icon="check"></i>Member-only offers and priority slots</li>
+        </ul>
+      </div>
+      <div class="auth-visual__foot">
+        <div class="avatar-stack">
+          <span class="avatar avatar--sm">KR</span><span class="avatar avatar--sm">IM</span>
+          <span class="avatar avatar--sm">SP</span><span class="avatar avatar--sm avatar-stack__more">9k+</span>
+        </div>
+        <p>★★★★★ &nbsp;Rated 4.9 by 10,000+ clients</p>
+      </div>
+    </div>
+
+    <!-- form side -->
+    <div class="auth-form-wrap">
+      <div class="auth-form">
+        <a class="auth-back" href="index.html"><i data-icon="arrow-left"></i>Back to website</a>
+        <div class="auth-form__head">
+          <h1>Sign in</h1>
+          <p>Good to see you again. Your appointments missed you.</p>
+        </div>
+
+        <form id="login-form" novalidate>
+          <div class="role-picker" role="radiogroup" aria-label="Sign in as">
+            <label><input type="radio" name="lg-role" value="client" checked><i data-icon="user"></i><b>Client</b></label>
+            <label><input type="radio" name="lg-role" value="owner"><i data-icon="store"></i><b>Salon Owner</b></label>
+            <label><input type="radio" name="lg-role" value="admin"><i data-icon="shield-check"></i><b>Admin</b></label>
+          </div>
+          <div class="form-grid">
+            <label class="field field--icon has-label"><span class="field__label">Email <span class="req">*</span></span>
+              <input class="input" type="email" id="lg-email" data-rules="required|email" placeholder="you@example.com" autocomplete="email">
+              <span class="field__icon"><i data-icon="mail"></i></span></label>
+            <label class="field field--icon has-label has-action"><span class="field__label">Password <span class="req">*</span></span>
+              <input class="input" type="password" id="lg-pass" data-rules="required|min:6" placeholder="Your password" autocomplete="current-password">
+              <span class="field__icon"><i data-icon="lock"></i></span>
+              <button type="button" class="field__action" data-pw-toggle="#lg-pass" aria-label="Show password"><i data-icon="eye"></i></button></label>
+          </div>
+          <div class="flex-between mt-4 mb-6">
+            <label class="check"><input type="checkbox" id="lg-remember" checked><span class="check__box"><i data-icon="check"></i></span>Remember me</label>
+            <a href="forgot-password.html" class="text-sm fw-600">Forgot password?</a>
+          </div>
+          <button class="btn btn--primary btn--lg btn--block" type="submit" id="lg-submit"><i data-icon="log-in"></i>Sign In</button>
+        </form>
+
+        <div class="auth-divider">or continue with</div>
+        <div class="social-auth">
+          <button type="button" data-social="Google"><i data-icon="google"></i>Google</button>
+          <button type="button" data-social="Apple"><i data-icon="apple"></i>Apple</button>
+          <button type="button" data-social="Facebook"><i data-icon="facebook"></i>Facebook</button>
+        </div>
+
+        <div class="auth-form__foot">
+          New to Lumière? <a href="register.html">Create an account</a>
+        </div>
+        <div class="note-box mt-6">
+          <i data-icon="info"></i>
+          <span><b>Demo tip:</b> any valid-looking email and a 6+ character password signs you in. Data stays on this device.</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      Icon.hydrate(document);
+      Img.hydrate(document);
+
+      document.getElementById('login-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!Validate.form(this)) {
+          Toast.error('Check the highlighted fields and try again.', 'Almost there');
+          return;
+        }
+        var btn = document.getElementById('lg-submit');
+        btn.classList.add('is-loading');
+        var email = document.getElementById('lg-email').value.trim();
+        var role = document.querySelector('input[name="lg-role"]:checked').value;
+        setTimeout(function () {
+          var u = Store.login(email, null, role);
+          Toast.success('Welcome back, ' + u.name.split(' ')[0] + '! Redirecting…', 'Signed in ✨');
+          setTimeout(function () {
+            location.href = role === 'owner' ? 'salon-dashboard.html' : role === 'admin' ? 'admin-dashboard.html' : 'user-dashboard.html';
+          }, 900);
+        }, 900);
+      });
+
+      document.querySelectorAll('[data-social]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          Toast.info(b.dataset.social + ' sign-in connects to OAuth in production. Use the email form for the demo.', b.dataset.social);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

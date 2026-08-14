@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Lumière Beauty Studio</title>
+  <meta name="description" content="From one chair in Bandra to eight cities: the story, mission and people behind Lumière — a salon platform built on honest advice and real availability.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="about-hero"></div>
+
+    <!-- Story split -->
+    <section class="section" aria-labelledby="story-title">
+      <div class="container">
+        <div class="split">
+          <div class="split__media relative" data-reveal="right">
+            <div class="blob-shape" style="inset:auto auto -26px -26px;width:60%;height:60%" aria-hidden="true"></div>
+            <div class="media media--ratio-34">
+              <img data-img="about-story" data-kind="interior" data-w="640" data-h="850" alt="The original single-chair Lumière studio in Bandra">
+            </div>
+            <div class="float-card" style="position:absolute;top:24px;right:-16px">
+              <span class="icon-box icon-box--sm icon-box--grad"><i data-icon="scissors"></i></span>
+              <div><div class="float-card__label">Est.</div><div class="float-card__value">2016, Bandra</div></div>
+            </div>
+          </div>
+          <div data-reveal="left">
+            <span class="eyebrow eyebrow--line">Our story</span>
+            <h2 id="story-title" class="mb-4">It started with one chair and a waiting list of eleven</h2>
+            <p class="lead mb-4">In 2016, Aarohi Mehta opened a single-chair studio above a bookshop on Linking Road. No receptionist, no phone line — just skill, honesty, and a notebook of appointments that filled faster than she could turn pages.</p>
+            <p class="mb-5">A decade later, Lumière is fifty stylists across eight cities — but the notebook rule survives: <strong>never promise a slot you can't honour, and never sell a treatment a client doesn't need.</strong> This platform is that rule, written in software.</p>
+            <div class="grid grid-2" style="gap:16px">
+              <div class="card card--pad-sm card--tint">
+                <h3 class="text-md mb-2" style="display:flex;align-items:center;gap:9px"><i data-icon="target" class="text-rose" data-icon-size="20"></i>Our Mission</h3>
+                <p class="text-sm">Make exceptional beauty care as easy to book as a cab — transparent, instant and honest.</p>
+              </div>
+              <div class="card card--pad-sm card--tint">
+                <h3 class="text-md mb-2" style="display:flex;align-items:center;gap:9px"><i data-icon="eye" class="text-rose" data-icon-size="20"></i>Our Vision</h3>
+                <p class="text-sm">A Lumière-standard chair within twenty minutes of every client in India by 2030.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats-band section--tight" aria-label="Achievements">
+      <div class="container"><div class="stat-row" id="about-stats"></div></div>
+    </section>
+
+    <!-- Values -->
+    <section class="section section--sunken" aria-labelledby="values-title">
+      <div class="container">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow">Why choose us</span>
+          <h2 id="values-title">The Lumière standard</h2>
+          <p>Four promises we've kept since the bookshop days — audited, not aspirational.</p>
+        </div>
+        <div class="grid grid-4" id="about-values"></div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section" aria-labelledby="journey-title">
+      <div class="container container--narrow">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow">Our journey</span>
+          <h2 id="journey-title">A decade of good hair days</h2>
+        </div>
+        <div class="timeline timeline--alt" id="about-timeline"></div>
+      </div>
+    </section>
+
+    <!-- Video CTA -->
+    <section class="section section--tight" aria-label="Studio film">
+      <div class="container">
+        <div class="video-cta" data-reveal="zoom">
+          <img data-img="about-video" data-kind="interior" data-w="1280" data-h="550" alt="">
+          <div class="video-cta__body">
+            <button class="btn-play" id="about-play" aria-label="Play studio film"><i data-icon="play"></i></button>
+            <h2>Step inside our flagship</h2>
+            <p>Two minutes in the Bandra studio — the colour bar, the bridal suite, and the people who make it hum.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section" aria-labelledby="team-title">
+      <div class="container">
+        <div class="sec-head sec-head--split">
+          <div class="sec-head__text">
+            <span class="eyebrow eyebrow--line">Leadership</span>
+            <h2 id="team-title">The people setting the standard</h2>
+            <p>Each of them still takes client appointments every single week. That's deliberate.</p>
+          </div>
+          <a class="btn btn--outline" href="stylists.html">Meet All Stylists<i data-icon="arrow-right"></i></a>
+        </div>
+        <div class="grid grid-4" id="about-team"></div>
+      </div>
+    </section>
+
+    <!-- Partner logos -->
+    <section class="logos-strip" aria-label="Partners">
+      <div class="container">
+        <div class="logos-strip__title">Trusted product partners</div>
+        <div class="logos-row">
+          <span>L'Oréal Pro</span><span>Dermalogica</span><span>OPI</span><span>Wella</span><span>Forest Essentials</span><span>Kama</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      document.getElementById('about-hero').outerHTML = UI.pageHero(
+        'The story behind the <span class="grad-text">glow</span>',
+        'One chair, one honest rule, and ten years of clients who kept coming back.',
+        [['About Us']]
+      );
+
+      document.getElementById('about-stats').innerHTML = [
+        { icon: 'smile', value: 10000, suffix: 'K+', divide: 1000, label: 'Happy Clients' },
+        { icon: 'users', value: 50, suffix: '+', label: 'Expert Stylists' },
+        { icon: 'store', value: 20, suffix: '+', label: 'Partner Salons' },
+        { icon: 'award', value: 78, suffix: '%', label: 'Clients Return' }
+      ].map(function (s) {
+        return '<div class="stat" data-reveal="up"><div class="stat__icon">' + Icon.get(s.icon) + '</div>' +
+          '<div class="stat__num" data-count="' + s.value + '" data-suffix="' + s.suffix + '"' + (s.divide ? ' data-divide="' + s.divide + '"' : '') + '>0</div>' +
+          '<div class="stat__label">' + s.label + '</div></div>';
+      }).join('');
+
+      document.getElementById('about-values').innerHTML = DATA.VALUES.map(function (v, i) {
+        return '<div class="feature-card" data-reveal="up" data-reveal-delay="' + (i * 0.08) + '">' +
+          '<span class="feature-card__num">0' + (i + 1) + '</span>' +
+          '<span class="icon-box icon-box--lg' + (i % 2 ? ' icon-box--lav' : ' icon-box--grad') + '">' + Icon.get(v.icon) + '</span>' +
+          '<h3>' + v.title + '</h3><p>' + v.desc + '</p></div>';
+      }).join('');
+
+      document.getElementById('about-timeline').innerHTML = DATA.TIMELINE.map(function (t, i) {
+        return '<div class="timeline__item" data-reveal="' + (i % 2 ? 'left' : 'right') + '">' +
+          '<span class="timeline__dot"></span><span class="timeline__year">' + t.year + '</span>' +
+          '<h4>' + t.title + '</h4><p>' + t.desc + '</p></div>';
+      }).join('');
+
+      document.getElementById('about-team').innerHTML = DATA.TEAM.map(function (m, i) {
+        var st = DATA.stylist(m.slug);
+        return '<article class="stylist-card" data-reveal="up" data-reveal-delay="' + (i * 0.07) + '">' +
+          '<div class="stylist-card__media">' + Img.tag({ seed: m.slug, kind: 'person', alt: 'Portrait of ' + m.name, w: 480, h: 480 }) + '</div>' +
+          '<div class="stylist-card__body"><h3 class="stylist-card__name"><a href="stylist-details.html?s=' + m.slug + '">' + m.name + '</a></h3>' +
+          '<div class="stylist-card__role">' + m.role + '</div>' +
+          (st ? '<div class="text-sm text-muted mb-4">' + st.exp + ' years · ★ ' + st.rating + ' (' + st.reviews + ' reviews)</div>' : '') +
+          '<a class="btn btn--soft btn--sm" href="stylist-details.html?s=' + m.slug + '">View Profile</a>' +
+          '</div></article>';
+      }).join('');
+
+      document.getElementById('about-play').addEventListener('click', function () {
+        Toast.rose('Our studio film premieres with the next release — the gallery has plenty to explore meanwhile.', 'Coming soon');
+      });
+    };
+  </script>
+</body>
+</html>

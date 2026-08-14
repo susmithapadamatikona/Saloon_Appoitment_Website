@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salon Details — Lumière Beauty Studio</title>
+  <meta name="description" content="Photos, services, stylists, amenities, hours and reviews for this Lumière salon — with instant booking.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="section" style="padding-top:clamp(24px,4vw,44px)">
+      <div class="container">
+
+        <!-- gallery -->
+        <div class="salon-gallery mb-7" id="sld-gallery" data-lightbox-group data-reveal="up"></div>
+
+        <!-- header row -->
+        <div class="flex-between flex-wrap mb-6" data-reveal="up">
+          <div>
+            <div class="flex items-center gap-3 flex-wrap mb-3" id="sld-badges"></div>
+            <h1 style="font-size:var(--fs-3xl)" id="sld-name">Loading…</h1>
+            <div class="salon-card__loc mt-2" id="sld-address" style="font-size:var(--fs-base)"></div>
+          </div>
+          <div class="btn-group">
+            <button class="btn-icon btn-icon--lg btn-fav" id="sld-fav" aria-label="Save salon"><i data-icon="heart"></i></button>
+            <button class="btn btn--ghost" id="sld-share"><i data-icon="share"></i>Share</button>
+            <a class="btn btn--primary btn--lg" id="sld-book" href="booking.html"><i data-icon="calendar-plus"></i>Book Appointment</a>
+          </div>
+        </div>
+
+        <!-- info tiles -->
+        <div class="info-grid mb-8" id="sld-info" data-reveal="up"></div>
+
+        <div class="detail-layout">
+          <div>
+            <h2 class="mb-4" style="font-size:var(--fs-xl)">About this salon</h2>
+            <p class="lead mb-8" id="sld-about"></p>
+
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Services available here</h2>
+            <div class="grid grid-auto mb-8" id="sld-services"></div>
+
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Stylists at this location</h2>
+            <div class="grid grid-2 mb-8" id="sld-stylists" style="gap:12px"></div>
+
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Amenities</h2>
+            <div class="amenities mb-8" id="sld-amenities"></div>
+
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Reviews</h2>
+            <div class="rating-summary mb-6" id="sld-rating"></div>
+            <div id="sld-reviews"></div>
+          </div>
+
+          <aside>
+            <div class="booking-aside" data-reveal="left">
+              <div class="booking-aside__head">
+                <div class="text-xs text-deep fw-700 uppercase mb-1" id="sld-open-state"></div>
+                <h3 class="on-tint" id="sld-hours"></h3>
+              </div>
+              <div class="booking-aside__body">
+                <div id="sld-aside-rows"></div>
+                <a class="btn btn--primary btn--lg btn--block mt-5" id="sld-book-2" href="booking.html"><i data-icon="calendar-plus"></i>Book at this Salon</a>
+                <a class="btn btn--ghost btn--block mt-3" id="sld-call" href="tel:"><i data-icon="phone"></i>Call Salon</a>
+                <button class="btn btn--soft btn--block mt-3" id="sld-directions"><i data-icon="navigation"></i>Get Directions</button>
+              </div>
+            </div>
+
+            <div class="card card--pad mt-5" data-reveal="left">
+              <h3 class="text-md mb-4">Weekly hours</h3>
+              <ul class="hours-table" id="sld-week"></ul>
+            </div>
+          </aside>
+        </div>
+
+        <!-- other salons -->
+        <div class="mt-10">
+          <div class="sec-head sec-head--split">
+            <div class="sec-head__text">
+              <span class="eyebrow eyebrow--line">More locations</span>
+              <h2>Other salons nearby</h2>
+            </div>
+            <a class="btn btn--outline" href="salons.html">All Salons<i data-icon="arrow-right"></i></a>
+          </div>
+          <div class="grid grid-3" id="sld-others"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      var s = DATA.salon(App.param('s') || 'lumiere-bandra') || DATA.SALONS[0];
+      document.title = s.name + ' — Lumière Beauty Studio';
+
+      /* gallery */
+      document.getElementById('sld-gallery').innerHTML = [0, 1, 2, 3, 4].map(function (i) {
+        var seed = i === 0 ? s.slug : s.slug + '-in-' + i;
+        var full = Img.get(seed, 'interior', 1300, 900);
+        var extra = i === 4 ? '<span class="salon-gallery__more">' + Icon.get('image') + '+ 12 photos</span>' : '';
+        return '<div class="salon-gallery__item" data-lb-src="' + full + '" data-lb-title="' + s.name + '" data-lb-sub="Interior ' + (i + 1) + '">' +
+          '<img src="' + Img.get(seed, 'interior', i === 0 ? 900 : 460, i === 0 ? 620 : 320) + '" alt="' + s.name + ' interior photo ' + (i + 1) + '" loading="' + (i === 0 ? 'eager' : 'lazy') + '">' + extra + '</div>';
+      }).join('');
+
+      /* header */
+      document.getElementById('sld-badges').innerHTML =
+        (s.flagship ? '<span class="badge badge--solid">' + Icon.get('crown') + 'Flagship Studio</span>' : '') +
+        '<span class="badge ' + (s.open ? 'badge--mint' : 'status-cancelled') + ' badge--dot badge--live">' + (s.open ? 'Open now' : 'Closed') + '</span>' +
+        '<span class="badge badge--coral">' + Icon.get('star') + s.rating + ' · ' + s.reviews.toLocaleString('en-IN') + ' reviews</span>';
+      document.getElementById('sld-name').textContent = s.name;
+      document.getElementById('sld-address').innerHTML = Icon.get('map-pin') + s.address;
+
+      var fav = document.getElementById('sld-fav');
+      fav.dataset.wish = 'salon';
+      fav.dataset.wishId = s.id;
+      Wishlist.refresh(document);
+
+      document.getElementById('sld-share').addEventListener('click', function () {
+        App.copyText(location.href, function () {
+          Toast.success('Salon link copied to your clipboard.', 'Ready to share');
+        });
+      });
+
+      var bookUrl = 'booking.html?salon=' + s.slug;
+      document.getElementById('sld-book').href = bookUrl;
+      document.getElementById('sld-book-2').href = bookUrl;
+      document.getElementById('sld-call').href = 'tel:' + s.phone.replace(/\s/g, '');
+      document.getElementById('sld-directions').addEventListener('click', function () {
+        Toast.info('Demo build — production opens turn-by-turn navigation to ' + s.area + '.', 'Directions');
+      });
+
+      /* info tiles */
+      document.getElementById('sld-info').innerHTML = [
+        ['clock', 'Hours today', s.hours],
+        ['users', 'Team', DATA.stylistsAt(s.slug).length + ' resident stylists'],
+        ['grid', 'Capacity', s.seats + ' styling chairs'],
+        ['navigation', 'Distance', s.distance < 50 ? s.distance + ' km from you' : s.city]
+      ].map(function (t, i) {
+        var tones = ['', 'lav', 'mint', 'coral'];
+        return '<div class="info-tile"><span class="icon-box icon-box--sm' + (tones[i] ? ' icon-box--' + tones[i] : '') + '">' + Icon.get(t[0]) + '</span>' +
+          '<div><span>' + t[1] + '</span><b>' + t[2] + '</b></div></div>';
+      }).join('');
+
+      document.getElementById('sld-about').textContent = s.about;
+
+      /* services */
+      var svcHere = DATA.SERVICES.filter(function (x) { return s.services.indexOf(x.cat) > -1; }).slice(0, 6);
+      document.getElementById('sld-services').innerHTML = svcHere.map(UI.serviceCard).join('');
+
+      /* stylists */
+      var team = DATA.stylistsAt(s.slug);
+      document.getElementById('sld-stylists').innerHTML = team.length ? team.map(function (st) {
+        return '<a class="stylist-mini" href="stylist-details.html?s=' + st.slug + '">' +
+          '<span class="avatar avatar--md"><img src="' + Img.get(st.slug, 'person', 120, 120) + '" alt=""></span>' +
+          '<span class="stylist-mini__info"><b>' + st.name + '</b><span>' + st.role + '</span></span>' +
+          '<span class="stylist-mini__right"><span class="rating__value">★ ' + st.rating + '</span><br>' +
+          '<span class="text-xs text-faint">' + st.exp + ' yrs</span></span></a>';
+      }).join('') : '<p class="text-muted">Visiting specialists staff this location — see the booking flow for live availability.</p>';
+
+      /* amenities */
+      var am_icons = { 'Valet parking': 'car', 'Free parking': 'car', 'Complimentary beverages': 'coffee', 'Herbal café': 'coffee', 'Free Wi-Fi': 'wifi', 'Air conditioned': 'snowflake', 'Card & UPI': 'credit-card', 'Wheelchair access': 'users', 'Kids corner': 'smile', 'Private suites': 'lock', 'Private rooms': 'lock', 'Sea-facing suites': 'sun', 'Bridal green room': 'crown', 'Bridal suite': 'crown', 'Nail art bar': 'hand', "Men's grooming floor": 'user', 'Full spa wing': 'leaf', 'Steam & sauna': 'droplet', 'Couples suite': 'heart', 'Skin clinic room': 'droplet', 'Metro adjacent': 'navigation', 'Late-night slots': 'moon', 'Express services': 'zap', 'Family packages': 'users' };
+      document.getElementById('sld-amenities').innerHTML = s.amenities.map(function (a) {
+        return '<div class="amenity">' + Icon.get(am_icons[a] || 'check-circle') + a + '</div>';
+      }).join('');
+
+      /* rating + reviews */
+      document.getElementById('sld-rating').innerHTML =
+        '<div class="rating-summary__score"><div class="n">' + s.rating + '</div>' + Icon.stars(s.rating, 'stars--lg') +
+        '<small>' + s.reviews.toLocaleString('en-IN') + ' verified reviews</small></div>' +
+        '<div class="rating-bars">' + [74, 18, 5, 2, 1].map(function (p, i) {
+          return '<div class="rating-bar"><span>' + (5 - i) + ' ' + Icon.get('star') + '</span>' +
+            '<div class="progress progress--thin"><div class="progress__bar" data-value="' + p + '"></div></div><b>' + p + '%</b></div>';
+        }).join('') + '</div>';
+      document.getElementById('sld-reviews').innerHTML = DATA.TESTIMONIALS.slice(2, 5).map(function (r) {
+        return '<div class="review-item"><span class="avatar avatar--md">' + r.name.split(' ').map(function (w) { return w[0]; }).join('') + '</span>' +
+          '<div style="flex:1"><div class="review-item__head"><span class="review-item__name">' + r.name + '</span>' +
+          '<span class="review-item__date">' + DATA.dateShort(r.date) + '</span></div>' +
+          Icon.stars(r.rating) + '<p class="mt-2">' + r.text + '</p></div></div>';
+      }).join('');
+
+      /* aside */
+      document.getElementById('sld-open-state').textContent = s.open ? '● Open now' : '● Currently closed';
+      document.getElementById('sld-open-state').style.color = s.open ? '#2E8B82' : '#C62828';
+      document.getElementById('sld-hours').textContent = s.hours;
+      document.getElementById('sld-aside-rows').innerHTML =
+        '<div class="booking-aside__row"><span>' + Icon.get('phone') + 'Phone</span><b>' + s.phone + '</b></div>' +
+        '<div class="booking-aside__row"><span>' + Icon.get('sparkles') + 'Specialities</span><b>' + s.services.map(function (c) { return DATA.category(c).name; }).slice(0, 3).join(', ') + '</b></div>' +
+        '<div class="booking-aside__row"><span>' + Icon.get('star') + 'Rating</span><b>' + s.rating + ' / 5</b></div>';
+
+      var todayDow = new Date().getDay();
+      document.getElementById('sld-week').innerHTML = DATA.WORKING_HOURS.map(function (w, i) {
+        var isToday = ((i + 1) % 7) === todayDow;
+        return '<li class="' + (isToday ? 'is-today' : '') + '"><b>' + w.d + (isToday ? '<span class="today-tag">Today</span>' : '') + '</b><span>' + w.h + '</span></li>';
+      }).join('');
+
+      /* others */
+      document.getElementById('sld-others').innerHTML =
+        DATA.SALONS.filter(function (x) { return x.id !== s.id; }).slice(0, 3).map(UI.salonCard).join('');
+    };
+  </script>
+</body>
+</html>

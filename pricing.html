@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing &amp; Membership — Lumière Beauty Studio</title>
+  <meta name="description" content="Lumière membership plans — Basic, Silver, Gold, Platinum and VIP. Save up to 30% on every visit with priority booking and loyalty rewards.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  <style>
+    .plans-scroll { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: stretch; }
+    @media (max-width: 1240px) { .plans-scroll { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 860px) { .plans-scroll { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .plans-scroll { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="pr-hero"></div>
+
+    <section class="section">
+      <div class="container container--wide">
+        <div class="text-center mb-8" data-reveal="up">
+          <div class="billing-toggle" id="billing-toggle" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle yearly billing">
+            <span class="lbl-m">Monthly</span>
+            <span class="billing-toggle__switch"></span>
+            <span class="lbl-y">Yearly <span class="badge badge--mint" style="margin-left:6px">2 months free</span></span>
+          </div>
+        </div>
+
+        <div class="plans-scroll" id="plans"></div>
+
+        <p class="text-center text-sm text-muted mt-7">All plans include GST. Cancel anytime from Settings — benefits stay active until the period ends. Membership discounts stack with loyalty points but not with coupon codes.</p>
+      </div>
+    </section>
+
+    <!-- comparison highlights -->
+    <section class="section section--sunken">
+      <div class="container">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow">The maths</span>
+          <h2>Gold pays for itself in two visits</h2>
+          <p>A hair spa and a facial per month at 12% off already beats the membership fee — everything after that is pure saving.</p>
+        </div>
+        <div class="grid grid-3" id="pr-maths"></div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="sec-head sec-head--center">
+          <span class="eyebrow">Questions</span>
+          <h2>Membership FAQ</h2>
+        </div>
+        <div class="accordion" id="pr-faq"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      document.getElementById('pr-hero').outerHTML = UI.pageHero(
+        'Membership that <span class="grad-text">earns its keep</span>',
+        'Five tiers, honest maths, zero lock-in. Pick the one that matches how often you visit.',
+        [['Pricing']]
+      );
+
+      var yearly = false;
+      var host = document.getElementById('plans');
+
+      function renderPlans() {
+        host.innerHTML = DATA.PLANS.map(function (p, idx) {
+          var price = yearly ? p.yearly : p.price;
+          var per = p.price === 0 ? '' : yearly ? '/year' : '/month';
+          return '<article class="plan-card' + (p.featured ? ' plan-card--featured' : '') + '" data-reveal="up" data-reveal-delay="' + (idx * 0.06) + '">' +
+            (p.featured ? '<span class="plan-card__tag">Most Popular</span>' : '') +
+            '<span class="plan-card__icon">' + Icon.get(p.icon) + '</span>' +
+            '<h3>' + p.name + '</h3><div class="plan-card__sub">' + p.sub + '</div>' +
+            '<div class="plan-card__price"><span class="cur">₹</span><span class="amt">' + price.toLocaleString('en-IN') + '</span><span class="per">' + per + '</span></div>' +
+            '<div class="plan-card__note">' + p.note + '</div>' +
+            '<ul class="plan-card__feats">' + p.feats.map(function (f) {
+              return '<li class="' + (f[1] ? '' : 'is-off') + '">' + Icon.get(f[1] ? 'check' : 'x') + f[0] + '</li>';
+            }).join('') + '</ul>' +
+            '<button type="button" class="btn ' + (p.featured ? 'btn--primary' : 'btn--ghost') + ' btn--block" data-plan="' + p.name + '">' +
+            (p.price === 0 ? 'Current Plan' : 'Choose ' + p.name) + '</button></article>';
+        }).join('');
+        Icon.hydrate(host);
+        host.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-revealed'); });
+      }
+      renderPlans();
+
+      var toggle = document.getElementById('billing-toggle');
+      function flip() {
+        yearly = !yearly;
+        toggle.classList.toggle('is-yearly', yearly);
+        toggle.setAttribute('aria-checked', yearly);
+        renderPlans();
+      }
+      toggle.addEventListener('click', flip);
+      toggle.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); flip(); }
+      });
+
+      host.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-plan]');
+        if (!b) return;
+        var plan = b.dataset.plan;
+        if (plan === 'Basic') { Toast.info('Basic is the free default — you\'re already on it.', 'No change needed'); return; }
+        Modal.confirm({
+          title: 'Join ' + plan + '?',
+          message: 'This demo saves your choice locally. In production this opens secure checkout for the ' + plan + ' plan (' + (yearly ? 'yearly' : 'monthly') + ' billing).',
+          confirmText: 'Confirm ' + plan, icon: 'diamond',
+          onConfirm: function () {
+            Store.updateUser({ tier: plan });
+            Toast.rose('Welcome to <b>' + plan + '</b>! Your discounts apply from your next booking.', 'Membership active ✨');
+          }
+        });
+      });
+
+      document.getElementById('pr-maths').innerHTML = [
+        ['sparkles', 'Typical month', 'Hair spa (₹1,299) + facial (₹1,599) = ₹2,898 at standard price.'],
+        ['percent', 'With Gold', '12% off both saves ₹348/month — plus double loyalty points on the rest.'],
+        ['award', 'Add the extras', 'A free birthday service and priority slots push real value well past ₹6,000/year.']
+      ].map(function (m, i) {
+        return '<div class="feature-card" data-reveal="up" data-reveal-delay="' + (i * 0.08) + '">' +
+          '<span class="icon-box icon-box--lg' + (i === 1 ? ' icon-box--grad' : i === 2 ? ' icon-box--coral' : '') + '">' + Icon.get(m[0]) + '</span>' +
+          '<h3>' + m[1] + '</h3><p>' + m[2] + '</p></div>';
+      }).join('');
+
+      document.getElementById('pr-faq').innerHTML = DATA.FAQS.filter(function (f) { return f.cat === 'Membership' || f.cat === 'Payment'; }).map(function (f, i) {
+        return '<div class="acc-item' + (i === 0 ? ' is-open' : '') + '"><button class="acc-trigger" aria-expanded="' + (i === 0) + '">' + f.q +
+          '<span class="acc-icon">' + Icon.get('chevron-down') + '</span></button>' +
+          '<div class="acc-body"><div><p>' + f.a + '</p></div></div></div>';
+      }).join('');
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Details — Lumière Beauty Studio</title>
+  <meta name="description" content="Full details of your Lumière booking — service, salon, stylist, timing, payment summary and receipt download.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="ad-hero"></div>
+
+    <section class="section" style="padding-top:clamp(28px,4vw,48px)">
+      <div class="container container--narrow">
+        <div id="ad-content"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      var id = App.param('id') || Store.session.get('lastBooking') ||
+        (Store.getAppointments()[0] && Store.getAppointments()[0].id);
+      var a = id ? Store.getAppointment(id) : null;
+
+      document.getElementById('ad-hero').outerHTML = UI.pageHero(
+        'Appointment <span class="grad-text">details</span>',
+        a ? 'Booking ' + a.id + ' — everything about your visit, in one place.' : '',
+        [['My Appointments', 'my-appointments.html'], ['Details']]
+      );
+
+      var host = document.getElementById('ad-content');
+      if (!a) {
+        host.innerHTML = '<div class="empty-state"><span class="icon-box icon-box--lg">' + Icon.get('calendar-x') + '</span>' +
+          '<h3>Booking not found</h3><p>We couldn\'t find that appointment. It may have been removed, or the link is incomplete.</p>' +
+          '<a class="btn btn--primary" href="my-appointments.html">View My Appointments</a></div>';
+        Icon.hydrate(host);
+        return;
+      }
+
+      var s = DATA.service(a.serviceId);
+      var l = DATA.salon(a.salonId);
+      var t = a.stylistId !== -1 ? DATA.stylist(a.stylistId) : null;
+      var statusCls = { upcoming: 'status-upcoming', completed: 'status-completed', cancelled: 'status-cancelled' };
+      var statusLbl = { upcoming: 'Upcoming', completed: 'Completed', cancelled: 'Cancelled' };
+
+      host.innerHTML =
+        '<div class="ticket mb-6" data-reveal="up">' +
+        '<div class="ticket__head"><div><h3>' + s.name + '</h3><p>' + l.name + ' · ' + l.area + ', ' + l.city + '</p></div>' +
+        '<span class="badge ' + statusCls[a.status] + ' badge--dot">' + statusLbl[a.status] + '</span></div>' +
+        '<div class="ticket__perf"><span class="ticket__dash"></span></div>' +
+        '<div class="ticket__body"><div class="ticket__grid">' +
+        '<div class="ticket__cell"><span>Booking ID</span><b>' + a.id + '</b><small>Booked ' + DATA.dateShort(a.createdAt + 'T00:00:00') + '</small></div>' +
+        '<div class="ticket__cell"><span>Date</span><b>' + DATA.dateShort(a.date + 'T00:00:00') + '</b><small>' + new Date(a.date + 'T00:00:00').toLocaleDateString('en-IN', { weekday: 'long' }) + '</small></div>' +
+        '<div class="ticket__cell"><span>Time</span><b>' + a.time + '</b><small>' + DATA.duration(s.duration) + ' session</small></div>' +
+        '<div class="ticket__cell"><span>Stylist</span><b>' + (t ? t.name : 'Any expert') + '</b><small>' + (t ? t.role : 'Assigned on arrival') + '</small></div>' +
+        '</div>' +
+        '<div class="ticket__total"><div>' +
+        '<span class="text-xs text-faint uppercase fw-700">Amount ' + (a.payMethod === 'Pay at Salon' && a.status === 'upcoming' ? 'payable' : 'paid') + '</span>' +
+        '<div class="price price--lg"><span class="price__cur">₹</span><span class="price__val">' + a.total.toLocaleString('en-IN') + '</span></div>' +
+        '</div><div class="ticket__qr" role="img" aria-label="Booking QR code"></div></div>' +
+        '</div></div>' +
+
+        '<div class="grid grid-2 mb-6" style="gap:16px">' +
+        '<div class="panel"><div class="panel__head"><h3>' + Icon.get('credit-card') + 'Payment summary</h3></div><div class="panel__body">' +
+        '<div class="total-line"><span>Service price</span><b>' + DATA.money(a.price) + '</b></div>' +
+        (a.discount ? '<div class="total-line total-line--discount"><span>Discount' + (a.coupon ? ' (' + a.coupon + ')' : '') + '</span><b>− ' + DATA.money(a.discount) + '</b></div>' : '') +
+        '<div class="total-line"><span>GST (18%)</span><b>' + DATA.money(a.tax) + '</b></div>' +
+        '<div class="total-line total-line--grand"><span>Total</span><b>' + DATA.money(a.total) + '</b></div>' +
+        '<div class="note-box mt-4">' + Icon.get('info') + '<span>Payment method: <b>' + a.payMethod + '</b>' +
+        (a.status === 'cancelled' ? ' — refund processed to source within 3–5 working days.' : '') + '</span></div>' +
+        '</div></div>' +
+
+        '<div class="panel"><div class="panel__head"><h3>' + Icon.get('map-pin') + 'Salon &amp; contact</h3></div><div class="panel__body">' +
+        '<div class="stylist-mini mb-4" style="border:0;padding:0">' +
+        '<span class="avatar avatar--md" style="border-radius:12px"><img src="' + Img.get(l.slug, 'salon', 120, 120) + '" alt="" style="border-radius:12px"></span>' +
+        '<span class="stylist-mini__info"><b>' + l.name + '</b><span>' + l.address + '</span></span></div>' +
+        '<div class="booking-aside__row"><span>' + Icon.get('phone') + 'Phone</span><b>' + l.phone + '</b></div>' +
+        '<div class="booking-aside__row"><span>' + Icon.get('clock') + 'Hours</span><b>' + l.hours + '</b></div>' +
+        (a.requests ? '<div class="booking-aside__row"><span>' + Icon.get('edit') + 'Requests</span><b>' + a.requests + '</b></div>' : '') +
+        '<div class="btn-group mt-4">' +
+        '<a class="btn btn--soft btn--sm" href="salon-details.html?s=' + l.slug + '">' + Icon.get('store') + 'Salon Page</a>' +
+        '<a class="btn btn--ghost btn--sm" href="tel:' + l.phone.replace(/\s/g, '') + '">' + Icon.get('phone') + 'Call</a>' +
+        '</div></div></div></div>' +
+
+        '<div class="confirm-actions" style="justify-content:flex-start">' +
+        (a.status === 'upcoming'
+          ? '<a class="btn btn--ghost" href="my-appointments.html">' + Icon.get('refresh') + 'Reschedule / Cancel</a>'
+          : '<a class="btn btn--ghost" href="booking.html?service=' + s.slug + '">' + Icon.get('refresh') + 'Book Again</a>') +
+        '<button type="button" class="btn btn--soft" id="ad-print">' + Icon.get('printer') + 'Print</button>' +
+        '<a class="btn btn--primary" href="my-appointments.html">' + Icon.get('calendar-check') + 'All Appointments</a>' +
+        '</div>';
+
+      Icon.hydrate(host);
+      host.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-revealed'); });
+      document.getElementById('ad-print').addEventListener('click', function () { window.print(); });
+    };
+  </script>
+</body>
+</html>

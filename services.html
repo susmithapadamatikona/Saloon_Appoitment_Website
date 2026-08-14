@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Lumière Beauty Studio</title>
+  <meta name="description" content="Browse 20+ premium beauty services — hair, skin, makeup, nails, spa and bridal. Filter by price, rating and duration, then book in minutes.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="svc-hero"></div>
+
+    <section class="section">
+      <div class="container container--wide">
+
+        <!-- category scroller -->
+        <div class="cat-scroller mb-7" id="svc-cat-scroller" role="tablist" aria-label="Service categories"></div>
+
+        <div class="shop-layout">
+          <!-- ===================== filter sidebar ===================== -->
+          <aside class="filter-sidebar" id="filter-sidebar" aria-label="Service filters">
+            <div class="filter-sidebar__head">
+              <h3><i data-icon="sliders"></i>Filters</h3>
+              <button type="button" id="filters-clear">Clear all</button>
+            </div>
+
+            <div class="filter-group">
+              <h4>Category</h4>
+              <div class="filter-group__body" id="f-cats"></div>
+            </div>
+
+            <div class="filter-group">
+              <h4>Price range</h4>
+              <div class="filter-group__body range-wrap">
+                <div class="range-values"><span id="f-price-min-lbl">₹0</span><span id="f-price-lbl">₹15,000</span></div>
+                <input type="range" class="range" id="f-price" min="200" max="15000" step="100" value="15000" data-lc-bound aria-label="Maximum price">
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <h4>Minimum rating</h4>
+              <div class="filter-group__body" id="f-rating"></div>
+            </div>
+
+            <div class="filter-group">
+              <h4>Duration</h4>
+              <div class="filter-group__body" id="f-duration"></div>
+            </div>
+          </aside>
+
+          <!-- ======================== results ========================= -->
+          <div>
+            <div class="toolbar">
+              <button class="btn btn--ghost btn--sm filter-toggle-mobile" id="filters-open"><i data-icon="sliders"></i>Filters</button>
+              <div class="toolbar__count" id="svc-count" aria-live="polite">Loading…</div>
+              <div class="flex items-center gap-3 flex-wrap">
+                <label class="field field--icon" style="width:220px">
+                  <input class="input" type="search" id="svc-search" placeholder="Search services…" aria-label="Search services" style="padding-block:10px" data-lc-bound>
+                  <span class="field__icon"><i data-icon="search"></i></span>
+                </label>
+                <select class="select" id="svc-sort" aria-label="Sort services" style="width:auto;padding-block:10px" data-lc-bound>
+                  <option value="popular">Most popular</option>
+                  <option value="rating">Highest rated</option>
+                  <option value="price-asc">Price: low to high</option>
+                  <option value="price-desc">Price: high to low</option>
+                  <option value="duration">Quickest first</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-auto" id="svc-grid" aria-live="polite"></div>
+            <nav class="pagination" id="svc-pager" aria-label="Services pagination"></nav>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      document.getElementById('svc-hero').outerHTML = UI.pageHero(
+        'The full service <span class="grad-text">menu</span>',
+        'Twenty-two treatments across seven specialities — every price honest, every review real.',
+        [['Services']]
+      );
+
+      /* ---------- list controller ---------- */
+      var lc = new ListController({
+        items: DATA.SERVICES,
+        pageSize: 9,
+        host: '#svc-grid',
+        pagerHost: '#svc-pager',
+        countHost: '#svc-count',
+        defaultSort: 'popular',
+        render: UI.serviceCard,
+        filters: {
+          cat: function (s, v) { return s.cat === v; },
+          cats: function (s, v) { return v.length === 0 || v.indexOf(s.cat) > -1; },
+          q: function (s, v) { return (s.name + ' ' + s.short + ' ' + (s.tags || []).join(' ')).toLowerCase().indexOf(v) > -1; },
+          maxPrice: function (s, v) { return s.price <= v; },
+          minRating: function (s, v) { return s.rating >= v; },
+          duration: function (s, v) {
+            if (v === 'short') return s.duration <= 45;
+            if (v === 'mid') return s.duration > 45 && s.duration <= 90;
+            return s.duration > 90;
+          }
+        },
+        sorters: {
+          popular: function (a, b) { return (b.popular ? 1 : 0) - (a.popular ? 1 : 0) || b.reviews - a.reviews; },
+          rating: function (a, b) { return b.rating - a.rating; },
+          'price-asc': function (a, b) { return a.price - b.price; },
+          'price-desc': function (a, b) { return b.price - a.price; },
+          duration: function (a, b) { return a.duration - b.duration; }
+        }
+      });
+
+      /* ---------- category scroller ---------- */
+      var scroller = document.getElementById('svc-cat-scroller');
+      var cats = [{ id: 'all', name: 'All Services', icon: 'grid', desc: DATA.SERVICES.length + ' treatments' }].concat(DATA.CATEGORIES.map(function (c) {
+        return { id: c.id, name: c.name, icon: c.icon, desc: DATA.SERVICES.filter(function (s) { return s.cat === c.id; }).length + ' treatments' };
+      }));
+      scroller.innerHTML = cats.map(function (c, i) {
+        return '<button type="button" class="cat-pill' + (i === 0 ? ' is-active' : '') + '" data-scat="' + c.id + '" role="tab" aria-selected="' + (i === 0) + '">' +
+          '<i>' + Icon.get(c.icon) + '</i><span><b>' + c.name + '</b><span>' + c.desc + '</span></span></button>';
+      }).join('');
+      function setCat(id) {
+        scroller.querySelectorAll('.cat-pill').forEach(function (p) {
+          var on = p.dataset.scat === id;
+          p.classList.toggle('is-active', on);
+          p.setAttribute('aria-selected', on);
+        });
+        lc.set('cat', id === 'all' ? null : id);
+      }
+      scroller.addEventListener('click', function (e) {
+        var p = e.target.closest('[data-scat]');
+        if (p) setCat(p.dataset.scat);
+      });
+
+      /* ---------- sidebar: categories (multi) ---------- */
+      var fcats = document.getElementById('f-cats');
+      fcats.innerHTML = DATA.CATEGORIES.map(function (c) {
+        var n = DATA.SERVICES.filter(function (s) { return s.cat === c.id; }).length;
+        return '<label class="filter-check"><input type="checkbox" value="' + c.id + '" data-lc-bound>' +
+          '<span class="filter-check__box">' + Icon.get('check') + '</span>' + c.name +
+          '<span class="filter-check__count">' + n + '</span></label>';
+      }).join('');
+      fcats.addEventListener('change', function () {
+        var vals = Array.prototype.slice.call(fcats.querySelectorAll('input:checked')).map(function (i) { return i.value; });
+        lc.set('cats', vals.length ? vals : null);
+      });
+
+      /* ---------- price ---------- */
+      var priceInput = document.getElementById('f-price');
+      var priceLbl = document.getElementById('f-price-lbl');
+      priceInput.addEventListener('input', function () {
+        priceLbl.textContent = DATA.money(priceInput.value);
+        lc.set('maxPrice', parseInt(priceInput.value, 10) >= 15000 ? null : parseInt(priceInput.value, 10));
+      });
+
+      /* ---------- rating ---------- */
+      var fr = document.getElementById('f-rating');
+      fr.innerHTML = [['0', 'Any rating'], ['4.5', '4.5+ stars'], ['4.7', '4.7+ stars'], ['4.9', '4.9+ stars']].map(function (r, i) {
+        return '<label class="filter-radio"><input type="radio" name="frating" value="' + r[0] + '"' + (i === 0 ? ' checked' : '') + ' data-lc-bound>' +
+          '<span class="filter-radio__dot"></span>' + r[1] + '</label>';
+      }).join('');
+      fr.addEventListener('change', function (e) {
+        var v = parseFloat(e.target.value);
+        lc.set('minRating', v > 0 ? v : null);
+      });
+
+      /* ---------- duration ---------- */
+      var fd = document.getElementById('f-duration');
+      fd.innerHTML = [['all', 'Any duration'], ['short', 'Quick (≤ 45 min)'], ['mid', 'Standard (45–90 min)'], ['long', 'Extended (90+ min)']].map(function (d, i) {
+        return '<label class="filter-radio"><input type="radio" name="fdur" value="' + d[0] + '"' + (i === 0 ? ' checked' : '') + ' data-lc-bound>' +
+          '<span class="filter-radio__dot"></span>' + d[1] + '</label>';
+      }).join('');
+      fd.addEventListener('change', function (e) { lc.set('duration', e.target.value); });
+
+      /* ---------- search + sort ---------- */
+      var searchInput = document.getElementById('svc-search');
+      searchInput.addEventListener('input', Search.debounce(function () {
+        lc.set('q', searchInput.value.trim().toLowerCase() || null);
+      }, 180));
+      document.getElementById('svc-sort').addEventListener('change', function (e) { lc.sort(e.target.value); });
+
+      /* ---------- clear ---------- */
+      document.getElementById('filters-clear').addEventListener('click', function () {
+        lc.reset();
+        setCat('all');
+        priceLbl.textContent = '₹15,000';
+      });
+
+      /* ---------- mobile sidebar ---------- */
+      var sidebar = document.getElementById('filter-sidebar');
+      var openBtn = document.getElementById('filters-open');
+      var backdrop = document.createElement('div');
+      backdrop.className = 'drawer-backdrop';
+      document.body.appendChild(backdrop);
+      function setSidebar(open) {
+        sidebar.classList.toggle('is-open', open);
+        backdrop.classList.toggle('is-open', open);
+        document.body.classList.toggle('no-scroll', open);
+      }
+      openBtn.addEventListener('click', function () { setSidebar(true); });
+      backdrop.addEventListener('click', function () { setSidebar(false); });
+
+      /* ---------- URL params ---------- */
+      var qCat = App.param('cat');
+      if (qCat && DATA.CATEGORIES.some(function (c) { return c.id === qCat; })) setCat(qCat);
+      var qQ = App.param('q');
+      if (qQ) {
+        searchInput.value = qQ;
+        lc.set('q', qQ.toLowerCase());
+        Toast.info('Showing results for “<b>' + qQ + '</b>”', 'Search');
+      }
+    };
+  </script>
+</body>
+</html>

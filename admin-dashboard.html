@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Lumière Beauty Studio</title>
+  <meta name="description" content="Platform administration — users, salons, appointments, payments, revenue analytics and reports.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div class="dash">
+    <aside class="dash-side" id="dash-side" aria-label="Dashboard navigation"></aside>
+    <div class="dash-main">
+      <div class="dash-top" id="dash-top"></div>
+      <div class="dash-body">
+
+        <!-- kpis -->
+        <div class="stat-cards" id="ad-stats"></div>
+
+        <div class="dash-grid dash-grid--2-1 mb-6" id="analytics">
+          <!-- platform revenue -->
+          <div class="panel">
+            <div class="panel__head">
+              <h3><i data-icon="trending-up"></i>Platform revenue &amp; bookings</h3>
+              <button class="btn btn--soft btn--xs" id="ad-export"><i data-icon="download"></i>Export Data</button>
+            </div>
+            <div class="panel__body"><div id="ad-rev-chart"></div></div>
+          </div>
+
+          <!-- city split -->
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="pie-chart"></i>Bookings by city</h3></div>
+            <div class="panel__body" id="ad-city-donut"></div>
+          </div>
+        </div>
+
+        <!-- salons table -->
+        <div class="panel mb-6" id="salons">
+          <div class="panel__head">
+            <h3><i data-icon="store"></i>Partner salons</h3>
+            <div class="flex gap-3 items-center">
+              <label class="field field--icon" style="width:200px">
+                <input class="input" type="search" id="ad-salon-q" placeholder="Search salons…" aria-label="Search salons" style="padding-block:8px;font-size:var(--fs-sm)">
+                <span class="field__icon"><i data-icon="search"></i></span>
+              </label>
+              <button class="btn btn--primary btn--xs" id="ad-add-salon"><i data-icon="plus"></i>Add Salon</button>
+            </div>
+          </div>
+          <div class="panel__body--flush table-wrap">
+            <table class="table table--sortable" id="ad-salon-table">
+              <thead><tr>
+                <th data-sort="name">Salon</th><th data-sort="city">City</th><th data-sort="rating">Rating</th>
+                <th data-sort="reviews">Reviews</th><th data-sort="seats">Chairs</th><th>Status</th><th>Actions</th>
+              </tr></thead>
+              <tbody id="ad-salon-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="dash-grid dash-grid--1-1 mb-6">
+          <!-- recent users -->
+          <div class="panel" id="users">
+            <div class="panel__head"><h3><i data-icon="users"></i>Newest users</h3><span class="badge badge--mint badge--dot">+126 this week</span></div>
+            <div class="panel__body--flush table-wrap">
+              <table class="table">
+                <thead><tr><th>User</th><th>Role</th><th>Joined</th><th>Bookings</th></tr></thead>
+                <tbody id="ad-users-body"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- payments -->
+          <div class="panel" id="payments">
+            <div class="panel__head"><h3><i data-icon="credit-card"></i>Recent payments</h3><a class="btn btn--soft btn--xs" href="#reports">All payments</a></div>
+            <div class="panel__body--flush table-wrap">
+              <table class="table">
+                <thead><tr><th>Txn</th><th>Amount</th><th>Method</th><th>Status</th></tr></thead>
+                <tbody id="ad-pay-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- category performance + system -->
+        <div class="dash-grid dash-grid--2-1" id="reports">
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="bar-chart"></i>Category performance</h3><p>Bookings this month by service category</p></div>
+            <div class="panel__body"><div id="ad-cat-chart"></div></div>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="activity"></i>Platform health</h3></div>
+            <div class="panel__body" id="ad-health" style="display:grid;gap:16px"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      Dash.mount({ role: 'admin', active: 'dashboard', title: 'Platform Overview', sub: 'Administrator · all cities, all salons' });
+
+      document.getElementById('ad-stats').innerHTML =
+        Dash.statCard({ label: 'Total users', count: 10482, icon: 'users', delta: 6, spark: [8200, 8700, 9100, 9500, 9900, 10200, 10482] }) +
+        Dash.statCard({ label: 'Monthly revenue', value: '₹18.4L', icon: 'wallet', tone: 'mint', delta: 11, spark: [12, 13, 14, 15, 16, 17, 18.4], sparkColor: '#4DB6AC' }) +
+        Dash.statCard({ label: 'Appointments / mo', count: 3126, icon: 'calendar-check', tone: 'lav', delta: 8, spark: [2400, 2550, 2700, 2820, 2950, 3040, 3126], sparkColor: '#9575CD' }) +
+        Dash.statCard({ label: 'Active salons', count: 20, icon: 'store', tone: 'coral', delta: 5, spark: [14, 15, 16, 17, 18, 19, 20], sparkColor: '#FFB74D' });
+      Dash.drawSparks(document);
+
+      /* revenue chart */
+      Anim.lineChart('#ad-rev-chart', ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'], [
+        { name: 'Revenue (₹ lakh)', color: '#E91E63', values: [11.2, 10.8, 12.9, 13.4, 15.1, 16.2, 17.5, 18.4] },
+        { name: 'Bookings (×100)', color: '#64B5F6', values: [21, 20, 24, 25, 27, 28, 30, 31.3] }
+      ], { label: 'Platform revenue trend' });
+
+      /* city donut */
+      Anim.donutChart('#ad-city-donut', [
+        { label: 'Mumbai', value: 41, color: '#E91E63' },
+        { label: 'Delhi', value: 18, color: '#9575CD' },
+        { label: 'Bengaluru', value: 15, color: '#64B5F6' },
+        { label: 'Pune', value: 11, color: '#4DB6AC' },
+        { label: 'Hyderabad', value: 9, color: '#FFB74D' },
+        { label: 'Chennai', value: 6, color: '#F06292' }
+      ], { center: '3.1k', centerLabel: 'bookings / mo', label: 'Bookings by city' });
+
+      /* salons table with search + sort */
+      var salonRows = DATA.SALONS.slice();
+      var sortState = { key: null, dir: 1 };
+      function renderSalons() {
+        var q = (document.getElementById('ad-salon-q').value || '').toLowerCase();
+        var list = salonRows.filter(function (s) {
+          return !q || (s.name + ' ' + s.city + ' ' + s.area).toLowerCase().indexOf(q) > -1;
+        });
+        if (sortState.key) {
+          list.sort(function (a, b) {
+            var av = a[sortState.key], bv = b[sortState.key];
+            return (typeof av === 'string' ? av.localeCompare(bv) : av - bv) * sortState.dir;
+          });
+        }
+        document.getElementById('ad-salon-body').innerHTML = list.map(function (s) {
+          return '<tr><td><div class="table__user"><span class="avatar avatar--sm" style="border-radius:9px"><img src="' + Img.get(s.slug, 'salon', 80, 80) + '" alt="" style="border-radius:9px"></span>' +
+            '<div><b>' + s.name + '</b><span>' + s.area + '</span></div></div></td>' +
+            '<td>' + s.city + '</td><td><b>★ ' + s.rating + '</b></td><td>' + s.reviews.toLocaleString('en-IN') + '</td><td>' + s.seats + '</td>' +
+            '<td><span class="badge ' + (s.open ? 'status-confirmed' : 'status-cancelled') + ' badge--dot">' + (s.open ? 'Active' : 'Closed') + '</span></td>' +
+            '<td><div class="table__actions">' +
+            '<a class="btn-icon btn-icon--sm" href="salon-details.html?s=' + s.slug + '" aria-label="View ' + s.name + '">' + Icon.get('eye') + '</a>' +
+            '<button class="btn-icon btn-icon--sm" data-edit-salon="' + s.name + '" aria-label="Edit ' + s.name + '">' + Icon.get('edit') + '</button>' +
+            '</div></td></tr>';
+        }).join('');
+        Icon.hydrate(document.getElementById('ad-salon-body'));
+      }
+      renderSalons();
+      document.getElementById('ad-salon-q').addEventListener('input', Search.debounce(renderSalons, 160));
+      document.querySelectorAll('#ad-salon-table th[data-sort]').forEach(function (th) {
+        th.addEventListener('click', function () {
+          var key = th.dataset.sort;
+          if (sortState.key === key) sortState.dir *= -1;
+          else { sortState.key = key; sortState.dir = 1; }
+          document.querySelectorAll('#ad-salon-table th').forEach(function (x) { x.classList.remove('asc', 'desc'); });
+          th.classList.add(sortState.dir === 1 ? 'asc' : 'desc');
+          renderSalons();
+        });
+      });
+      document.getElementById('ad-salon-table').addEventListener('click', function (e) {
+        var b = e.target.closest('[data-edit-salon]');
+        if (b) Toast.info('Editor for <b>' + b.dataset.editSalon + '</b> opens here in production.');
+      });
+      document.getElementById('ad-add-salon').addEventListener('click', function () {
+        Toast.info('New-salon onboarding wizard opens here in production.', 'Add salon');
+      });
+
+      /* users */
+      document.getElementById('ad-users-body').innerHTML = [
+        ['Kavya Reddy', 'KR', 'Client', 'Today', 7], ['Aarohi Mehta', 'AM', 'Owner', 'Aug 2016', 0],
+        ['Rohan Kapoor', 'RK', 'Client', 'Yesterday', 2], ['Meghana Rao', 'MR', 'Client', '3 days ago', 12],
+        ['Zoya Khan', 'ZK', 'Stylist', 'Jun 2020', 0]
+      ].map(function (u) {
+        var roleBadge = { Client: 'badge--sky', Owner: 'badge--lav', Stylist: 'badge--rose' }[u[2]];
+        return '<tr><td><div class="table__user"><span class="avatar avatar--sm">' + u[1] + '</span><b>' + u[0] + '</b></div></td>' +
+          '<td><span class="badge ' + roleBadge + '">' + u[2] + '</span></td><td>' + u[3] + '</td><td>' + u[4] + '</td></tr>';
+      }).join('');
+
+      /* payments */
+      document.getElementById('ad-pay-body').innerHTML = [
+        ['TXN-88412', 2949, 'UPI', 'Success', 'status-confirmed'],
+        ['TXN-88409', 17699, 'Card', 'Success', 'status-confirmed'],
+        ['TXN-88397', 824, 'Wallet', 'Pending', 'status-pending'],
+        ['TXN-88390', 2713, 'UPI', 'Success', 'status-confirmed'],
+        ['TXN-88384', 1415, 'Card', 'Refunded', 'status-cancelled']
+      ].map(function (p) {
+        return '<tr><td><b>' + p[0] + '</b></td><td>' + DATA.money(p[1]) + '</td><td>' + p[2] + '</td>' +
+          '<td><span class="badge ' + p[4] + ' badge--dot">' + p[3] + '</span></td></tr>';
+      }).join('');
+
+      /* category bars */
+      Anim.barChart('#ad-cat-chart', DATA.CATEGORIES.map(function (c, i) {
+        var vals = [1180, 620, 410, 460, 350, 220, 300];
+        return { label: c.name, value: vals[i], tip: vals[i] + ' bookings' };
+      }), { alt: true });
+
+      /* health */
+      document.getElementById('ad-health').innerHTML = [
+        ['Booking completion rate', 94, ''],
+        ['Slot utilisation', 78, 'progress__bar--lav'],
+        ['On-time appointments', 91, 'progress__bar--mint'],
+        ['Support satisfaction', 96, 'progress__bar--coral']
+      ].map(function (h) {
+        return '<div><div class="flex-between mb-2"><b class="text-sm" style="color:var(--text)">' + h[0] + '</b><b class="text-rose">' + h[1] + '%</b></div>' +
+          '<div class="progress"><div class="progress__bar ' + h[2] + '" data-value="' + h[1] + '"></div></div></div>';
+      }).join('');
+
+      /* export */
+      document.getElementById('ad-export').addEventListener('click', function () {
+        var rows = [['Salon', 'City', 'Rating', 'Reviews', 'Chairs', 'Status']];
+        DATA.SALONS.forEach(function (s) {
+          rows.push([s.name, s.city, s.rating, s.reviews, s.seats, s.open ? 'Active' : 'Closed']);
+        });
+        var csv = rows.map(function (r) { return r.map(function (c) { return '"' + String(c).replace(/"/g, '""') + '"'; }).join(','); }).join('\n');
+        var blob = new Blob([csv], { type: 'text/csv' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'lumiere-salons-export.csv';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        Toast.success('Salon data exported as CSV.', 'Export complete');
+      });
+    };
+  </script>
+</body>
+</html>

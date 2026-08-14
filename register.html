@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — Lumière Beauty Studio</title>
+  <meta name="description" content="Join Lumière — book faster, earn loyalty points on every visit and unlock member-only offers.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <main class="auth-page">
+    <div class="auth-visual">
+      <div class="auth-visual__img"><img data-img="auth-register" data-kind="makeup" data-w="900" data-h="1200" alt=""></div>
+      <a class="brand" href="index.html" aria-label="Stackly — home">
+        <img class="brand__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly" width="160" height="66">
+      </a>
+      <div class="auth-visual__body">
+        <h2>Your first visit is 25% off. Just saying.</h2>
+        <p>Create a free account and the FIRST25 code applies itself at your first checkout — plus loyalty points from day one.</p>
+        <ul class="auth-visual__points">
+          <li><i data-icon="check"></i>25% off your first appointment</li>
+          <li><i data-icon="check"></i>Points on every rupee you spend</li>
+          <li><i data-icon="check"></i>Wishlist stylists, salons &amp; services</li>
+        </ul>
+      </div>
+      <div class="auth-visual__foot"><p>Free forever. No card required. Cancel anytime — though nobody does.</p></div>
+    </div>
+
+    <div class="auth-form-wrap">
+      <div class="auth-form">
+        <a class="auth-back" href="index.html"><i data-icon="arrow-left"></i>Back to website</a>
+        <div class="auth-form__head">
+          <h1>Create account</h1>
+          <p>Two minutes now, better hair forever.</p>
+        </div>
+
+        <form id="reg-form" novalidate>
+          <div class="avatar-upload mb-6">
+            <div class="avatar-upload__preview" id="reg-avatar">
+              <i data-icon="user"></i>
+              <label class="avatar-upload__cam" for="reg-photo" aria-label="Upload profile photo"><i data-icon="camera"></i></label>
+            </div>
+            <div>
+              <b class="block text-md" style="color:var(--text)">Profile photo</b>
+              <span class="text-sm text-muted block mb-2">JPG or PNG, under 4 MB. Optional but friendly.</span>
+              <label class="btn btn--soft btn--xs" for="reg-photo">Choose photo</label>
+              <input type="file" id="reg-photo" accept="image/*" data-img-preview="#reg-avatar" hidden>
+            </div>
+          </div>
+
+          <div class="role-picker" role="radiogroup" aria-label="Account type">
+            <label><input type="radio" name="role" value="client" checked><i data-icon="user"></i><b>Client</b></label>
+            <label><input type="radio" name="role" value="owner"><i data-icon="store"></i><b>Salon Owner</b></label>
+            <label><input type="radio" name="role" value="stylist"><i data-icon="scissors"></i><b>Stylist</b></label>
+          </div>
+
+          <div class="form-grid form-grid--2">
+            <label class="field field--icon has-label"><span class="field__label">Full Name <span class="req">*</span></span>
+              <input class="input" id="rg-name" data-rules="required|name" placeholder="e.g. Priya Sharma" autocomplete="name">
+              <span class="field__icon"><i data-icon="user"></i></span></label>
+            <label class="field field--icon has-label"><span class="field__label">Phone <span class="req">*</span></span>
+              <input class="input" type="tel" id="rg-phone" data-rules="required|phone" placeholder="+91 98765 43210" autocomplete="tel">
+              <span class="field__icon"><i data-icon="phone"></i></span></label>
+            <label class="field field--icon form-row-full has-label"><span class="field__label">Email <span class="req">*</span></span>
+              <input class="input" type="email" id="rg-email" data-rules="required|email" placeholder="you@example.com" autocomplete="email">
+              <span class="field__icon"><i data-icon="mail"></i></span></label>
+            <label class="field field--icon has-label has-action"><span class="field__label">Password <span class="req">*</span></span>
+              <input class="input" type="password" id="rg-pass" data-rules="required|min:8" placeholder="8+ characters" autocomplete="new-password">
+              <span class="field__icon"><i data-icon="lock"></i></span>
+              <button type="button" class="field__action" data-pw-toggle="#rg-pass" aria-label="Show password"><i data-icon="eye"></i></button></label>
+            <label class="field field--icon has-label has-action"><span class="field__label">Confirm Password <span class="req">*</span></span>
+              <input class="input" type="password" id="rg-pass2" data-rules="required|match:#rg-pass" placeholder="Repeat password" autocomplete="new-password">
+              <span class="field__icon"><i data-icon="lock"></i></span>
+              <button type="button" class="field__action" data-pw-toggle="#rg-pass2" aria-label="Show password"><i data-icon="eye"></i></button></label>
+          </div>
+
+          <div class="pw-strength" data-pw-strength="#rg-pass" data-level="0">
+            <div class="pw-strength__bars"><i></i><i></i><i></i><i></i></div>
+            <span class="pw-strength__label">Use 8+ characters with a mix of types</span>
+          </div>
+          <ul class="pw-rules mt-3 mb-5">
+            <li data-pw-rule="length"><i><i data-icon="x-circle"></i></i>At least 8 characters</li>
+            <li data-pw-rule="case"><i><i data-icon="x-circle"></i></i>Upper &amp; lower case letters</li>
+            <li data-pw-rule="number"><i><i data-icon="x-circle"></i></i>At least one number</li>
+            <li data-pw-rule="symbol"><i><i data-icon="x-circle"></i></i>A symbol makes it stronger</li>
+          </ul>
+
+          <label class="check mb-6"><input type="checkbox" id="rg-terms" data-rules="required">
+            <span class="check__box"><i data-icon="check"></i></span>
+            <span>I agree to the <a href="faq.html">Terms of Service</a> and <a href="faq.html">Privacy Policy</a> <span class="req">*</span></span></label>
+
+          <button class="btn btn--primary btn--lg btn--block" type="submit" id="rg-submit"><i data-icon="user-plus"></i>Create My Account</button>
+        </form>
+
+        <div class="auth-divider">or sign up with</div>
+        <div class="social-auth">
+          <button type="button" data-social="Google"><i data-icon="google"></i>Google</button>
+          <button type="button" data-social="Apple"><i data-icon="apple"></i>Apple</button>
+          <button type="button" data-social="Facebook"><i data-icon="facebook"></i>Facebook</button>
+        </div>
+
+        <div class="auth-form__foot">
+          Already have an account? <a href="login.html">Sign in</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      Icon.hydrate(document);
+      Img.hydrate(document);
+
+      document.getElementById('reg-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!Validate.form(this)) {
+          Toast.error('A few fields need attention — they\'re highlighted below.', 'Almost there');
+          return;
+        }
+        var btn = document.getElementById('rg-submit');
+        btn.classList.add('is-loading');
+        var name = document.getElementById('rg-name').value.trim();
+        var email = document.getElementById('rg-email').value.trim();
+        var role = document.querySelector('input[name="role"]:checked').value;
+        setTimeout(function () {
+          Store.login(email, name, role === 'stylist' ? 'client' : role);
+          Toast.rose('Welcome to Lumière, ' + name.split(' ')[0] + '! Your FIRST25 discount is waiting.', 'Account created 🎉');
+          setTimeout(function () {
+            location.href = role === 'owner' ? 'salon-dashboard.html' : 'user-dashboard.html';
+          }, 1000);
+        }, 1000);
+      });
+
+      document.querySelectorAll('[data-social]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          Toast.info(b.dataset.social + ' sign-up connects to OAuth in production. Use the form for the demo.', b.dataset.social);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

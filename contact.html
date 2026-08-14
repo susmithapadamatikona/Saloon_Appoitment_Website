@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — Lumière Beauty Studio</title>
+  <meta name="description" content="Reach the Lumière care team — message, call, or visit any of our 8 studios. We reply within a couple of hours during salon time.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="ct-hero"></div>
+
+    <section class="section">
+      <div class="container">
+        <!-- contact tiles -->
+        <div class="grid grid-4 mb-9" id="ct-tiles"></div>
+
+        <div class="split split--40-60" style="align-items:start">
+          <!-- info column -->
+          <div data-reveal="right">
+            <span class="eyebrow eyebrow--line">Talk to us</span>
+            <h2 class="mb-4">We actually answer</h2>
+            <p class="lead mb-6">No ticket numbers, no "your call is important to us" loops. A real person from the care team reads every message — usually within two hours during salon time.</p>
+
+            <div class="card card--pad mb-5">
+              <h3 class="text-md mb-4" style="display:flex;align-items:center;gap:9px"><i data-icon="clock" class="text-rose" data-icon-size="18"></i>Care team hours</h3>
+              <ul class="hours-table" id="ct-hours" style="border:0"></ul>
+            </div>
+
+            <div class="card card--pad">
+              <h3 class="text-md mb-3">Follow the glow</h3>
+              <p class="text-sm text-muted mb-4">Daily transformations, behind-the-scenes and slot alerts.</p>
+              <div class="socials" id="ct-socials"></div>
+            </div>
+          </div>
+
+          <!-- form -->
+          <div class="contact-form-card" data-reveal="left">
+            <h2 class="mb-2" style="font-size:var(--fs-2xl)">Send a message</h2>
+            <p class="text-muted mb-6">Fill this in and we'll get back to you at the email you provide.</p>
+            <form id="contact-form" novalidate>
+              <div class="form-grid form-grid--2">
+                <label class="field field--icon has-label"><span class="field__label">Full Name <span class="req">*</span></span>
+                  <input class="input" data-rules="required|name" placeholder="e.g. Priya Sharma" autocomplete="name">
+                  <span class="field__icon"><i data-icon="user"></i></span></label>
+                <label class="field field--icon has-label"><span class="field__label">Email <span class="req">*</span></span>
+                  <input class="input" type="email" data-rules="required|email" placeholder="you@example.com" autocomplete="email">
+                  <span class="field__icon"><i data-icon="mail"></i></span></label>
+                <label class="field field--icon has-label"><span class="field__label">Phone <small class="text-faint">(optional)</small></span>
+                  <input class="input" type="tel" data-rules="phone" placeholder="+91 98765 43210" autocomplete="tel">
+                  <span class="field__icon"><i data-icon="phone"></i></span></label>
+                <label class="field has-label"><span class="field__label">Subject <span class="req">*</span></span>
+                  <select class="select" data-rules="required" id="ct-subject">
+                    <option value="">Choose a topic…</option>
+                    <option>Booking help</option>
+                    <option>Reschedule or cancellation</option>
+                    <option>Membership & billing</option>
+                    <option>Bridal enquiry</option>
+                    <option>Feedback or complaint</option>
+                    <option>Careers</option>
+                    <option>Something else</option>
+                  </select></label>
+                <label class="field form-row-full has-label"><span class="field__label">Message <span class="req">*</span></span>
+                  <textarea class="textarea" data-rules="required|min:12|max:800" placeholder="Tell us what's on your mind — the more detail, the faster we can help."></textarea>
+                  <span class="field__hint">Please don't include card numbers or passwords.</span></label>
+              </div>
+              <div class="flex-between flex-wrap mt-5">
+                <label class="check"><input type="checkbox" id="ct-copy"><span class="check__box"><i data-icon="check"></i></span>Email me a copy</label>
+                <button class="btn btn--primary btn--lg" type="submit" id="ct-submit"><i data-icon="send"></i>Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- map -->
+        <div class="mt-10" data-reveal="up">
+          <div class="sec-head sec-head--center">
+            <span class="eyebrow">Find us</span>
+            <h2>Our flagship, on the map</h2>
+          </div>
+          <div class="map-canvas" style="border-radius:var(--r-2xl);min-height:380px;border:1px solid var(--line)" id="ct-map" role="img" aria-label="Stylised map showing the Lumière Bandra flagship">
+            <div class="map-legend"><div><i style="background:var(--primary-rose)"></i>14 Rosewood Avenue, Bandra West</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      var B = DATA.BRAND;
+      document.getElementById('ct-hero').outerHTML = UI.pageHero(
+        'Say <span class="grad-text">hello</span>',
+        'Questions, bookings, feedback or just a compliment for your stylist — all welcome here.',
+        [['Contact']]
+      );
+
+      document.getElementById('ct-tiles').innerHTML = [
+        ['map-pin', 'Visit us', B.address, '', 'salons.html', 'All locations'],
+        ['phone', 'Call us', B.phone, 'lav', 'tel:' + B.phoneHref, 'Tap to call'],
+        ['mail', 'Email us', B.email, 'coral', 'mailto:' + B.email, 'Tap to email'],
+        ['message-circle', 'Live chat', 'In-app chat, 9 AM – 9 PM', 'mint', '#contact-form', 'Or message below']
+      ].map(function (t, i) {
+        return '<div class="contact-tile" data-reveal="up" data-reveal-delay="' + (i * 0.07) + '">' +
+          '<span class="icon-box icon-box--md' + (t[3] ? ' icon-box--' + t[3] : ' icon-box--grad') + '">' + Icon.get(t[0]) + '</span>' +
+          '<div><h3>' + t[1] + '</h3><p>' + t[2] + '</p><a href="' + t[4] + '" class="text-sm fw-600">' + t[5] + ' →</a></div></div>';
+      }).join('');
+
+      var todayDow = new Date().getDay();
+      document.getElementById('ct-hours').innerHTML = DATA.WORKING_HOURS.map(function (w, i) {
+        var isToday = ((i + 1) % 7) === todayDow;
+        return '<li class="' + (isToday ? 'is-today' : '') + '" style="padding-inline:0"><b>' + w.d + (isToday ? '<span class="today-tag">Today</span>' : '') + '</b><span>' + w.h + '</span></li>';
+      }).join('');
+
+      document.getElementById('ct-socials').innerHTML = B.socials.map(function (s) {
+        return '<a href="' + s.url + '" aria-label="' + s.label + '" onclick="Toast.info(\'Our ' + s.label + ' opens in the full release.\');return false;">' + Icon.get(s.icon) + '</a>';
+      }).join('');
+
+      /* map pin */
+      var map = document.getElementById('ct-map');
+      var pin = document.createElement('div');
+      pin.className = 'map-pin is-active';
+      pin.style.left = '46%';
+      pin.style.top = '52%';
+      pin.innerHTML = '<span class="map-pin__label">Lumière Bandra Flagship</span>' +
+        '<span class="map-pin__marker">' + Icon.get('scissors') + '</span><span class="map-pin__pulse"></span>';
+      map.appendChild(pin);
+
+      /* form */
+      document.getElementById('contact-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!Validate.form(this)) {
+          Toast.error('A few fields need attention before we can send this.', 'Check the form');
+          return;
+        }
+        var btn = document.getElementById('ct-submit');
+        btn.classList.add('is-loading');
+        var form = this;
+        setTimeout(function () {
+          btn.classList.remove('is-loading');
+          var copy = document.getElementById('ct-copy').checked;
+          form.reset();
+          form.querySelectorAll('.is-valid').forEach(function (f) { f.classList.remove('is-valid'); });
+          Toast.success('Message sent! We\'ll reply within a couple of hours during salon time.' +
+            (copy ? ' A copy is on its way to your inbox.' : ''), 'Thank you 💌');
+        }, 1000);
+      });
+    };
+  </script>
+</body>
+</html>

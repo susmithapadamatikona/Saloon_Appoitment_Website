@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Dashboard — Lumière Beauty Studio</title>
+  <meta name="description" content="Your Lumière dashboard — upcoming appointments, favourites, loyalty points and activity.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div class="dash">
+    <aside class="dash-side" id="dash-side" aria-label="Dashboard navigation"></aside>
+    <div class="dash-main">
+      <div class="dash-top" id="dash-top"></div>
+      <div class="dash-body">
+
+        <!-- welcome -->
+        <div class="dash-welcome" data-reveal="up">
+          <div>
+            <h2 id="ud-hello">Hello!</h2>
+            <p id="ud-next">Checking your schedule…</p>
+          </div>
+          <div class="dash-welcome__actions">
+            <a class="btn btn--white" href="booking.html"><i data-icon="calendar-plus"></i>New Booking</a>
+            <a class="btn btn--on-dark" href="offers.html"><i data-icon="gift"></i>View Offers</a>
+          </div>
+        </div>
+
+        <!-- stats -->
+        <div class="stat-cards" id="ud-stats"></div>
+
+        <div class="dash-grid dash-grid--2-1 mb-6">
+          <!-- upcoming appointments -->
+          <div class="panel">
+            <div class="panel__head">
+              <h3><i data-icon="calendar-check"></i>Upcoming appointments</h3>
+              <a class="btn btn--soft btn--xs" href="my-appointments.html">Manage all</a>
+            </div>
+            <div class="panel__body" id="ud-upcoming" style="display:grid;gap:12px"></div>
+          </div>
+
+          <!-- loyalty -->
+          <div style="display:grid;gap:16px;align-content:start" id="ud-right-col">
+            <div class="loyalty-card" id="loyalty">
+              <div class="flex-between mb-3">
+                <span class="loyalty-tier"><i data-icon="crown"></i><span id="ud-tier">Gold</span> Member</span>
+                <i data-icon="sparkles"></i>
+              </div>
+              <div class="loyalty-card__pts" id="ud-points">0</div>
+              <small>loyalty points · 100 pts = ₹100 off</small>
+              <div class="progress"><div class="progress__bar" id="ud-tier-bar" data-value="62"></div></div>
+              <small id="ud-tier-note">760 points to Platinum</small>
+              <div class="mt-4"><button class="btn btn--white btn--sm" id="ud-redeem"><i data-icon="gift"></i>Redeem Points</button></div>
+            </div>
+
+            <div class="panel">
+              <div class="panel__head"><h3><i data-icon="calendar"></i>This month</h3></div>
+              <div class="panel__body" style="padding:12px"><div id="ud-mini-cal"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- favourites -->
+        <div class="panel mb-6" id="favourites">
+          <div class="panel__head">
+            <h3><i data-icon="heart"></i>Your favourites</h3>
+            <div class="tabs" id="ud-fav-tabs">
+              <button type="button" class="tab is-active" data-ftype="service">Services</button>
+              <button type="button" class="tab" data-ftype="stylist">Stylists</button>
+              <button type="button" class="tab" data-ftype="salon">Salons</button>
+            </div>
+          </div>
+          <div class="panel__body" id="ud-favs"></div>
+        </div>
+
+        <div class="dash-grid dash-grid--1-1">
+          <!-- activity -->
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="activity"></i>Recent activity</h3></div>
+            <div class="panel__body feed" id="ud-feed" style="padding-block:8px"></div>
+          </div>
+          <!-- recommended -->
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="sparkles"></i>Recommended for you</h3></div>
+            <div class="panel__body" id="ud-reco" style="display:grid;gap:12px"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      var user = Dash.mount({ role: 'client', active: 'dashboard', title: 'Dashboard', sub: 'Your beauty life, organised' });
+
+      document.getElementById('ud-hello').textContent = 'Hello, ' + user.name.split(' ')[0] + ' 👋';
+
+      var appts = Store.getAppointments();
+      var upcoming = appts.filter(function (a) { return a.status === 'upcoming'; })
+        .sort(function (a, b) { return a.date.localeCompare(b.date); });
+      var completed = appts.filter(function (a) { return a.status === 'completed'; });
+
+      if (upcoming.length) {
+        var nxt = upcoming[0];
+        var ns = DATA.service(nxt.serviceId);
+        document.getElementById('ud-next').innerHTML = 'Next up: <b>' + (ns ? ns.name : 'appointment') + '</b> on ' +
+          DATA.dateShort(nxt.date + 'T00:00:00') + ' at ' + nxt.time + '. We\'ll remind you the evening before.';
+      } else {
+        document.getElementById('ud-next').textContent = 'Nothing booked yet — your calendar (and your hair) deserve better.';
+      }
+
+      /* stats */
+      var wl = Wishlist.counts();
+      document.getElementById('ud-stats').innerHTML =
+        Dash.statCard({ label: 'Upcoming', count: upcoming.length, icon: 'calendar-check', delta: 12, spark: [1, 2, 1, 3, 2, 3, upcoming.length + 1] }) +
+        Dash.statCard({ label: 'Completed visits', count: completed.length, icon: 'check-circle', tone: 'mint', delta: 8, spark: [1, 1, 2, 2, 3, 3, 4], sparkColor: '#4DB6AC' }) +
+        Dash.statCard({ label: 'Favourite salons', count: wl.salons + wl.stylists + wl.services, icon: 'heart', tone: 'lav', spark: [0, 1, 1, 2, 3, 3, 4], sparkColor: '#9575CD' }) +
+        Dash.statCard({ label: 'Loyalty points', count: Store.getPoints(), icon: 'award', tone: 'coral', delta: 24, spark: [400, 550, 700, 820, 980, 1100, 1240], sparkColor: '#FFB74D' });
+      Dash.drawSparks(document);
+
+      /* upcoming list */
+      var uh = document.getElementById('ud-upcoming');
+      uh.innerHTML = upcoming.length ? upcoming.map(UI.apptCard).join('')
+        : '<div class="empty-state"><span class="icon-box icon-box--lg">' + Icon.get('calendar-plus') + '</span>' +
+          '<h3>No upcoming appointments</h3><p>Book one now — Tuesday mornings are blissfully quiet.</p>' +
+          '<a class="btn btn--primary" href="booking.html">Book Appointment</a></div>';
+
+      /* wire cancel/reschedule quick actions to management page */
+      uh.addEventListener('click', function (e) {
+        if (e.target.closest('[data-appt-cancel],[data-appt-reschedule]')) {
+          location.href = 'my-appointments.html';
+        }
+      });
+
+      /* loyalty */
+      var pts = Store.getPoints();
+      var el = document.getElementById('ud-points');
+      el.dataset.count = pts;
+      App.animateCounter(el);
+      document.getElementById('ud-tier').textContent = user.tier || 'Gold';
+      var toNext = Math.max(0, 2000 - pts);
+      document.getElementById('ud-tier-bar').dataset.value = Math.min(100, Math.round(pts / 20));
+      document.getElementById('ud-tier-note').textContent = toNext ? toNext + ' points to Platinum' : 'Platinum unlocked!';
+      document.getElementById('ud-redeem').addEventListener('click', function () {
+        Modal.confirm({
+          title: 'Redeem ' + Math.floor(pts / 100) * 100 + ' points?',
+          message: 'That\'s <b>₹' + Math.floor(pts / 100) * 100 + ' off</b> your next booking. Points apply automatically at checkout.',
+          confirmText: 'Redeem now', icon: 'gift',
+          onConfirm: function () { Toast.rose('Points ready! They\'ll apply on your next booking summary.', 'Redeemed 🎁'); }
+        });
+      });
+
+      /* mini calendar */
+      new Cal(document.getElementById('ud-mini-cal'), {
+        mini: true,
+        onSelect: function (ds) {
+          Toast.info('Opening booking for ' + DATA.dateShort(ds + 'T00:00:00') + '…');
+          setTimeout(function () { location.href = 'booking.html'; }, 700);
+        }
+      });
+
+      /* favourites */
+      function renderFavs(type) {
+        var items = Wishlist.items(type);
+        var host = document.getElementById('ud-favs');
+        if (!items.length) {
+          host.innerHTML = '<div class="empty-state" style="padding:32px"><span class="icon-box icon-box--lg">' + Icon.get('heart') + '</span>' +
+            '<h3>No favourite ' + type + 's yet</h3><p>Tap the ♥ on any ' + type + ' card to save it here.</p>' +
+            '<a class="btn btn--soft" href="' + (type === 'service' ? 'services' : type === 'stylist' ? 'stylists' : 'salons') + '.html">Browse ' + type + 's</a></div>';
+        } else {
+          host.innerHTML = '<div class="grid grid-2" style="gap:12px">' + items.map(function (x) {
+            var href = type === 'service' ? 'service-details.html?s=' + x.slug : type === 'stylist' ? 'stylist-details.html?s=' + x.slug : 'salon-details.html?s=' + x.slug;
+            var img = Img.get(x.slug, type === 'service' ? x.kind : type === 'stylist' ? 'person' : 'salon', 120, 120);
+            var sub = type === 'service' ? DATA.money(x.price) + ' · ' + DATA.duration(x.duration) : type === 'stylist' ? x.role : x.area + ', ' + x.city;
+            return '<a class="stylist-mini" href="' + href + '">' +
+              '<span class="avatar avatar--md"' + (type !== 'stylist' ? ' style="border-radius:12px"' : '') + '><img src="' + img + '" alt=""' + (type !== 'stylist' ? ' style="border-radius:12px"' : '') + '></span>' +
+              '<span class="stylist-mini__info"><b>' + x.name + '</b><span>' + sub + '</span></span>' +
+              '<span class="stylist-mini__right"><span class="rating__value">★ ' + x.rating + '</span></span></a>';
+          }).join('') + '</div>';
+        }
+        Icon.hydrate(host);
+      }
+      renderFavs('service');
+      document.getElementById('ud-fav-tabs').addEventListener('click', function (e) {
+        var t = e.target.closest('[data-ftype]');
+        if (!t) return;
+        this.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('is-active'); });
+        t.classList.add('is-active');
+        renderFavs(t.dataset.ftype);
+      });
+
+      /* activity feed */
+      document.getElementById('ud-feed').innerHTML = [
+        ['calendar-check', 'mint', 'Your <b>Hair Spa Ritual</b> was confirmed for ' + (upcoming[0] ? DATA.dateShort(upcoming[0].date + 'T00:00:00') : 'soon') + '.', '2 hours ago'],
+        ['award', 'coral', 'You earned <b>240 points</b> from your Signature Facial visit.', 'Yesterday'],
+        ['heart', 'rose', 'You saved <b>Aarohi Mehta</b> to favourites.', '2 days ago'],
+        ['star', 'lav', 'You rated your Luxury Manicure <b>4 stars</b>. Ritika says thanks!', '5 days ago'],
+        ['gift', 'sky', 'Coupon <b>FIRST25</b> was applied — you saved ₹175.', '1 week ago']
+      ].map(function (f) {
+        var toneBg = { mint: 'rgba(77,182,172,.15);color:#2E8B82', coral: 'rgba(255,183,77,.2);color:#B4741A', rose: 'var(--light-pink);color:var(--primary-rose)', lav: 'rgba(149,117,205,.15);color:#9575CD', sky: 'rgba(100,181,246,.16);color:#2F79B8' }[f[1]];
+        return '<div class="feed-item"><span class="feed-item__icon" style="background:' + toneBg + '">' + Icon.get(f[0]) + '</span>' +
+          '<div><p>' + f[2] + '</p><time>' + f[3] + '</time></div></div>';
+      }).join('');
+
+      /* recommendations */
+      document.getElementById('ud-reco').innerHTML = DATA.SERVICES.filter(function (s) { return s.trending; }).slice(0, 3).map(function (s) {
+        return '<a class="stylist-mini" href="service-details.html?s=' + s.slug + '">' +
+          '<span class="avatar avatar--md" style="border-radius:12px"><img src="' + Img.get(s.slug, s.kind, 120, 120) + '" alt="" style="border-radius:12px"></span>' +
+          '<span class="stylist-mini__info"><b>' + s.name + '</b><span>Trending · ★ ' + s.rating + ' · ' + DATA.duration(s.duration) + '</span></span>' +
+          '<span class="stylist-mini__right"><span class="price"><span class="price__cur">₹</span><span class="price__val" style="font-size:var(--fs-md)">' + s.price.toLocaleString('en-IN') + '</span></span></span></a>';
+      }).join('');
+    };
+  </script>
+</body>
+</html>

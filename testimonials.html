@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials — Lumière Beauty Studio</title>
+  <meta name="description" content="Real client stories from verified Lumière appointments — unedited reviews across hair, skin, makeup, nails, spa and bridal.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="ts-hero"></div>
+
+    <section class="section">
+      <div class="container">
+        <!-- summary band -->
+        <div class="rating-summary mb-9" data-reveal="up">
+          <div class="rating-summary__score">
+            <div class="n">4.9</div>
+            <div id="ts-stars"></div>
+            <small>from 10,482 verified reviews</small>
+          </div>
+          <div class="rating-bars" id="ts-bars"></div>
+        </div>
+
+        <div class="toolbar">
+          <div class="tabs" id="ts-tabs" role="tablist" aria-label="Filter reviews"></div>
+          <div class="toolbar__count" id="ts-count" aria-live="polite"></div>
+        </div>
+
+        <div class="grid grid-3" id="ts-grid" aria-live="polite"></div>
+
+        <!-- write review CTA -->
+        <div class="mt-10">
+          <div class="cta-band" style="margin-bottom:0">
+            <div class="cta-band__inner">
+              <div>
+                <h2>Been to Lumière recently?</h2>
+                <p>Reviews from verified visits are the backbone of how new clients choose. Two minutes of typing, endless good karma.</p>
+              </div>
+              <div class="cta-band__actions">
+                <a class="btn btn--white btn--lg" href="my-appointments.html"><i data-icon="star"></i>Rate a Past Visit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      document.getElementById('ts-hero').outerHTML = UI.pageHero(
+        'Stories from the <span class="grad-text">chair</span>',
+        'Every review below comes from a verified, completed appointment. We publish them unedited.',
+        [['Testimonials']]
+      );
+
+      document.getElementById('ts-stars').innerHTML = Icon.stars(4.9, 'stars--lg');
+      document.getElementById('ts-bars').innerHTML = [82, 13, 3, 1, 1].map(function (p, i) {
+        return '<div class="rating-bar"><span>' + (5 - i) + ' ' + Icon.get('star') + '</span>' +
+          '<div class="progress progress--thin"><div class="progress__bar" data-value="' + p + '"></div></div><b>' + p + '%</b></div>';
+      }).join('');
+
+      /* filter by service category derived from the service name */
+      var svcOf = {};
+      DATA.TESTIMONIALS.forEach(function (t) {
+        var s = DATA.SERVICES.filter(function (x) { return x.name === t.service; })[0];
+        svcOf[t.id] = s ? s.cat : 'other';
+      });
+
+      var cats = ['all'];
+      DATA.TESTIMONIALS.forEach(function (t) {
+        if (cats.indexOf(svcOf[t.id]) === -1) cats.push(svcOf[t.id]);
+      });
+
+      document.getElementById('ts-tabs').innerHTML = cats.map(function (c, i) {
+        var label = c === 'all' ? 'All Reviews' : c === 'other' ? 'Other' : DATA.category(c).name;
+        return '<button type="button" class="tab' + (i === 0 ? ' is-active' : '') + '" data-tcat="' + c + '" role="tab" aria-selected="' + (i === 0) + '">' + label + '</button>';
+      }).join('');
+
+      function render(cat) {
+        var list = DATA.TESTIMONIALS.filter(function (t) { return cat === 'all' || svcOf[t.id] === cat; });
+        var grid = document.getElementById('ts-grid');
+        grid.innerHTML = list.map(UI.testimonialCard).join('');
+        document.getElementById('ts-count').innerHTML = '<b>' + list.length + '</b> review' + (list.length === 1 ? '' : 's') + ' shown';
+        Icon.hydrate(grid);
+        grid.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-revealed'); });
+      }
+
+      document.getElementById('ts-tabs').addEventListener('click', function (e) {
+        var t = e.target.closest('[data-tcat]');
+        if (!t) return;
+        this.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('is-active'); x.setAttribute('aria-selected', 'false'); });
+        t.classList.add('is-active');
+        t.setAttribute('aria-selected', 'true');
+        render(t.dataset.tcat);
+      });
+
+      render('all');
+    };
+  </script>
+</body>
+</html>

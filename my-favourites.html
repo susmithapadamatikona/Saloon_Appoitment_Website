@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Favourites — Lumière Beauty Studio</title>
+  <meta name="description" content="Your saved Lumière services, stylists and salons — everything you've hearted, in one place.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div class="dash">
+    <aside class="dash-side" id="dash-side" aria-label="Dashboard navigation"></aside>
+    <div class="dash-main">
+      <div class="dash-top" id="dash-top"></div>
+      <div class="dash-body">
+
+        <div class="stat-cards" id="mf-stats"></div>
+
+        <div class="panel mb-6">
+          <div class="panel__head">
+            <h3><i data-icon="heart"></i>Your favourites</h3>
+            <div class="tabs" id="mf-tabs">
+              <button type="button" class="tab is-active" data-ftype="service">Services</button>
+              <button type="button" class="tab" data-ftype="stylist">Stylists</button>
+              <button type="button" class="tab" data-ftype="salon">Salons</button>
+            </div>
+          </div>
+          <div class="panel__body" id="mf-list"></div>
+        </div>
+
+        <div class="dash-grid dash-grid--1-1">
+          <div class="panel">
+            <div class="panel__head">
+              <h3><i data-icon="sparkles"></i>You might also love</h3>
+              <a class="btn btn--soft btn--xs" href="services.html">Browse all</a>
+            </div>
+            <div class="panel__body" id="mf-reco" style="display:grid;gap:12px"></div>
+          </div>
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="help-circle"></i>How favourites work</h3></div>
+            <div class="panel__body">
+              <ul class="check-list">
+                <li><i data-icon="check"></i>Tap the <b>♥</b> on any service, stylist or salon card to save it here.</li>
+                <li><i data-icon="check"></i>Favourites sync across this device — no account juggling needed.</li>
+                <li><i data-icon="check"></i>Book a saved service in <b>two taps</b> straight from this list.</li>
+                <li><i data-icon="check"></i>We'll flag price drops and offers on your saved services first.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      Dash.mount({ role: 'client', active: 'wishlist', title: 'Saved Favourites', sub: 'Everything you\'ve hearted, ready to rebook' });
+
+      /* stats row */
+      var wl = Wishlist.counts();
+      document.getElementById('mf-stats').innerHTML =
+        Dash.statCard({ label: 'Saved services', count: wl.services, icon: 'sparkles' }) +
+        Dash.statCard({ label: 'Saved stylists', count: wl.stylists, icon: 'scissors', tone: 'lav' }) +
+        Dash.statCard({ label: 'Saved salons', count: wl.salons, icon: 'store', tone: 'mint' }) +
+        Dash.statCard({ label: 'Total favourites', count: wl.services + wl.stylists + wl.salons, icon: 'heart', tone: 'coral' });
+
+      /* recommendations — trending services not yet saved */
+      var savedSlugs = Wishlist.items('service').map(function (x) { return x.slug; });
+      document.getElementById('mf-reco').innerHTML = DATA.SERVICES
+        .filter(function (s) { return s.trending && savedSlugs.indexOf(s.slug) === -1; })
+        .slice(0, 3).map(function (s) {
+          return '<a class="stylist-mini" href="service-details.html?s=' + s.slug + '">' +
+            '<span class="avatar avatar--md" style="border-radius:12px"><img src="' + Img.get(s.slug, s.kind, 120, 120) + '" alt="" style="border-radius:12px"></span>' +
+            '<span class="stylist-mini__info"><b>' + s.name + '</b><span>Trending · ★ ' + s.rating + ' · ' + DATA.duration(s.duration) + '</span></span>' +
+            '<span class="stylist-mini__right"><span class="rating__value">' + DATA.money(s.price) + '</span></span></a>';
+        }).join('');
+
+      function renderFavs(type) {
+        var items = Wishlist.items(type);
+        var host = document.getElementById('mf-list');
+        if (!items.length) {
+          host.innerHTML = '<div class="empty-state" style="padding:32px"><span class="icon-box icon-box--lg">' + Icon.get('heart') + '</span>' +
+            '<h3>No favourite ' + type + 's yet</h3><p>Tap the ♥ on any ' + type + ' card to save it here.</p>' +
+            '<a class="btn btn--soft" href="' + (type === 'service' ? 'services' : type === 'stylist' ? 'stylists' : 'salons') + '.html">Browse ' + type + 's</a></div>';
+        } else {
+          host.innerHTML = '<div class="grid grid-2" style="gap:12px">' + items.map(function (x) {
+            var href = type === 'service' ? 'service-details.html?s=' + x.slug : type === 'stylist' ? 'stylist-details.html?s=' + x.slug : 'salon-details.html?s=' + x.slug;
+            var img = Img.get(x.slug, type === 'service' ? x.kind : type === 'stylist' ? 'person' : 'salon', 120, 120);
+            var sub = type === 'service' ? DATA.money(x.price) + ' · ' + DATA.duration(x.duration) : type === 'stylist' ? x.role : x.area + ', ' + x.city;
+            return '<a class="stylist-mini" href="' + href + '">' +
+              '<span class="avatar avatar--md"' + (type !== 'stylist' ? ' style="border-radius:12px"' : '') + '><img src="' + img + '" alt=""' + (type !== 'stylist' ? ' style="border-radius:12px"' : '') + '></span>' +
+              '<span class="stylist-mini__info"><b>' + x.name + '</b><span>' + sub + '</span></span>' +
+              '<span class="stylist-mini__right"><span class="rating__value">★ ' + x.rating + '</span></span></a>';
+          }).join('') + '</div>';
+        }
+        Icon.hydrate(host);
+      }
+
+      renderFavs('service');
+      document.getElementById('mf-tabs').addEventListener('click', function (e) {
+        var t = e.target.closest('[data-ftype]');
+        if (!t) return;
+        this.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('is-active'); });
+        t.classList.add('is-active');
+        renderFavs(t.dataset.ftype);
+      });
+    };
+  </script>
+</body>
+</html>

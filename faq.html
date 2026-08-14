@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Lumière Beauty Studio</title>
+  <meta name="description" content="Answers to common questions about booking, rescheduling, payments, services and membership at Lumière.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="fq-hero"></div>
+
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="field field--icon mb-6" data-reveal="up">
+          <input class="input" type="search" id="fq-search" placeholder="Search a question — e.g. 'cancel', 'refund', 'patch test'…" aria-label="Search FAQ" style="padding-block:16px">
+          <span class="field__icon"><i data-icon="search"></i></span>
+        </div>
+
+        <div class="tabs tabs--pill tabs--center mb-7" id="fq-tabs" role="tablist" aria-label="FAQ categories"></div>
+
+        <div class="accordion" id="fq-list" aria-live="polite"></div>
+
+        <div class="note-box note-box--rose mt-8" data-reveal="up">
+          <i data-icon="headphones"></i>
+          <span><b>Still stuck?</b> Our care team answers within a couple of hours during salon time — <a href="contact.html">send us a message</a> or call <a href="tel:+919876543210">+91 98765 43210</a>.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      document.getElementById('fq-hero').outerHTML = UI.pageHero(
+        'Questions, <span class="grad-text">answered</span>',
+        'Booking, payments, services and membership — if it\'s not here, our care team is one message away.',
+        [['FAQ']]
+      );
+
+      var state = { cat: 'all', q: '' };
+      var cats = ['all'];
+      DATA.FAQS.forEach(function (f) { if (cats.indexOf(f.cat) === -1) cats.push(f.cat); });
+
+      document.getElementById('fq-tabs').innerHTML = cats.map(function (c, i) {
+        var n = c === 'all' ? DATA.FAQS.length : DATA.FAQS.filter(function (f) { return f.cat === c; }).length;
+        return '<button type="button" class="tab' + (i === 0 ? ' is-active' : '') + '" data-fcat="' + c + '" role="tab" aria-selected="' + (i === 0) + '">' +
+          (c === 'all' ? 'All' : c) + '<span class="tab__count">' + n + '</span></button>';
+      }).join('');
+
+      function render() {
+        var list = DATA.FAQS.filter(function (f) {
+          var okC = state.cat === 'all' || f.cat === state.cat;
+          var okQ = !state.q || (f.q + ' ' + f.a).toLowerCase().indexOf(state.q) > -1;
+          return okC && okQ;
+        });
+        var host = document.getElementById('fq-list');
+        host.innerHTML = list.length ? list.map(function (f, i) {
+          return '<div class="acc-item' + (i === 0 && !state.q ? ' is-open' : state.q ? ' is-open' : '') + '" data-reveal="up" data-reveal-delay="' + Math.min(i * 0.04, 0.3) + '">' +
+            '<button class="acc-trigger" aria-expanded="true"><span><span class="badge badge--rose" style="margin-right:10px">' + f.cat + '</span>' + f.q + '</span>' +
+            '<span class="acc-icon">' + Icon.get('chevron-down') + '</span></button>' +
+            '<div class="acc-body"><div><p>' + f.a + '</p></div></div></div>';
+        }).join('') :
+          '<div class="empty-state"><span class="icon-box icon-box--lg">' + Icon.get('help-circle') + '</span>' +
+          '<h3>No matching questions</h3><p>Try another word, or ask us directly — we reply fast.</p>' +
+          '<a class="btn btn--primary" href="contact.html">Contact Support</a></div>';
+        Icon.hydrate(host);
+        host.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-revealed'); });
+      }
+
+      document.getElementById('fq-tabs').addEventListener('click', function (e) {
+        var t = e.target.closest('[data-fcat]');
+        if (!t) return;
+        this.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('is-active'); x.setAttribute('aria-selected', 'false'); });
+        t.classList.add('is-active');
+        t.setAttribute('aria-selected', 'true');
+        state.cat = t.dataset.fcat;
+        render();
+      });
+      document.getElementById('fq-search').addEventListener('input', Search.debounce(function (e) {
+        state.q = e.target.value.trim().toLowerCase();
+        render();
+      }, 160));
+
+      render();
+    };
+  </script>
+</body>
+</html>

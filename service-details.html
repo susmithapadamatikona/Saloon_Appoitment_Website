@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service Details — Lumière Beauty Studio</title>
+  <meta name="description" content="Full details, pricing, included steps, available stylists and live time slots for this Lumière service.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="sd-hero"></div>
+
+    <section class="section">
+      <div class="container">
+        <div class="detail-layout">
+
+          <!-- ========================= main column ========================= -->
+          <div>
+            <!-- gallery -->
+            <div class="svc-detail__gallery mb-7" data-lightbox-group>
+              <div class="svc-detail__main-img" id="sd-main-img"></div>
+              <div class="svc-detail__thumbs" id="sd-thumbs"></div>
+            </div>
+
+            <!-- title block -->
+            <div class="flex-between flex-wrap mb-5">
+              <div>
+                <div class="flex items-center gap-3 flex-wrap mb-3" id="sd-badges"></div>
+                <h1 style="font-size:var(--fs-3xl)" id="sd-title">Loading…</h1>
+              </div>
+              <button class="btn-icon btn-icon--lg btn-fav" id="sd-fav" aria-label="Save to wishlist"><i data-icon="heart"></i></button>
+            </div>
+            <div class="flex items-center gap-5 flex-wrap mb-6" id="sd-meta"></div>
+
+            <p class="lead mb-7" id="sd-desc"></p>
+
+            <!-- benefits -->
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Why clients love it</h2>
+            <div class="grid grid-2 mb-8" id="sd-benefits" style="gap:14px"></div>
+
+            <!-- what's included -->
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">What's included</h2>
+            <ul class="spec-list mb-8" id="sd-includes"></ul>
+
+            <!-- before / after -->
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Before &amp; after</h2>
+            <div class="ba-slider mb-3" id="sd-ba" aria-label="Before and after comparison — drag to compare">
+              <img id="sd-ba-before" alt="Before treatment">
+              <img class="ba-slider__after" id="sd-ba-after" alt="After treatment">
+              <div class="ba-slider__handle"><div class="ba-slider__grip"><i data-icon="move-horizontal"></i></div></div>
+              <span class="ba-label ba-label--before">Before</span>
+              <span class="ba-label ba-label--after">After</span>
+            </div>
+            <p class="text-sm text-faint mb-8">Drag across the image to compare. Results from a single session; individual results vary.</p>
+
+            <!-- stylists -->
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Available stylists</h2>
+            <div class="grid mb-8" id="sd-stylists" style="gap:12px"></div>
+
+            <!-- salons -->
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Available at</h2>
+            <div class="grid grid-2 mb-8" id="sd-salons" style="gap:12px"></div>
+
+            <!-- reviews -->
+            <h2 class="mb-5" style="font-size:var(--fs-xl)">Client reviews</h2>
+            <div class="rating-summary mb-6" id="sd-rating-summary"></div>
+            <div id="sd-reviews"></div>
+          </div>
+
+          <!-- ========================= booking aside ======================= -->
+          <aside>
+            <div class="booking-aside" data-reveal="left">
+              <div class="booking-aside__head">
+                <div class="text-xs text-deep fw-700 uppercase mb-2">Book this service</div>
+                <div class="price price--lg" id="sd-price"></div>
+                <div class="text-sm mt-1 on-tint-muted" id="sd-price-note"></div>
+              </div>
+              <div class="booking-aside__body">
+                <div id="sd-aside-rows"></div>
+
+                <div class="mt-5 mb-4">
+                  <div class="field__label mb-3">Next available dates</div>
+                  <div class="date-strip" id="sd-dates"></div>
+                </div>
+                <div class="mb-5">
+                  <div class="field__label mb-3">Popular time slots</div>
+                  <div class="slots-grid" id="sd-slots" style="grid-template-columns:repeat(3,1fr)"></div>
+                </div>
+
+                <a class="btn btn--primary btn--lg btn--block" id="sd-book-cta" href="booking.html">
+                  <i data-icon="calendar-plus"></i>Book Appointment
+                </a>
+                <div class="secure-note"><i data-icon="shield-check"></i>Free cancellation up to 4 hours before</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- related -->
+        <div class="mt-10">
+          <div class="sec-head sec-head--split">
+            <div class="sec-head__text">
+              <span class="eyebrow eyebrow--line">You may also like</span>
+              <h2>Related services</h2>
+            </div>
+            <a class="btn btn--outline" href="services.html">All Services<i data-icon="arrow-right"></i></a>
+          </div>
+          <div class="grid grid-3" id="sd-related"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="sticky-cta">
+      <div>
+        <div class="text-xs text-muted" id="sd-sticky-name"></div>
+        <b class="text-rose" id="sd-sticky-price"></b>
+      </div>
+      <a class="btn btn--primary" id="sd-sticky-cta" href="booking.html"><i data-icon="calendar-plus"></i>Book Now</a>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      var s = DATA.service(App.param('s') || 'hair-spa') || DATA.service('hair-spa');
+      var cat = DATA.category(s.cat);
+
+      document.title = s.name + ' — Lumière Beauty Studio';
+      document.getElementById('sd-hero').outerHTML = UI.pageHero(
+        s.name,
+        s.short,
+        [['Services', 'services.html'], [s.name]]
+      );
+
+      /* gallery */
+      var seeds = [s.slug, s.slug + '-detail-1', s.slug + '-detail-2', s.slug + '-detail-3', s.slug + '-detail-4'];
+      var main = document.getElementById('sd-main-img');
+      function setMain(seed) {
+        main.innerHTML = '<img src="' + Img.get(seed, s.kind, 960, 660) + '" alt="' + s.name + ' at Lumière" data-lb-src="' +
+          Img.get(seed, s.kind, 1400, 960) + '" data-lb-title="' + s.name + '" data-lb-sub="Lumière Studio" style="cursor:zoom-in">';
+      }
+      setMain(seeds[0]);
+      var thumbs = document.getElementById('sd-thumbs');
+      thumbs.innerHTML = seeds.slice(1).map(function (seed, i) {
+        return '<button type="button" class="svc-detail__thumb' + (i === -1 ? ' is-active' : '') + '" data-seed="' + seed + '" aria-label="View photo ' + (i + 2) + '">' +
+          '<img src="' + Img.get(seed, s.kind, 300, 220) + '" alt="" loading="lazy"></button>';
+      }).join('');
+      thumbs.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-seed]');
+        if (!b) return;
+        thumbs.querySelectorAll('.svc-detail__thumb').forEach(function (t) { t.classList.remove('is-active'); });
+        b.classList.add('is-active');
+        setMain(b.dataset.seed);
+      });
+
+      /* header info */
+      document.getElementById('sd-badges').innerHTML =
+        '<span class="badge badge--rose">' + Icon.get(cat.icon) + cat.name + '</span>' +
+        (s.tags || []).map(function (t) { return '<span class="badge badge--lav">' + t + '</span>'; }).join('');
+      document.getElementById('sd-title').textContent = s.name;
+      document.getElementById('sd-meta').innerHTML =
+        '<span class="rating">' + Icon.stars(s.rating) + '<span class="rating__value">' + s.rating + '</span><span class="rating__count">(' + s.reviews + ' verified reviews)</span></span>' +
+        '<span class="card__meta-item">' + Icon.get('clock') + DATA.duration(s.duration) + '</span>' +
+        '<span class="card__meta-item">' + Icon.get('store') + DATA.salonsFor(s.cat).length + ' locations</span>';
+      document.getElementById('sd-desc').textContent = s.desc;
+
+      /* fav */
+      var fav = document.getElementById('sd-fav');
+      fav.dataset.wish = 'service';
+      fav.dataset.wishId = s.id;
+      Wishlist.refresh(document);
+
+      /* benefits + includes */
+      document.getElementById('sd-benefits').innerHTML = s.benefits.map(function (b) {
+        return '<div class="amenity">' + Icon.get('check-circle') + b + '</div>';
+      }).join('');
+      document.getElementById('sd-includes').innerHTML = s.includes.map(function (inc, i) {
+        return '<li>' + Icon.get('sparkles') + '<b>Step ' + (i + 1) + '</b><span>' + inc + '</span></li>';
+      }).join('');
+
+      /* before / after */
+      document.getElementById('sd-ba-before').src = Img.get(s.slug + '-before', s.kind, 900, 560);
+      document.getElementById('sd-ba-after').src = Img.get(s.slug + '-after-x', 'sparkle-' + s.kind, 900, 560);
+      Gallery.bindBASliders(document);
+
+      /* stylists */
+      var stylists = DATA.stylistsFor(s.id);
+      document.getElementById('sd-stylists').innerHTML = stylists.length ? stylists.map(function (st) {
+        return '<a class="stylist-mini" href="stylist-details.html?s=' + st.slug + '">' +
+          '<span class="avatar avatar--md"><img src="' + Img.get(st.slug, 'person', 120, 120) + '" alt=""></span>' +
+          '<span class="stylist-mini__info"><b>' + st.name + '</b><span>' + st.role + ' · ' + st.exp + ' yrs</span></span>' +
+          '<span class="stylist-mini__right"><span class="rating"><span class="rating__value">★ ' + st.rating + '</span></span><br>' +
+          '<span class="avail-dot ' + (st.status === 'available' ? 'avail-dot--free">Available' : st.status === 'busy' ? 'avail-dot--busy">Limited' : 'avail-dot--off">On leave') + '</span></span></a>';
+      }).join('') : '<p class="text-muted">Any of our stylists can take this booking.</p>';
+
+      /* salons */
+      document.getElementById('sd-salons').innerHTML = DATA.salonsFor(s.cat).slice(0, 4).map(function (l) {
+        return '<a class="stylist-mini" href="salon-details.html?s=' + l.slug + '">' +
+          '<span class="avatar avatar--md" style="border-radius:12px"><img src="' + Img.get(l.slug, 'salon', 120, 120) + '" alt="" style="border-radius:12px"></span>' +
+          '<span class="stylist-mini__info"><b>' + l.name + '</b><span>' + l.area + ', ' + l.city + '</span></span>' +
+          '<span class="stylist-mini__right"><span class="rating__value">★ ' + l.rating + '</span></span></a>';
+      }).join('');
+
+      /* rating summary + reviews */
+      var dist = [72, 19, 6, 2, 1];
+      document.getElementById('sd-rating-summary').innerHTML =
+        '<div class="rating-summary__score"><div class="n">' + s.rating + '</div>' + Icon.stars(s.rating, 'stars--lg') +
+        '<small>' + s.reviews + ' verified reviews</small></div>' +
+        '<div class="rating-bars">' + dist.map(function (p, i) {
+          return '<div class="rating-bar"><span>' + (5 - i) + ' ' + Icon.get('star') + '</span>' +
+            '<div class="progress progress--thin"><div class="progress__bar" data-value="' + p + '"></div></div><b>' + p + '%</b></div>';
+        }).join('') + '</div>';
+
+      var reviews = DATA.TESTIMONIALS.slice(0, 4);
+      document.getElementById('sd-reviews').innerHTML = reviews.map(function (r) {
+        return '<div class="review-item"><span class="avatar avatar--md">' + r.name.split(' ').map(function (w) { return w[0]; }).join('') + '</span>' +
+          '<div style="flex:1;min-width:0"><div class="review-item__head"><div><span class="review-item__name">' + r.name + '</span> ' +
+          '<span class="badge badge--mint" style="margin-left:8px">' + Icon.get('badge-check') + 'Verified visit</span></div>' +
+          '<span class="review-item__date">' + DATA.dateShort(r.date) + '</span></div>' +
+          Icon.stars(r.rating) + '<p class="mt-2">' + r.text + '</p>' +
+          '<div class="review-item__actions"><button type="button" data-helpful>' + Icon.get('thumbs-up') + 'Helpful</button>' +
+          '<button type="button" data-reply>' + Icon.get('message-circle') + 'Reply</button></div></div></div>';
+      }).join('');
+      document.getElementById('sd-reviews').addEventListener('click', function (e) {
+        if (e.target.closest('[data-helpful]')) Toast.success('Thanks — your feedback helps other clients.');
+        if (e.target.closest('[data-reply]')) Toast.info('Sign in to reply to reviews.', 'Members only');
+      });
+
+      /* aside */
+      document.getElementById('sd-price').innerHTML =
+        '<span class="price__cur">' + DATA.CURRENCY + '</span><span class="price__val">' + s.price.toLocaleString('en-IN') + '</span>' +
+        '<span class="price__old">' + DATA.money(s.oldPrice) + '</span>';
+      document.getElementById('sd-price-note').textContent = 'Save ' + DATA.money(s.oldPrice - s.price) + ' vs walk-in price · GST extra';
+      document.getElementById('sd-aside-rows').innerHTML =
+        '<div class="booking-aside__row"><span>' + Icon.get('clock') + 'Duration</span><b>' + DATA.duration(s.duration) + '</b></div>' +
+        '<div class="booking-aside__row"><span>' + Icon.get('star') + 'Rating</span><b>' + s.rating + ' / 5</b></div>' +
+        '<div class="booking-aside__row"><span>' + Icon.get('users') + 'Specialists</span><b>' + (stylists.length || 'All') + ' stylists</b></div>' +
+        '<div class="booking-aside__row"><span>' + Icon.get('refresh') + 'Reschedule</span><b>Free, 2×</b></div>';
+
+      /* date strip: next 8 days, skipping fully-booked */
+      var strip = document.getElementById('sd-dates');
+      var chips = [];
+      for (var i = 0; i < 10 && chips.length < 8; i++) {
+        var dt = new Date();
+        dt.setDate(dt.getDate() + i);
+        var dsIso = Cal.iso(dt);
+        var avail = Cal.availability(dsIso);
+        chips.push({ d: dt, iso: dsIso, avail: avail });
+      }
+      var pickedDate = null, pickedTime = null;
+      strip.innerHTML = chips.map(function (c, i) {
+        return '<button type="button" class="date-chip" data-ds="' + c.iso + '"' + (c.avail === 'full' ? ' disabled' : '') + '>' +
+          '<span>' + c.d.toLocaleDateString('en-IN', { weekday: 'short' }) + '</span><b>' + c.d.getDate() + '</b>' +
+          '<small>' + (c.avail === 'full' ? 'Full' : c.avail === 'busy' ? 'Few left' : 'Open') + '</small></button>';
+      }).join('');
+      var slotsHost = document.getElementById('sd-slots');
+      slotsHost.innerHTML = ['10:00 AM', '12:00 PM', '02:00 PM', '04:30 PM', '06:00 PM', '07:30 PM'].map(function (t) {
+        return '<button type="button" class="slot" data-t="' + t + '">' + t + '</button>';
+      }).join('');
+      function updateCta() {
+        var url = 'booking.html?service=' + s.slug;
+        document.getElementById('sd-book-cta').href = url;
+        document.getElementById('sd-sticky-cta').href = url;
+      }
+      strip.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-ds]');
+        if (!b || b.disabled) return;
+        strip.querySelectorAll('.date-chip').forEach(function (x) { x.classList.remove('is-active'); });
+        b.classList.add('is-active');
+        pickedDate = b.dataset.ds;
+        updateCta();
+      });
+      slotsHost.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-t]');
+        if (!b) return;
+        slotsHost.querySelectorAll('.slot').forEach(function (x) { x.classList.remove('is-selected'); });
+        b.classList.add('is-selected');
+        pickedTime = b.dataset.t;
+        Toast.info('Great choice — finish picking salon and stylist in the booking flow.', pickedTime + ' noted');
+      });
+      updateCta();
+
+      /* sticky mobile bar */
+      document.getElementById('sd-sticky-name').textContent = s.name;
+      document.getElementById('sd-sticky-price').textContent = DATA.money(s.price);
+
+      /* related */
+      document.getElementById('sd-related').innerHTML = DATA.related(s, 3).map(UI.serviceCard).join('');
+    };
+  </script>
+</body>
+</html>

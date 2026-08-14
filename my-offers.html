@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offers &amp; Coupons — Lumière Beauty Studio</title>
+  <meta name="description" content="Your Lumière offers and coupon codes — copy a code and apply it at checkout.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div class="dash">
+    <aside class="dash-side" id="dash-side" aria-label="Dashboard navigation"></aside>
+    <div class="dash-main">
+      <div class="dash-top" id="dash-top"></div>
+      <div class="dash-body">
+
+        <div class="stat-cards" id="mo-stats"></div>
+
+        <div class="panel mb-6">
+          <div class="panel__head">
+            <h3><i data-icon="gift"></i>Active offers</h3>
+            <a class="btn btn--soft btn--xs" href="booking.html">Book &amp; apply</a>
+          </div>
+          <div class="panel__body">
+            <div class="grid grid-auto" id="mo-grid" style="gap:16px"></div>
+          </div>
+        </div>
+
+        <div class="dash-grid dash-grid--1-1 mb-6">
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="help-circle"></i>How coupons work</h3></div>
+            <div class="panel__body">
+              <ul class="check-list">
+                <li><i data-icon="check"></i>Copy a code, then paste it in the <b>coupon field at checkout</b>.</li>
+                <li><i data-icon="check"></i><b>One coupon per booking</b> — loyalty points stack on top.</li>
+                <li><i data-icon="check"></i>Some offers need a <b>minimum spend</b>; it's shown before you confirm.</li>
+                <li><i data-icon="check"></i>Expired codes are removed automatically — what you see here works.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel__head">
+              <h3><i data-icon="clock"></i>Expiring soon</h3>
+              <a class="btn btn--soft btn--xs" href="booking.html">Use them first</a>
+            </div>
+            <div class="panel__body feed" id="mo-expiring" style="padding-block:8px"></div>
+          </div>
+        </div>
+
+        <div class="note-box">
+          <i data-icon="crown"></i>
+          <span><b>Want offers like these every month?</b> Members get early access to seasonal codes plus a standing 20% off. <a href="pricing.html">See membership tiers</a>.</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      Dash.mount({ role: 'client', active: 'offers', title: 'Offers & Coupons', sub: 'Every live discount, ready to copy' });
+      document.getElementById('mo-grid').innerHTML = DATA.OFFERS.map(UI.offerCard).join('');
+
+      /* stats row */
+      var best = DATA.OFFERS.reduce(function (m, o) { return o.type === 'percent' && o.value > m ? o.value : m; }, 0);
+      var soonCount = DATA.OFFERS.filter(function (o) {
+        var days = Math.ceil((new Date(o.expiry) - new Date()) / 86400000);
+        return days > 0 && days <= 45;
+      }).length;
+      document.getElementById('mo-stats').innerHTML =
+        Dash.statCard({ label: 'Active offers', count: DATA.OFFERS.length, icon: 'gift' }) +
+        Dash.statCard({ label: 'Best discount', count: best, suffix: '%', icon: 'percent', tone: 'coral' }) +
+        Dash.statCard({ label: 'Expiring in 45 days', count: soonCount, icon: 'clock', tone: 'lav' }) +
+        Dash.statCard({ label: 'No-minimum codes', count: DATA.OFFERS.filter(function (o) { return !o.min; }).length, icon: 'tag', tone: 'mint' });
+
+      /* expiring soon feed */
+      document.getElementById('mo-expiring').innerHTML = DATA.OFFERS
+        .slice().sort(function (a, b) { return a.expiry.localeCompare(b.expiry); })
+        .slice(0, 4).map(function (o) {
+          var days = Math.ceil((new Date(o.expiry) - new Date()) / 86400000);
+          return '<div class="feed-item"><span class="feed-item__icon" style="background:var(--light-pink);color:var(--primary-rose)">' + Icon.get('tag') + '</span>' +
+            '<div><p><b>' + o.code + '</b> — ' + o.title + '</p>' +
+            '<time>' + (days > 0 ? 'Expires in ' + days + ' days · ' + DATA.dateShort(o.expiry) : 'Expired') + '</time></div></div>';
+        }).join('');
+    };
+  </script>
+</body>
+</html>

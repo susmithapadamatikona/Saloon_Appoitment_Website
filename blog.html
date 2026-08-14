@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — The Glow Journal by Lumière</title>
+  <meta name="description" content="Expert-written beauty guides — hair care, skin care, makeup tips, nail trends and salon wisdom from the Lumière team.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="bl-hero"></div>
+
+    <section class="section">
+      <div class="container">
+        <div class="blog-layout">
+          <div>
+            <!-- featured post -->
+            <div id="bl-featured" class="mb-7"></div>
+
+            <div class="toolbar">
+              <div class="toolbar__count" id="bl-count" aria-live="polite"></div>
+              <select class="select" id="bl-sort" aria-label="Sort articles" style="width:auto;padding-block:10px">
+                <option value="new">Newest first</option>
+                <option value="old">Oldest first</option>
+                <option value="read">Quick reads first</option>
+              </select>
+            </div>
+
+            <div class="grid grid-2" id="bl-grid" aria-live="polite"></div>
+            <nav class="pagination" id="bl-pager" aria-label="Blog pagination"></nav>
+          </div>
+
+          <!-- sidebar -->
+          <aside class="blog-sidebar">
+            <div class="widget">
+              <h3 class="widget__title"><i data-icon="search"></i>Search articles</h3>
+              <div class="widget-search field">
+                <input class="input" type="search" id="bl-search" placeholder="Search the journal…" aria-label="Search articles">
+                <button type="button" aria-label="Search"><i data-icon="search"></i></button>
+              </div>
+            </div>
+            <div class="widget">
+              <h3 class="widget__title"><i data-icon="layers"></i>Categories</h3>
+              <div class="cat-list" id="bl-cats"></div>
+            </div>
+            <div class="widget">
+              <h3 class="widget__title"><i data-icon="zap"></i>Popular posts</h3>
+              <div id="bl-popular"></div>
+            </div>
+            <div class="widget">
+              <h3 class="widget__title"><i data-icon="tag"></i>Tags</h3>
+              <div class="tag-cloud" id="bl-tags"></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      document.getElementById('bl-hero').outerHTML = UI.pageHero(
+        'The Glow <span class="grad-text">Journal</span>',
+        'Beauty wisdom written by the people who hold the scissors — practical, honest, occasionally opinionated.',
+        [['Blog']]
+      );
+
+      /* featured */
+      var feat = DATA.POSTS.filter(function (p) { return p.featured; })[0] || DATA.POSTS[0];
+      document.getElementById('bl-featured').innerHTML = UI.postCard(feat, true);
+
+      var rest = DATA.POSTS.filter(function (p) { return p.id !== feat.id; });
+
+      var lc = new ListController({
+        items: rest,
+        pageSize: 6,
+        host: '#bl-grid',
+        pagerHost: '#bl-pager',
+        countHost: '#bl-count',
+        defaultSort: 'new',
+        render: function (p) { return UI.postCard(p); },
+        filters: {
+          cat: function (p, v) { return p.cat === v; },
+          q: function (p, v) { return (p.title + ' ' + p.excerpt + ' ' + p.tags.join(' ')).toLowerCase().indexOf(v) > -1; },
+          tag: function (p, v) { return p.tags.indexOf(v) > -1; }
+        },
+        sorters: {
+          new: function (a, b) { return b.date.localeCompare(a.date); },
+          old: function (a, b) { return a.date.localeCompare(b.date); },
+          read: function (a, b) { return a.read - b.read; }
+        }
+      });
+
+      /* categories */
+      var cats = {};
+      DATA.POSTS.forEach(function (p) { cats[p.cat] = (cats[p.cat] || 0) + 1; });
+      var catsHost = document.getElementById('bl-cats');
+      catsHost.innerHTML = '<a href="#" data-blcat="all">All articles<span>' + DATA.POSTS.length + '</span></a>' +
+        Object.keys(cats).map(function (c) {
+          return '<a href="#" data-blcat="' + c + '">' + c + '<span>' + cats[c] + '</span></a>';
+        }).join('');
+      catsHost.addEventListener('click', function (e) {
+        var a = e.target.closest('[data-blcat]');
+        if (!a) return;
+        e.preventDefault();
+        lc.set('cat', a.dataset.blcat === 'all' ? null : a.dataset.blcat);
+        Toast.info(a.dataset.blcat === 'all' ? 'Showing every article.' : 'Filtered to <b>' + a.dataset.blcat + '</b>.');
+      });
+
+      /* popular */
+      document.getElementById('bl-popular').innerHTML = DATA.POSTS.slice(0, 4).map(function (p) {
+        return '<div class="mini-post"><img class="mini-post__thumb" src="' + Img.get(p.slug, 'blog', 150, 150) + '" alt="" loading="lazy">' +
+          '<div><b><a href="blog-details.html?p=' + p.slug + '">' + p.title + '</a></b>' +
+          '<span>' + Icon.get('clock') + p.read + ' min read</span></div></div>';
+      }).join('');
+
+      /* tags */
+      var tags = {};
+      DATA.POSTS.forEach(function (p) { p.tags.forEach(function (t) { tags[t] = 1; }); });
+      var tagsHost = document.getElementById('bl-tags');
+      tagsHost.innerHTML = Object.keys(tags).map(function (t) {
+        return '<a href="#" data-bltag="' + t + '">#' + t + '</a>';
+      }).join('');
+      tagsHost.addEventListener('click', function (e) {
+        var a = e.target.closest('[data-bltag]');
+        if (!a) return;
+        e.preventDefault();
+        lc.set('tag', a.dataset.bltag);
+        Toast.info('Filtered by <b>#' + a.dataset.bltag + '</b> — clear filters from the grid if needed.');
+      });
+
+      /* search + sort */
+      var si = document.getElementById('bl-search');
+      si.addEventListener('input', Search.debounce(function () {
+        lc.set('q', si.value.trim().toLowerCase() || null);
+      }, 180));
+      document.getElementById('bl-sort').addEventListener('change', function (e) { lc.sort(e.target.value); });
+    };
+  </script>
+</body>
+</html>

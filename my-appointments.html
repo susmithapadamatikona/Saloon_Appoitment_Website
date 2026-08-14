@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Appointments — Lumière Beauty Studio</title>
+  <meta name="description" content="Manage your Lumière appointments — upcoming, completed and cancelled. Reschedule or cancel in one tap.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <div class="dash">
+    <aside class="dash-side" id="dash-side" aria-label="Dashboard navigation"></aside>
+    <div class="dash-main">
+      <div class="dash-top" id="dash-top"></div>
+      <div class="dash-body">
+
+        <div class="stat-cards" id="ma-stats"></div>
+
+        <div class="toolbar" data-reveal="up">
+          <div class="tabs tabs--pill" id="ma-tabs" role="tablist" aria-label="Appointment status"></div>
+          <a class="btn btn--primary btn--sm" href="booking.html"><i data-icon="plus"></i>New Booking</a>
+        </div>
+
+        <div class="grid" id="ma-list" style="gap:14px" aria-live="polite"></div>
+
+        <div class="dash-grid dash-grid--1-1 mt-6">
+          <div class="panel">
+            <div class="panel__head"><h3><i data-icon="help-circle"></i>Good to know</h3></div>
+            <div class="panel__body">
+              <ul class="check-list">
+                <li><i data-icon="check"></i>Cancel free of charge up to <b>4 hours</b> before your slot — full refund.</li>
+                <li><i data-icon="check"></i>Reschedule <b>twice per booking</b> at no cost, straight from this page.</li>
+                <li><i data-icon="check"></i>Running late? We hold your chair for <b>15 minutes</b> — just call the salon.</li>
+                <li><i data-icon="check"></i>Every completed visit earns <b>1 point per ₹10</b> spent.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="panel__head">
+              <h3><i data-icon="sparkles"></i>Book your next visit</h3>
+              <a class="btn btn--soft btn--xs" href="services.html">All services</a>
+            </div>
+            <div class="panel__body" id="ma-reco" style="display:grid;gap:12px"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- reschedule modal -->
+  <div class="modal" id="modal-reschedule" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="rs-title">
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__dialog modal__dialog--lg">
+      <div class="modal__head">
+        <div><h3 id="rs-title">Reschedule appointment</h3><p id="rs-sub"></p></div>
+        <button class="modal__close" data-modal-close aria-label="Close dialog"><i data-icon="x"></i></button>
+      </div>
+      <div class="modal__body">
+        <div class="grid grid-2" style="gap:20px">
+          <div><div class="field__label mb-3">Pick a new date</div><div id="rs-calendar"></div></div>
+          <div>
+            <div class="field__label mb-3">Pick a new time</div>
+            <div class="slots-grid" id="rs-slots" style="grid-template-columns:repeat(3,1fr)"></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal__foot">
+        <button class="btn btn--ghost" data-modal-close>Never mind</button>
+        <button class="btn btn--primary" id="rs-confirm"><i data-icon="check"></i>Confirm New Slot</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- rate modal -->
+  <div class="modal modal--center" id="modal-rate" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="rate-title">
+    <div class="modal__backdrop" data-modal-close></div>
+    <div class="modal__dialog">
+      <div class="modal__head">
+        <div><h3 id="rate-title">How was your visit?</h3><p id="rate-sub"></p></div>
+        <button class="modal__close" data-modal-close aria-label="Close dialog"><i data-icon="x"></i></button>
+      </div>
+      <div class="modal__body">
+        <div class="flex-center gap-2 mb-5" id="rate-stars" style="font-size:0"></div>
+        <label class="field"><span class="field__label">Tell us more (optional)</span>
+          <textarea class="textarea" id="rate-text" placeholder="What stood out? What could be better?"></textarea>
+        </label>
+      </div>
+      <div class="modal__foot">
+        <button class="btn btn--ghost" data-modal-close>Skip</button>
+        <button class="btn btn--primary" id="rate-submit"><i data-icon="star"></i>Submit Review</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      Dash.mount({ role: 'client', active: 'appointments', title: 'My Appointments', sub: 'Reschedule twice free of charge, cancel up to 4 hours before' });
+
+      var current = 'upcoming';
+      var rsState = { id: null, date: null, time: null };
+      var rateState = { id: null, stars: 0 };
+
+      /* stats row */
+      var all = Store.getAppointments();
+      var spent = all.filter(function (a) { return a.status === 'completed'; })
+        .reduce(function (sum, a) { return sum + (a.total || 0); }, 0);
+      document.getElementById('ma-stats').innerHTML =
+        Dash.statCard({ label: 'Upcoming', count: all.filter(function (a) { return a.status === 'upcoming'; }).length, icon: 'calendar-check' }) +
+        Dash.statCard({ label: 'Completed visits', count: all.filter(function (a) { return a.status === 'completed'; }).length, icon: 'check-circle', tone: 'mint' }) +
+        Dash.statCard({ label: 'Cancelled', count: all.filter(function (a) { return a.status === 'cancelled'; }).length, icon: 'calendar-x', tone: 'lav' }) +
+        Dash.statCard({ label: 'Total spent', count: spent, prefix: '₹', icon: 'wallet', tone: 'coral' });
+
+      /* recommendations */
+      document.getElementById('ma-reco').innerHTML = DATA.SERVICES.filter(function (s) { return s.trending; }).slice(0, 3).map(function (s) {
+        return '<a class="stylist-mini" href="service-details.html?s=' + s.slug + '">' +
+          '<span class="avatar avatar--md" style="border-radius:12px"><img src="' + Img.get(s.slug, s.kind, 120, 120) + '" alt="" style="border-radius:12px"></span>' +
+          '<span class="stylist-mini__info"><b>' + s.name + '</b><span>Trending · ★ ' + s.rating + ' · ' + DATA.duration(s.duration) + '</span></span>' +
+          '<span class="stylist-mini__right"><span class="rating__value">' + DATA.money(s.price) + '</span></span></a>';
+      }).join('');
+
+      function counts() {
+        var list = Store.getAppointments();
+        return {
+          upcoming: list.filter(function (a) { return a.status === 'upcoming'; }).length,
+          completed: list.filter(function (a) { return a.status === 'completed'; }).length,
+          cancelled: list.filter(function (a) { return a.status === 'cancelled'; }).length
+        };
+      }
+
+      function renderTabs() {
+        var c = counts();
+        document.getElementById('ma-tabs').innerHTML = [
+          ['upcoming', 'Upcoming', c.upcoming],
+          ['completed', 'Completed', c.completed],
+          ['cancelled', 'Cancelled', c.cancelled]
+        ].map(function (t) {
+          return '<button type="button" class="tab' + (current === t[0] ? ' is-active' : '') + '" data-status="' + t[0] + '" role="tab" aria-selected="' + (current === t[0]) + '">' +
+            t[1] + '<span class="tab__count">' + t[2] + '</span></button>';
+        }).join('');
+      }
+
+      function renderList() {
+        var list = Store.getAppointments().filter(function (a) { return a.status === current; });
+        var host = document.getElementById('ma-list');
+        var emptyCopy = {
+          upcoming: ['calendar-plus', 'Nothing booked yet', 'Your next great hair day is one tap away.', 'Book an Appointment'],
+          completed: ['check-circle', 'No completed visits', 'Once you\'ve visited us, your history lives here.', 'Book your first visit'],
+          cancelled: ['calendar-x', 'No cancellations', 'Nice — you\'ve kept every appointment so far.', 'Book another']
+        }[current];
+        host.innerHTML = list.length ? list.map(UI.apptCard).join('')
+          : '<div class="empty-state"><span class="icon-box icon-box--lg">' + Icon.get(emptyCopy[0]) + '</span>' +
+            '<h3>' + emptyCopy[1] + '</h3><p>' + emptyCopy[2] + '</p>' +
+            '<a class="btn btn--primary" href="booking.html">' + emptyCopy[3] + '</a></div>';
+        Icon.hydrate(host);
+        host.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-revealed'); });
+      }
+
+      function renderAll() { renderTabs(); renderList(); }
+
+      document.getElementById('ma-tabs').addEventListener('click', function (e) {
+        var t = e.target.closest('[data-status]');
+        if (!t) return;
+        current = t.dataset.status;
+        renderAll();
+      });
+
+      /* ---------- cancel ---------- */
+      document.addEventListener('click', function (e) {
+        var cancelBtn = e.target.closest('[data-appt-cancel]');
+        if (cancelBtn) {
+          var id = cancelBtn.dataset.apptCancel;
+          var a = Store.getAppointment(id);
+          var s = a && DATA.service(a.serviceId);
+          Modal.confirm({
+            title: 'Cancel this appointment?',
+            message: 'Your <b>' + (s ? s.name : 'appointment') + '</b> on ' + DATA.dateShort(a.date + 'T00:00:00') + ' at ' + a.time +
+              ' will be cancelled. This is free since you\'re more than 4 hours out.',
+            confirmText: 'Yes, cancel it', cancelText: 'Keep appointment', danger: true, icon: 'calendar-x',
+            onConfirm: function () {
+              Store.cancelAppointment(id);
+              renderAll();
+              Toast.info('Appointment <b>' + id + '</b> cancelled. Any payment is refunded within 3–5 days.', 'Cancelled');
+            }
+          });
+        }
+
+        /* ---------- reschedule ---------- */
+        var rsBtn = e.target.closest('[data-appt-reschedule]');
+        if (rsBtn) {
+          rsState = { id: rsBtn.dataset.apptReschedule, date: null, time: null };
+          var appt = Store.getAppointment(rsState.id);
+          var svc = appt && DATA.service(appt.serviceId);
+          document.getElementById('rs-sub').textContent = (svc ? svc.name + ' · ' : '') + 'currently ' + DATA.dateShort(appt.date + 'T00:00:00') + ', ' + appt.time;
+          document.getElementById('rs-slots').innerHTML = '<p class="text-sm text-muted" style="grid-column:1/-1">Pick a date first.</p>';
+          new Cal(document.getElementById('rs-calendar'), {
+            mini: true, minDays: 1,
+            onSelect: function (ds) {
+              rsState.date = ds;
+              rsState.time = null;
+              var sh = document.getElementById('rs-slots');
+              sh.innerHTML = DATA.TIME_SLOTS.filter(function (t, i) { return i % 2 === 0; }).map(function (t) {
+                var h = 0, key = ds + t.t;
+                for (var i = 0; i < key.length; i++) h = ((h << 5) - h + key.charCodeAt(i)) | 0;
+                var busy = Math.abs(h) % 100 < 25;
+                return '<button type="button" class="slot"' + (busy ? ' disabled' : '') + ' data-rs-time="' + t.t + '">' + t.t + '</button>';
+              }).join('');
+            }
+          });
+          Modal.open('modal-reschedule');
+        }
+
+        var rsTime = e.target.closest('[data-rs-time]');
+        if (rsTime) {
+          document.querySelectorAll('#rs-slots .slot').forEach(function (x) { x.classList.remove('is-selected'); });
+          rsTime.classList.add('is-selected');
+          rsState.time = rsTime.dataset.rsTime;
+        }
+
+        /* ---------- rate ---------- */
+        var rateBtn = e.target.closest('[data-appt-rate]');
+        if (rateBtn) {
+          rateState = { id: rateBtn.dataset.apptRate, stars: 0 };
+          var ra = Store.getAppointment(rateState.id);
+          var rs = ra && DATA.service(ra.serviceId);
+          document.getElementById('rate-sub').textContent = (rs ? rs.name : '') + ' · ' + DATA.dateShort(ra.date + 'T00:00:00');
+          drawRateStars();
+          document.getElementById('rate-text').value = '';
+          Modal.open('modal-rate');
+        }
+      });
+
+      document.getElementById('rs-confirm').addEventListener('click', function () {
+        if (!rsState.date) { Toast.warning('Pick a new date first.'); return; }
+        if (!rsState.time) { Toast.warning('And a time slot to go with it.'); return; }
+        Store.rescheduleAppointment(rsState.id, rsState.date, rsState.time);
+        Modal.close('modal-reschedule');
+        renderAll();
+        Toast.success('Moved to <b>' + DATA.dateShort(rsState.date + 'T00:00:00') + ', ' + rsState.time + '</b>. See you then!', 'Rescheduled');
+      });
+
+      function drawRateStars() {
+        var host = document.getElementById('rate-stars');
+        host.innerHTML = [1, 2, 3, 4, 5].map(function (n) {
+          var on = n <= rateState.stars;
+          return '<button type="button" class="btn-icon' + (on ? ' is-active' : '') + '" data-rate-star="' + n + '" aria-label="Rate ' + n + ' star' + (n > 1 ? 's' : '') + '" style="border:none;background:none;width:44px;height:44px">' +
+            '<svg viewBox="0 0 24 24" width="34" height="34" fill="' + (on ? '#FFB74D' : 'none') + '" stroke="#FFB74D" stroke-width="1.6"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button>';
+        }).join('');
+      }
+      document.getElementById('rate-stars').addEventListener('click', function (e) {
+        var s = e.target.closest('[data-rate-star]');
+        if (!s) return;
+        rateState.stars = parseInt(s.dataset.rateStar, 10);
+        drawRateStars();
+      });
+      document.getElementById('rate-submit').addEventListener('click', function () {
+        if (!rateState.stars) { Toast.warning('Tap a star rating first.'); return; }
+        var a = Store.getAppointment(rateState.id);
+        if (a) { a.rated = rateState.stars; Store.saveAppointment(a); }
+        Modal.close('modal-rate');
+        renderAll();
+        Toast.rose('Thank you! Your ' + rateState.stars + '-star review helps other clients choose well.', 'Review submitted');
+      });
+
+      renderAll();
+    };
+  </script>
+</body>
+</html>

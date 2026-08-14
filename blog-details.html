@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article — The Glow Journal by Lumière</title>
+  <meta name="description" content="An expert-written article from the Lumière Glow Journal.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="bd-hero"></div>
+
+    <section class="section" style="padding-top:clamp(28px,4vw,48px)">
+      <div class="container">
+        <div class="blog-layout">
+          <article class="article">
+            <div class="article__hero" id="bd-img"></div>
+            <div class="article__meta" id="bd-meta"></div>
+            <div class="prose" id="bd-body"></div>
+
+            <div class="article__share">
+              <b>Share this article</b>
+              <div class="socials">
+                <a href="#" aria-label="Share on Instagram" data-share><i data-icon="instagram"></i></a>
+                <a href="#" aria-label="Share on Facebook" data-share><i data-icon="facebook"></i></a>
+                <a href="#" aria-label="Share on Twitter" data-share><i data-icon="twitter"></i></a>
+                <a href="#" aria-label="Share on WhatsApp" data-share><i data-icon="whatsapp"></i></a>
+                <a href="#" aria-label="Copy link" id="bd-copylink"><i data-icon="copy"></i></a>
+              </div>
+            </div>
+
+            <div class="author-box" id="bd-author"></div>
+
+            <!-- comments -->
+            <div class="mt-9">
+              <h2 class="mb-6" style="font-size:var(--fs-xl)">Comments <span class="text-muted" id="bd-comment-count"></span></h2>
+              <div id="bd-comments"></div>
+
+              <div class="contact-form-card mt-7">
+                <h3 class="mb-5">Leave a comment</h3>
+                <form id="bd-comment-form" data-validate novalidate>
+                  <div class="form-grid form-grid--2">
+                    <label class="field has-label"><span class="field__label">Name <span class="req">*</span></span>
+                      <input class="input" id="c-name" data-rules="required|name" placeholder="Your name"></label>
+                    <label class="field has-label"><span class="field__label">Email <span class="req">*</span></span>
+                      <input class="input" type="email" id="c-email" data-rules="required|email" placeholder="you@example.com"></label>
+                    <label class="field form-row-full has-label"><span class="field__label">Comment <span class="req">*</span></span>
+                      <textarea class="textarea" id="c-text" data-rules="required|min:8|max:600" placeholder="Join the conversation…"></textarea></label>
+                  </div>
+                  <button class="btn btn--primary mt-5" type="submit"><i data-icon="send"></i>Post Comment</button>
+                </form>
+              </div>
+            </div>
+          </article>
+
+          <aside class="blog-sidebar">
+            <div class="widget">
+              <h3 class="widget__title"><i data-icon="file-text"></i>Related articles</h3>
+              <div id="bd-related"></div>
+            </div>
+            <div class="widget" style="background:var(--grad-soft);border:0">
+              <h3 class="widget__title on-tint" style="border-color:rgba(173,20,87,.2)"><i data-icon="calendar-plus"></i>Put it into practice</h3>
+              <p class="text-sm mb-4 on-tint-muted">Reading about it is step one. Booking the treatment is step two.</p>
+              <a class="btn btn--primary btn--block" href="booking.html">Book an Appointment</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      var p = DATA.post(App.param('p') || 'winter-hair-care-guide') || DATA.POSTS[0];
+      document.title = p.title + ' — The Glow Journal';
+
+      document.getElementById('bd-hero').outerHTML = UI.pageHero(
+        p.title, '', [['Blog', 'blog.html'], [p.cat]]
+      );
+
+      document.getElementById('bd-img').innerHTML =
+        '<img src="' + Img.get(p.slug, 'blog', 1280, 640) + '" alt="' + p.title + '">';
+
+      document.getElementById('bd-meta').innerHTML =
+        '<span>' + Icon.get('user') + p.author + '</span>' +
+        '<span>' + Icon.get('calendar') + DATA.dateShort(p.date) + '</span>' +
+        '<span>' + Icon.get('clock') + p.read + ' min read</span>' +
+        '<span class="badge badge--rose">' + p.cat + '</span>';
+
+      /* article body — editorial template built around the post's topic */
+      document.getElementById('bd-body').innerHTML =
+        '<p><strong>' + p.excerpt + '</strong></p>' +
+        '<p>Every week, clients settle into our chairs and ask a version of the same question. This article is the long answer — the one we\'d give you if the appointment had no clock. It draws on what our team sees across thousands of visits a year, not on what a product label promises.</p>' +
+        '<h2>Start with what\'s actually happening</h2>' +
+        '<p>Most beauty problems are boring in origin: heat, friction, over-washing, or a routine copied from someone with completely different needs. Before adding anything new, subtract. In our experience, roughly half of the concerns we see improve when clients simply stop doing one thing that was working against them.</p>' +
+        '<blockquote>The best treatment plan is the one you\'ll actually follow on a tired Tuesday night — not the aspirational one.<cite>— ' + p.author + ', Lumière</cite></blockquote>' +
+        '<h2>What we recommend in the chair</h2>' +
+        '<ul>' +
+        '<li><strong>Consistency beats intensity.</strong> A modest routine done daily outperforms an elaborate one done fortnightly, every single time.</li>' +
+        '<li><strong>Match products to your actual condition</strong> — not your hair or skin "type" from a quiz you took years ago. Conditions change with seasons, stress and water quality.</li>' +
+        '<li><strong>Professional treatments are maintenance, not rescue.</strong> Booked regularly, they prevent the damage that emergency appointments try to undo.</li>' +
+        '<li><strong>Ask your stylist to explain, not just do.</strong> A good one will happily talk through every product they\'re using and why.</li>' +
+        '</ul>' +
+        '<h2>The routine, step by step</h2>' +
+        '<ol>' +
+        '<li>Assess honestly — photograph in natural light and note what you actually see, not what you fear.</li>' +
+        '<li>Simplify to the essentials for two weeks and let your baseline re-establish itself.</li>' +
+        '<li>Reintroduce one targeted product or treatment at a time, a week apart.</li>' +
+        '<li>Book a professional session every four to six weeks to lock in progress.</li>' +
+        '<li>Review the plan seasonally — what worked in humid August rarely suits dry January.</li>' +
+        '</ol>' +
+        '<figure><img src="' + Img.get(p.slug + '-inline', 'blog', 1100, 560) + '" alt="Illustrative treatment moment at Lumière">' +
+        '<figcaption>In the chair at our Bandra flagship — where most of this advice was field-tested.</figcaption></figure>' +
+        '<h2>The bottom line</h2>' +
+        '<p>None of this requires a bathroom shelf full of products. It requires knowing your starting point, changing one variable at a time, and letting professionals handle the parts that genuinely need training. If you\'d like a personal read on your situation, any of our stylists will give you one — honestly, and before you spend a rupee.</p>';
+
+      /* share */
+      document.querySelectorAll('[data-share]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          Toast.info('Sharing opens the native share sheet in production.', 'Share');
+        });
+      });
+      document.getElementById('bd-copylink').addEventListener('click', function (e) {
+        e.preventDefault();
+        App.copyText(location.href, function () { Toast.success('Article link copied.'); });
+      });
+
+      /* author */
+      var stylist = p.authorSlug ? DATA.stylist(p.authorSlug) : null;
+      document.getElementById('bd-author').innerHTML =
+        '<span class="avatar avatar--lg avatar--ring">' + (stylist ? '<img src="' + Img.get(stylist.slug, 'person', 160, 160) + '" alt="">' : p.author.split(' ').map(function (w) { return w[0]; }).join('')) + '</span>' +
+        '<div><h4>' + p.author + '</h4><div class="role">' + (stylist ? stylist.role : 'Lumière Editorial Team') + '</div>' +
+        '<p>' + (stylist ? stylist.bio : 'Collective wisdom from the Lumière team — written between appointments, edited over chai.') + '</p>' +
+        (stylist ? '<a class="btn btn--soft btn--sm mt-4" href="stylist-details.html?s=' + stylist.slug + '">View profile</a>' : '') +
+        '</div>';
+
+      /* comments */
+      var comments = [
+        { name: 'Ritu Agarwal', time: '2 days ago', text: 'Finally an article that doesn\'t try to sell me twelve products. The "subtract before you add" advice fixed my scalp in a fortnight.', reply: { name: p.author, time: '1 day ago', text: 'That\'s exactly the outcome we hope for, Ritu — less really is more, most of the time. See you at your next appointment!' } },
+        { name: 'Ankit Deshmukh', time: '5 days ago', text: 'Booked the treatment mentioned here right after reading. The consultation matched the article word for word — refreshing consistency.' },
+        { name: 'Shalini Rao', time: '1 week ago', text: 'Could you do a follow-up for coloured hair specifically? Would love the same honest treatment of that topic.' }
+      ];
+      document.getElementById('bd-comment-count').textContent = '(' + (comments.length + 1) + ')';
+      var ch = document.getElementById('bd-comments');
+      function commentHtml(c, reply) {
+        return '<div class="comment' + (reply ? ' comment--reply' : '') + '">' +
+          '<span class="avatar avatar--md">' + c.name.split(' ').map(function (w) { return w[0]; }).join('') + '</span>' +
+          '<div style="flex:1"><div class="comment__head"><b>' + c.name + '</b><time>' + c.time + '</time></div>' +
+          '<p>' + c.text + '</p>' +
+          '<a href="#bd-comment-form" class="comment__reply">' + Icon.get('corner-down-right') + 'Reply</a></div></div>';
+      }
+      ch.innerHTML = comments.map(function (c) {
+        return commentHtml(c) + (c.reply ? commentHtml(c.reply, true) : '');
+      }).join('');
+
+      document.getElementById('bd-comment-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!Validate.form(this)) return;
+        var name = document.getElementById('c-name').value.trim();
+        var text = document.getElementById('c-text').value.trim();
+        ch.insertAdjacentHTML('beforeend', commentHtml({ name: name, time: 'Just now', text: text }));
+        Icon.hydrate(ch);
+        this.reset();
+        this.querySelectorAll('.is-valid').forEach(function (f) { f.classList.remove('is-valid'); });
+        Toast.success('Comment posted. Thanks for joining the conversation!');
+      });
+
+      /* related */
+      document.getElementById('bd-related').innerHTML = DATA.POSTS
+        .filter(function (x) { return x.id !== p.id && (x.cat === p.cat || x.tags.some(function (t) { return p.tags.indexOf(t) > -1; })); })
+        .slice(0, 4).map(function (x) {
+          return '<div class="mini-post"><img class="mini-post__thumb" src="' + Img.get(x.slug, 'blog', 150, 150) + '" alt="" loading="lazy">' +
+            '<div><b><a href="blog-details.html?p=' + x.slug + '">' + x.title + '</a></b>' +
+            '<span>' + Icon.get('clock') + x.read + ' min read</span></div></div>';
+        }).join('');
+    };
+  </script>
+</body>
+</html>

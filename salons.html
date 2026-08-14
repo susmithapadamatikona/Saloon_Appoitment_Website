@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find a Salon — Lumière Beauty Studio</title>
+  <meta name="description" content="Eight Lumière salons and partner studios across Mumbai, Delhi, Bengaluru, Hyderabad, Pune and Chennai — with map, hours and live booking.">
+  <link rel="icon" type="image/webp" href="assets/images/stackly-whitish_blue-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/variables.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/buttons.css">
+  <link rel="stylesheet" href="assets/css/forms.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/hero.css">
+  <link rel="stylesheet" href="assets/css/cards.css">
+  <link rel="stylesheet" href="assets/css/services.css">
+  <link rel="stylesheet" href="assets/css/stylists.css">
+  <link rel="stylesheet" href="assets/css/salons.css">
+  <link rel="stylesheet" href="assets/css/booking.css">
+  <link rel="stylesheet" href="assets/css/calendar.css">
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/neomorphism.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div id="page-loader" role="status" aria-label="Loading"><div class="loader__mark"><div class="loader__ring"></div><img class="loader__logo" src="assets/images/stackly-whitish_blue-logo.webp" alt="Stackly"></div></div>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <div id="sl-hero"></div>
+
+    <section class="section">
+      <div class="container">
+        <!-- location search -->
+        <div class="loc-search mb-8" data-reveal="up">
+          <div class="loc-search__field">
+            <i data-icon="search"></i>
+            <input type="text" id="sl-q" placeholder="Search salon name or area…" aria-label="Search salons">
+          </div>
+          <div class="loc-search__field">
+            <i data-icon="map-pin"></i>
+            <select id="sl-city" aria-label="Filter by city"><option value="all">All cities</option></select>
+          </div>
+          <div class="loc-search__field">
+            <i data-icon="sparkles"></i>
+            <select id="sl-svc" aria-label="Filter by service"><option value="all">Any service</option></select>
+          </div>
+          <button class="btn btn--primary" id="sl-near"><i data-icon="navigation"></i>Nearby First</button>
+        </div>
+
+        <!-- map + list -->
+        <div class="map-panel mb-9" data-reveal="up">
+          <div class="map-panel__list" id="sl-map-list" aria-label="Salon list"></div>
+          <div class="map-canvas" id="sl-map" role="img" aria-label="Stylised map of Lumière salon locations">
+            <svg class="map-canvas__roads" width="100%" height="100%" aria-hidden="true">
+              <path d="M0 30% Q 30% 22%, 55% 34% T 100% 28%" stroke="rgba(233,30,99,.16)" stroke-width="14" fill="none"/>
+              <path d="M18% 0 Q 26% 40%, 20% 68% T 30% 100%" stroke="rgba(149,117,205,.14)" stroke-width="10" fill="none"/>
+              <path d="M0 72% Q 44% 62%, 74% 74% T 100% 66%" stroke="rgba(233,30,99,.1)" stroke-width="18" fill="none"/>
+            </svg>
+            <div class="map-controls">
+              <button type="button" id="map-zin" aria-label="Zoom in"><i data-icon="plus"></i></button>
+              <button type="button" id="map-zout" aria-label="Zoom out"><i data-icon="minus"></i></button>
+              <button type="button" id="map-locate" aria-label="Use my location"><i data-icon="navigation"></i></button>
+            </div>
+            <div class="map-legend">
+              <div><i style="background:var(--primary-rose)"></i>Lumière studio</div>
+              <div><i style="background:var(--lavender)"></i>Selected</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- all salons grid -->
+        <div class="sec-head sec-head--split">
+          <div class="sec-head__text">
+            <span class="eyebrow eyebrow--line">All locations</span>
+            <h2>Every Lumière, at a glance</h2>
+          </div>
+          <div class="toolbar__count" id="sl-count" aria-live="polite"></div>
+        </div>
+        <div class="grid grid-3" id="sl-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/icons.js"></script>
+  <script src="assets/js/images.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/appointment.js"></script>
+  <script src="assets/js/darkmode.js"></script>
+  <script src="assets/js/toast.js"></script>
+  <script src="assets/js/modal.js"></script>
+  <script src="assets/js/search.js"></script>
+  <script src="assets/js/wishlist.js"></script>
+  <script src="assets/js/validation.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/slider.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/calendar.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/navigation.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    window.pageInit = function () {
+      document.getElementById('sl-hero').outerHTML = UI.pageHero(
+        'A Lumière <span class="grad-text">near you</span>',
+        'Eight studios across six cities — same standard, same honest booking, wherever you are.',
+        [['Salons']]
+      );
+
+      var state = { q: '', city: 'all', svc: 'all', activeId: DATA.SALONS[0].id, nearby: false };
+
+      /* selectors */
+      var citySel = document.getElementById('sl-city');
+      citySel.innerHTML += DATA.CITIES.map(function (c) { return '<option value="' + c + '">' + c + '</option>'; }).join('');
+      var svcSel = document.getElementById('sl-svc');
+      svcSel.innerHTML += DATA.CATEGORIES.map(function (c) { return '<option value="' + c.id + '">' + c.name + '</option>'; }).join('');
+
+      function filtered() {
+        var list = DATA.SALONS.filter(function (s) {
+          var okQ = !state.q || (s.name + ' ' + s.area + ' ' + s.city + ' ' + s.address).toLowerCase().indexOf(state.q) > -1;
+          var okC = state.city === 'all' || s.city === state.city;
+          var okS = state.svc === 'all' || s.services.indexOf(state.svc) > -1;
+          return okQ && okC && okS;
+        });
+        if (state.nearby) list = list.slice().sort(function (a, b) { return a.distance - b.distance; });
+        return list;
+      }
+
+      /* map + list rendering */
+      var mapEl = document.getElementById('sl-map');
+      var listEl = document.getElementById('sl-map-list');
+      function renderMap() {
+        var list = filtered();
+        mapEl.querySelectorAll('.map-pin').forEach(function (p) { p.remove(); });
+        list.forEach(function (s) {
+          var pin = document.createElement('button');
+          pin.type = 'button';
+          pin.className = 'map-pin' + (s.id === state.activeId ? ' is-active' : '');
+          pin.style.left = s.map.x + '%';
+          pin.style.top = s.map.y + '%';
+          pin.dataset.salon = s.id;
+          pin.setAttribute('aria-label', s.name + ', ' + s.city);
+          pin.innerHTML = '<span class="map-pin__label">' + s.name + ' · ★ ' + s.rating + '</span>' +
+            '<span class="map-pin__marker">' + Icon.get('scissors') + '</span><span class="map-pin__pulse"></span>';
+          mapEl.appendChild(pin);
+        });
+
+        listEl.innerHTML = '<div class="map-panel__list-head"><b>' + list.length + ' location' + (list.length === 1 ? '' : 's') + '</b>' +
+          '<span class="text-xs text-muted"> — tap to highlight on map</span></div>' +
+          (list.length ? list.map(function (s) {
+            return '<div class="salon-row' + (s.id === state.activeId ? ' is-active' : '') + '" data-salon-row="' + s.id + '" tabindex="0" role="button" aria-label="Highlight ' + s.name + '">' +
+              '<div class="salon-row__media"><img src="' + Img.get(s.slug, 'salon', 300, 220) + '" alt="" loading="lazy"></div>' +
+              '<div><h3>' + s.name + '</h3>' +
+              '<div class="salon-row__loc">' + Icon.get('map-pin') + s.area + ', ' + s.city + '</div>' +
+              '<div class="flex items-center gap-3 text-xs"><span class="rating__value">★ ' + s.rating + '</span>' +
+              '<span class="' + (s.open ? 'text-mint' : 'text-danger') + ' fw-600">' + (s.open ? 'Open now' : 'Closed') + '</span>' +
+              '<span class="text-faint">' + (s.distance < 50 ? s.distance + ' km' : s.city) + '</span></div>' +
+              '<div class="salon-row__tags">' + s.services.slice(0, 3).map(function (c) { return '<span class="badge badge--rose">' + DATA.category(c).name + '</span>'; }).join('') + '</div>' +
+              '</div></div>';
+          }).join('') : '<div class="empty-state"><h3>No salons match</h3><p>Try another city or service.</p></div>');
+      }
+
+      function renderGrid() {
+        var list = filtered();
+        document.getElementById('sl-grid').innerHTML = list.map(UI.salonCard).join('') ||
+          '<div class="empty-state" style="grid-column:1/-1"><span class="icon-box icon-box--lg">' + Icon.get('map-pin') + '</span><h3>Nothing here yet</h3><p>No salons match those filters.</p></div>';
+        document.getElementById('sl-count').innerHTML = 'Showing <b>' + list.length + '</b> of <b>' + DATA.SALONS.length + '</b> salons';
+        var grid = document.getElementById('sl-grid');
+        Icon.hydrate(grid); Img.hydrate(grid); Wishlist.refresh(grid);
+        grid.querySelectorAll('[data-reveal]').forEach(function (el) { el.classList.add('is-revealed'); });
+      }
+
+      function renderAll() { renderMap(); renderGrid(); Icon.hydrate(listEl); }
+
+      /* interactions */
+      mapEl.addEventListener('click', function (e) {
+        var pin = e.target.closest('[data-salon]');
+        if (!pin) return;
+        state.activeId = parseInt(pin.dataset.salon, 10);
+        renderMap(); Icon.hydrate(listEl);
+        var s = DATA.salon(state.activeId);
+        Toast.rose('<b>' + s.name + '</b> — ' + s.area + ', open ' + s.hours, 'Selected');
+      });
+      listEl.addEventListener('click', function (e) {
+        var row = e.target.closest('[data-salon-row]');
+        if (!row) return;
+        state.activeId = parseInt(row.dataset.salonRow, 10);
+        renderMap(); Icon.hydrate(listEl);
+      });
+      listEl.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter') return;
+        var row = e.target.closest('[data-salon-row]');
+        if (!row) return;
+        state.activeId = parseInt(row.dataset.salonRow, 10);
+        renderMap(); Icon.hydrate(listEl);
+      });
+
+      document.getElementById('sl-q').addEventListener('input', Search.debounce(function (e) {
+        state.q = e.target.value.trim().toLowerCase();
+        renderAll();
+      }, 160));
+      citySel.addEventListener('change', function () { state.city = citySel.value; renderAll(); });
+      svcSel.addEventListener('change', function () { state.svc = svcSel.value; renderAll(); });
+      document.getElementById('sl-near').addEventListener('click', function () {
+        state.nearby = !state.nearby;
+        this.classList.toggle('btn--deep', state.nearby);
+        renderAll();
+        Toast.info(state.nearby ? 'Sorted by distance from Bandra West (demo location).' : 'Default order restored.', 'Nearby ' + (state.nearby ? 'on' : 'off'));
+      });
+
+      /* map controls (cosmetic zoom) */
+      var zoom = 1;
+      function setZoom(z) {
+        zoom = Math.max(0.8, Math.min(1.5, z));
+        mapEl.querySelectorAll('.map-pin').forEach(function (p) {
+          p.style.transform = 'translate(-50%, -100%) scale(' + zoom + ')';
+        });
+      }
+      document.getElementById('map-zin').addEventListener('click', function () { setZoom(zoom + 0.15); });
+      document.getElementById('map-zout').addEventListener('click', function () { setZoom(zoom - 0.15); });
+      document.getElementById('map-locate').addEventListener('click', function () {
+        Toast.info('Demo map — in production this centres on your GPS location.', 'Locate me');
+      });
+
+      renderAll();
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+/* ==========================================================================
+   Lumière Salon Platform — Design Tokens
+   Single source of truth for colour, type, space, radius, shadow, motion.
+   ========================================================================== */
+
+:root {
+  /* ---------- Brand ---------- */
+  --primary-rose: #E91E63;
+  --soft-pink: #F06292;
+  --light-pink: #FCE4EC;
+  --deep-rose: #AD1457;
+
+  /* ---------- Neutrals ---------- */
+  --dark: #212121;
+  --gray: #424242;
+  --light-gray: #F5F5F5;
+  --off-white: #FAFAFA;
+  --white: #FFFFFF;
+
+  /* ---------- Accents ---------- */
+  --coral: #FFB74D;
+  --lavender: #9575CD;
+  --mint: #4DB6AC;
+  --sky: #64B5F6;
+
+  /* ---------- Border ---------- */
+  --border: #E0E0E0;
+
+  /* ---------- Semantic surface / text (themeable) ---------- */
+  --bg: var(--off-white);
+  --bg-alt: var(--white);
+  --bg-sunken: var(--light-gray);
+  --bg-tint: var(--light-pink);
+  --surface: var(--white);
+  --surface-2: #FFFFFF;
+  --surface-raised: #FFFFFF;
+
+  --text: var(--dark);
+  --text-body: #4A4A4A;
+  --text-muted: #757575;
+  --text-faint: #9E9E9E;
+  --text-invert: #FFFFFF;
+
+  --line: var(--border);
+  --line-soft: #EEEEEE;
+  --line-strong: #D5D5D5;
+
+  /* Text on tint / soft-gradient surfaces (adapts in dark mode) */
+  --on-tint: #212121;
+  --on-tint-muted: rgba(33, 33, 33, 0.62);
+  --on-tint-accent: #AD1457;
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-blur: 18px;
+
+  /* ---------- Gradients ---------- */
+  --grad-primary: linear-gradient(135deg, #E91E63, #F06292);
+  --grad-deep: linear-gradient(135deg, #AD1457, #E91E63);
+  --grad-soft: linear-gradient(135deg, #FCE4EC, #F06292);
+  --grad-accent: linear-gradient(135deg, #9575CD, #F06292);
+  --grad-hero: linear-gradient(135deg, #FCE4EC 0%, #F06292 50%, #E91E63 100%);
+  --grad-coral: linear-gradient(135deg, #FFB74D, #F06292);
+  --grad-mint: linear-gradient(135deg, #4DB6AC, #64B5F6);
+  --grad-sheen: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, .55) 45%, transparent 70%);
+  --grad-line: linear-gradient(90deg, transparent, var(--soft-pink), transparent);
+
+  /* ---------- Typography ---------- */
+  --font-display: 'Outfit', 'Poppins', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Poppins', 'Segoe UI', sans-serif;
+  --font-alt: 'Poppins', 'Inter', sans-serif;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8125rem;
+  --fs-base: 0.9375rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  --fs-3xl: clamp(1.85rem, 1.4rem + 2vw, 2.75rem);
+  --fs-4xl: clamp(2.2rem, 1.5rem + 3.2vw, 3.75rem);
+  --fs-5xl: clamp(2.6rem, 1.4rem + 5vw, 4.75rem);
+
+  --lh-tight: 1.12;
+  --lh-snug: 1.3;
+  --lh-normal: 1.6;
+  --lh-loose: 1.8;
+
+  --ls-tight: -0.02em;
+  --ls-wide: 0.08em;
+  --ls-wider: 0.18em;
+
+  /* ---------- Spacing scale ---------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-7: 32px;
+  --s-8: 40px;
+  --s-9: 48px;
+  --s-10: 64px;
+  --s-11: 80px;
+  --s-12: 104px;
+
+  --section-y: clamp(56px, 7vw, 108px);
+  --container: 1240px;
+  --container-narrow: 900px;
+  --gutter: clamp(16px, 4vw, 32px);
+
+  /* ---------- Radius ---------- */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-2xl: 36px;
+  --r-blob: 46% 54% 58% 42% / 44% 42% 58% 56%;
+  --r-pill: 999px;
+
+  /* ---------- Shadows ---------- */
+  --sh-xs: 0 1px 2px rgba(33, 33, 33, .05);
+  --sh-sm: 0 2px 8px rgba(33, 33, 33, .06);
+  --sh-md: 0 8px 24px rgba(33, 33, 33, .08);
+  --sh-lg: 0 18px 48px rgba(33, 33, 33, .10);
+  --sh-xl: 0 32px 80px rgba(33, 33, 33, .14);
+  --sh-rose: 0 12px 32px rgba(233, 30, 99, .28);
+  --sh-rose-lg: 0 20px 52px rgba(233, 30, 99, .34);
+  --sh-inset: inset 0 1px 0 rgba(255, 255, 255, .6);
+  --glow: 0 0 0 6px rgba(233, 30, 99, .10);
+
+  /* ---------- Motion ---------- */
+  --e-out: cubic-bezier(.22, .8, .3, 1);
+  --e-in-out: cubic-bezier(.65, .05, .36, 1);
+  --e-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --t-fast: .16s var(--e-out);
+  --t-base: .28s var(--e-out);
+  --t-slow: .48s var(--e-out);
+
+  /* ---------- Layers ---------- */
+  --z-base: 1;
+  --z-sticky: 100;
+  --z-header: 200;
+  --z-drawer: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-loader: 600;
+
+  --header-h: 76px;
+  --topbar-h: 40px;
+}
+
+/* ==========================================================================
+   Dark theme
+   ========================================================================== */
+[data-theme="dark"] {
+  --bg: #121016;
+  --bg-alt: #17141c;
+  --bg-sunken: #0d0b11;
+  --bg-tint: #241a22;
+  --surface: #1c1822;
+  --surface-2: #221d29;
+  --surface-raised: #262030;
+
+  --text: #F5F2F6;
+  --text-body: #C9C3D0;
+  --text-muted: #9A93A5;
+  --text-faint: #776F83;
+  --text-invert: #17141c;
+
+  --line: #2E2838;
+  --line-soft: #262030;
+  --line-strong: #3A3346;
+
+  --glass-bg: rgba(35, 29, 43, 0.62);
+  --glass-bg-strong: rgba(35, 29, 43, 0.86);
+  --glass-border: rgba(255, 255, 255, 0.10);
+
+  --on-tint: #F5F2F6;
+  --on-tint-muted: rgba(245, 242, 246, 0.68);
+  --on-tint-accent: #F06292;
+
+  --light-pink: #2A1D26;
+  --light-gray: #1C1822;
+  --off-white: #121016;
+  --white: #1C1822;
+
+  --grad-soft: linear-gradient(135deg, #2A1D26, #7A2E4C);
+  --grad-hero: linear-gradient(135deg, #1B1220 0%, #6E2542 50%, #A11348 100%);
+
+  --sh-xs: 0 1px 2px rgba(0, 0, 0, .4);
+  --sh-sm: 0 2px 8px rgba(0, 0, 0, .35);
+  --sh-md: 0 8px 24px rgba(0, 0, 0, .40);
+  --sh-lg: 0 18px 48px rgba(0, 0, 0, .48);
+  --sh-xl: 0 32px 80px rgba(0, 0, 0, .55);
+  --sh-inset: inset 0 1px 0 rgba(255, 255, 255, .06);
+  color-scheme: dark;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: .01ms;
+    --t-base: .01ms;
+    --t-slow: .01ms;
+  }
+}
