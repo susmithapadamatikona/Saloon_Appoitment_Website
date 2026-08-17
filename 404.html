@@ -21,16 +21,18 @@
 </head>
 <body>
   <main class="err-page">
+    <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?fm=webp&fit=crop&q=65&w=840&h=473" alt=""
+         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0" loading="eager" decoding="async">
+    <div style="position:absolute;inset:0;background:rgba(255,247,250,.28);z-index:0" aria-hidden="true"></div>
     <div class="orb orb--rose" style="width:420px;height:420px;top:-120px;right:-120px"></div>
     <div class="orb orb--lav" style="width:340px;height:340px;bottom:-120px;left:-100px"></div>
-    <div style="position:relative;z-index:2">
+    <div style="position:relative;z-index:2;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-radius:var(--r-2xl);box-shadow:var(--sh-xl);padding:clamp(28px,5vw,56px) clamp(22px,5vw,64px);max-width:640px;margin-inline:auto">
       <div class="err-code" aria-hidden="true">404</div>
       <h1>This page took the day off</h1>
       <p>Maybe it's getting a facial. Either way, what you're looking for isn't here — but everything else is just a click away.</p>
       <div class="err-links">
         <a class="btn btn--primary btn--lg" href="index.html"><i data-icon="home"></i>Back to Home</a>
-        <a class="btn btn--ghost btn--lg" href="services.html"><i data-icon="sparkles"></i>Browse Services</a>
-        <a class="btn btn--soft btn--lg" href="booking.html"><i data-icon="calendar-plus"></i>Book Appointment</a>
+        <button class="btn btn--ghost btn--lg" type="button" onclick="history.back()"><i data-icon="arrow-left"></i>Go Back</button>
       </div>
       <p class="mt-8 text-sm text-faint">Error code 404 · If you typed the address, double-check the spelling.</p>
     </div>

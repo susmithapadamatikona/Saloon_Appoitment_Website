@@ -739,15 +739,17 @@ small { font-size: var(--fs-sm); }
 .split--40-60 { grid-template-columns: 1fr 1.4fr; }
 
 .check-list { display: grid; gap: 14px; margin-block: var(--s-6); }
+/* Icon is absolutely positioned so the li text (including inline <b>) flows
+   as one paragraph — flex would turn each text fragment into its own item. */
 .check-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
+  position: relative;
+  padding-left: 34px;
   font-size: var(--fs-base);
   color: var(--text-body);
 }
 .check-list li svg {
-  flex: none;
+  position: absolute;
+  left: 0;
   width: 22px; height: 22px;
   padding: 4px;
   border-radius: 50%;

@@ -73,7 +73,7 @@
           </div>
           <div class="flex-between mt-4 mb-6">
             <label class="check"><input type="checkbox" id="lg-remember" checked><span class="check__box"><i data-icon="check"></i></span>Remember me</label>
-            <a href="forgot-password.html" class="text-sm fw-600">Forgot password?</a>
+            <a href="404.html" class="text-sm fw-600">Forgot password?</a>
           </div>
           <button class="btn btn--primary btn--lg btn--block" type="submit" id="lg-submit"><i data-icon="log-in"></i>Sign In</button>
         </form>
@@ -130,7 +130,7 @@
 
       document.querySelectorAll('[data-social]').forEach(function (b) {
         b.addEventListener('click', function () {
-          Toast.info(b.dataset.social + ' sign-in connects to OAuth in production. Use the email form for the demo.', b.dataset.social);
+          window.location.href = '404.html';
         });
       });
     });

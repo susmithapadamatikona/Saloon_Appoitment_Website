@@ -71,8 +71,8 @@
           </p>
 
           <div class="hero__cta" data-reveal="up" data-reveal-delay=".18">
-            <a class="btn btn--primary btn--lg" href="booking.html"><i data-icon="calendar-plus"></i>Book Appointment</a>
-            <a class="btn btn--ghost btn--lg" href="services.html">Explore Services<i data-icon="arrow-right"></i></a>
+            <a class="btn btn--primary btn--lg" href="404.html"><i data-icon="calendar-plus"></i>Book Appointment</a>
+            <a class="btn btn--ghost btn--lg" href="404.html">Explore Services<i data-icon="arrow-right"></i></a>
           </div>
 
           <div class="hero__trust" data-reveal="up" data-reveal-delay=".24">
@@ -200,7 +200,7 @@
 
         <div class="grid grid-auto" id="popular-grid"></div>
         <div class="text-center mt-8">
-          <a class="btn btn--soft btn--lg" href="services.html">Browse the full menu<i data-icon="chevrons-right"></i></a>
+          <a class="btn btn--soft btn--lg" href="404.html">Browse the full menu<i data-icon="chevrons-right"></i></a>
         </div>
       </div>
     </section>
@@ -225,8 +225,8 @@
             <p class="lead mb-5">We built Lumière because booking beauty services shouldn't involve five phone calls and a prayer. Every stylist is vetted, every price is upfront, and every slot you see is genuinely available.</p>
             <ul class="check-list" id="why-list"></ul>
             <div class="btn-group mt-6">
-              <a class="btn btn--primary" href="about.html">Our Story<i data-icon="arrow-right"></i></a>
-              <a class="btn btn--ghost" href="testimonials.html"><i data-icon="quote"></i>Client Stories</a>
+              <a class="btn btn--primary" href="404.html">Our Story<i data-icon="arrow-right"></i></a>
+              <a class="btn btn--ghost" href="404.html"><i data-icon="quote"></i>Client Stories</a>
             </div>
           </div>
           <div class="split__media relative" data-reveal="zoom">
@@ -252,7 +252,7 @@
             <h2 id="stylists-title">Stylists worth the appointment</h2>
             <p>Certified, experienced and reviewed by real clients after every single visit.</p>
           </div>
-          <a class="btn btn--outline" href="stylists.html">All Stylists<i data-icon="arrow-right"></i></a>
+          <a class="btn btn--outline" href="404.html">All Stylists<i data-icon="arrow-right"></i></a>
         </div>
         <div class="grid grid-4" id="home-stylists"></div>
       </div>
@@ -311,7 +311,7 @@
             <h2 id="blog-title">Beauty wisdom from our chairs</h2>
             <p>Honest, expert-written guides — no ten-step routines you'll abandon by Thursday.</p>
           </div>
-          <a class="btn btn--outline" href="blog.html">All Articles<i data-icon="arrow-right"></i></a>
+          <a class="btn btn--outline" href="404.html">All Articles<i data-icon="arrow-right"></i></a>
         </div>
         <div class="grid grid-3" id="home-posts"></div>
       </div>
@@ -373,7 +373,7 @@
 
       /* categories (+ an "All Services" tile so the grid always fills evenly) */
       document.getElementById('home-categories').innerHTML = DATA.CATEGORIES.map(function (c, i) {
-        return '<a class="cat-tile" href="services.html?cat=' + c.id + '" data-reveal="up" data-reveal-delay="' + (i * 0.06) + '">' +
+        return '<a class="cat-tile" href="404.html" data-reveal="up" data-reveal-delay="' + (i * 0.06) + '">' +
           Img.tag({ seed: 'cat-' + c.id, kind: c.id === 'wellness' ? 'spa' : c.id, alt: c.name + ' services', w: 420, h: 560 }) +
           '<span class="cat-tile__icon">' + Icon.get(c.icon) + '</span>' +
           '<span class="cat-tile__body"><h3>' + c.name + '</h3><p>' + c.desc + '</p>' +

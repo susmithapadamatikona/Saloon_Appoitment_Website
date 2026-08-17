@@ -85,7 +85,7 @@
       '<nav aria-label="Primary"><ul class="nav">' + navItems + '</ul></nav>' +
       '<div class="nav-actions">' +
       authArea +
-      '<a class="btn btn--primary btn--sm" href="booking.html">' + Icon.get('calendar-plus') + 'Book Appointment</a>' +
+      '<a class="btn btn--primary btn--sm" href="404.html">' + Icon.get('calendar-plus') + 'Book Appointment</a>' +
       '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">' +
       '<span></span><span></span><span></span></button>' +
       '</div></div></div>';
@@ -107,7 +107,7 @@
     }).join('');
 
     var authBtns =
-      '<a class="btn btn--primary btn--block" href="booking.html">' + Icon.get('calendar-plus') + 'Book Appointment</a>' +
+      '<a class="btn btn--primary btn--block" href="404.html">' + Icon.get('calendar-plus') + 'Book Appointment</a>' +
       '<div class="grid grid-2" style="gap:10px">' +
       '<a class="btn btn--ghost" href="login.html">Login</a>' +
       '<a class="btn btn--soft" href="register.html">Register</a></div>';
@@ -127,15 +127,14 @@
   }
 
   /* --------------------------------------------- pre-footer CTA band --- */
-  /* Rendered as a sibling BEFORE the footer element so the card straddles
-     the page/footer boundary without covering the footer content. */
+  /* Rendered as a sibling BEFORE the footer element, fully above it. */
   function ctaBandHtml() {
     return '<div class="cta-band" aria-label="Book an appointment"><div class="container"><div class="cta-band__inner">' +
       '<div><h2>Ready to look your absolute best?</h2>' +
       '<p>Book with any of our 50+ expert stylists across 8 cities. Your first appointment is 25% off with code FIRST25.</p></div>' +
       '<div class="cta-band__actions">' +
-      '<a class="btn btn--white btn--lg" href="booking.html">' + Icon.get('calendar-plus') + 'Book Appointment</a>' +
-      '<a class="btn btn--on-dark btn--lg" href="services.html">Explore Services</a>' +
+      '<a class="btn btn--white btn--lg" href="404.html">' + Icon.get('calendar-plus') + 'Book Appointment</a>' +
+      '<a class="btn btn--on-dark btn--lg" href="404.html">Explore Services</a>' +
       '</div></div></div></div>';
   }
 
@@ -150,18 +149,18 @@
       '<div class="footer-brand">' + brandHtml() +
       '<p>Premium beauty appointments made effortless. Fifty expert stylists, twenty partner salons, one standard of care since 2016.</p>' +
       '<div class="footer-socials">' +
-      B.socials.map(function (s) { return '<a href="' + s.url + '" aria-label="' + s.label + '">' + Icon.get(s.icon) + '</a>'; }).join('') +
+      B.socials.map(function (s) { return '<a href="404.html" aria-label="' + s.label + '">' + Icon.get(s.icon) + '</a>'; }).join('') +
       '</div></div>' +
 
       '<div class="footer-col"><h4>Explore</h4><nav class="footer-links" aria-label="Footer — explore">' +
-      '<a href="about.html">About Us</a><a href="services.html">Services</a><a href="stylists.html">Our Stylists</a>' +
-      '<a href="salons.html">Find a Salon</a><a href="gallery.html">Gallery</a><a href="blog.html">Blog</a>' +
+      '<a href="404.html">About Us</a><a href="404.html">Services</a><a href="404.html">Our Stylists</a>' +
+      '<a href="404.html">Find a Salon</a><a href="404.html">Gallery</a><a href="404.html">Blog</a>' +
       '</nav></div>' +
 
       '<div class="footer-col"><h4>Bookings</h4><nav class="footer-links" aria-label="Footer — bookings">' +
-      '<a href="booking.html">Book Appointment</a><a href="my-appointments.html">My Appointments</a>' +
-      '<a href="offers.html">Offers &amp; Coupons</a><a href="pricing.html">Membership</a>' +
-      '<a href="faq.html">FAQ</a><a href="testimonials.html">Testimonials</a>' +
+      '<a href="404.html">Book Appointment</a><a href="404.html">My Appointments</a>' +
+      '<a href="404.html">Offers &amp; Coupons</a><a href="404.html">Membership</a>' +
+      '<a href="404.html">FAQ</a><a href="404.html">Testimonials</a>' +
       '</nav></div>' +
 
       '<div class="footer-col"><h4>Contact</h4><ul class="footer-contact">' +
@@ -182,7 +181,7 @@
       '</div>' +
       '<div class="footer-bottom">' +
       '<p>© 2026 Lumière Beauty Studio Pvt. Ltd. All rights reserved. Crafted with ♥ in Mumbai.</p>' +
-      '<div class="footer-legal"><a href="faq.html">Privacy Policy</a><a href="faq.html">Terms of Service</a><a href="contact.html">Support</a></div>' +
+      '<div class="footer-legal"><a href="404.html">Privacy Policy</a><a href="404.html">Terms of Service</a><a href="contact.html">Support</a></div>' +
       '<div class="footer-pay"><span>We accept</span><div>UPI</div><div>VISA</div><div>MC</div><div>AMEX</div><div>RUPAY</div></div>' +
       '</div></div></div>';
   }

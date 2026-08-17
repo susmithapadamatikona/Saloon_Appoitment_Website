@@ -101,7 +101,7 @@
 
           <label class="check mb-6"><input type="checkbox" id="rg-terms" data-rules="required">
             <span class="check__box"><i data-icon="check"></i></span>
-            <span>I agree to the <a href="faq.html">Terms of Service</a> and <a href="faq.html">Privacy Policy</a> <span class="req">*</span></span></label>
+            <span>I agree to the <a href="404.html">Terms of Service</a> and <a href="404.html">Privacy Policy</a> <span class="req">*</span></span></label>
 
           <button class="btn btn--primary btn--lg btn--block" type="submit" id="rg-submit"><i data-icon="user-plus"></i>Create My Account</button>
         </form>
@@ -155,7 +155,7 @@
 
       document.querySelectorAll('[data-social]').forEach(function (b) {
         b.addEventListener('click', function () {
-          Toast.info(b.dataset.social + ' sign-up connects to OAuth in production. Use the form for the demo.', b.dataset.social);
+          window.location.href = '404.html';
         });
       });
     });

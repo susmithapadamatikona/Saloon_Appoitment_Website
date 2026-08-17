@@ -114,7 +114,7 @@
                   <div class="slots-grid" id="sd-slots" style="grid-template-columns:repeat(3,1fr)"></div>
                 </div>
 
-                <a class="btn btn--primary btn--lg btn--block" id="sd-book-cta" href="booking.html">
+                <a class="btn btn--primary btn--lg btn--block" id="sd-book-cta" href="404.html">
                   <i data-icon="calendar-plus"></i>Book Appointment
                 </a>
                 <div class="secure-note"><i data-icon="shield-check"></i>Free cancellation up to 4 hours before</div>
@@ -142,7 +142,7 @@
         <div class="text-xs text-muted" id="sd-sticky-name"></div>
         <b class="text-rose" id="sd-sticky-price"></b>
       </div>
-      <a class="btn btn--primary" id="sd-sticky-cta" href="booking.html"><i data-icon="calendar-plus"></i>Book Now</a>
+      <a class="btn btn--primary" id="sd-sticky-cta" href="404.html"><i data-icon="calendar-plus"></i>Book Now</a>
     </div>
   </main>
 
@@ -305,8 +305,8 @@
       }).join('');
       function updateCta() {
         var url = 'booking.html?service=' + s.slug;
-        document.getElementById('sd-book-cta').href = url;
-        document.getElementById('sd-sticky-cta').href = url;
+        document.getElementById('sd-book-cta').href = '404.html';
+        document.getElementById('sd-sticky-cta').href = '404.html';
       }
       strip.addEventListener('click', function (e) {
         var b = e.target.closest('[data-ds]');

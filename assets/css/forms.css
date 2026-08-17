@@ -449,8 +449,18 @@
 }
 
 @media (max-width: 900px) {
-  .auth-page { grid-template-columns: 1fr; }
-  .auth-visual { display: none; }
+  .auth-page { grid-template-columns: 1fr; min-height: auto; }
+  /* stacked banner above the form instead of the desktop full-height side panel */
+  .auth-visual {
+    /* relative, not static — the ::before glow and __img background are
+       absolutely positioned against this box */
+    position: relative;
+    top: auto;
+    height: auto;
+    padding: 28px var(--gutter) 32px;
+    gap: 22px;
+  }
+  .auth-visual__points { margin-top: 18px; }
   .form-grid--2, .form-grid--3 { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {

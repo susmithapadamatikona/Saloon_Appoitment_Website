@@ -8,6 +8,9 @@
   gap: clamp(20px, 3vw, 36px);
   align-items: start;
 }
+/* The aside must span the full row height (not shrink to content) so the
+   sticky summary card inside it can follow the page as the wizard scrolls. */
+.booking-shell > aside { align-self: stretch; }
 
 /* ---------- Stepper ---------- */
 .stepper {

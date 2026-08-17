@@ -28,7 +28,7 @@
       '<div class="svc-card__foot">' +
       '<span class="price"><span class="price__cur">' + DATA.CURRENCY + '</span><span class="price__val">' + s.price.toLocaleString('en-IN') + '</span>' +
       '<span class="price__old">' + DATA.money(s.oldPrice) + '</span></span>' +
-      '<a class="btn btn--primary btn--sm" href="booking.html?service=' + s.slug + '">Book Now</a>' +
+      '<a class="btn btn--primary btn--sm" href="404.html">Book Now</a>' +
       '</div></div></article>';
   };
 
@@ -62,7 +62,7 @@
       '<div class="text-xs text-muted mb-4" style="display:flex;align-items:center;justify-content:center;gap:6px">' +
       Icon.get('map-pin', '', 13) + (salon ? salon.area + ', ' + salon.city : '') + '</div>' +
       '<div class="stylist-card__actions">' +
-      '<a class="btn btn--primary btn--sm" href="booking.html?stylist=' + st.slug + '">Book Appointment</a>' +
+      '<a class="btn btn--primary btn--sm" href="404.html">Book Appointment</a>' +
       '<a class="btn btn--ghost btn--sm" href="stylist-details.html?s=' + st.slug + '" aria-label="View ' + st.name + '\'s profile">' + Icon.get('user') + '</a>' +
       '</div></div></article>';
   };
@@ -91,8 +91,8 @@
       (sl.services.length > 3 ? '<span class="more">+' + (sl.services.length - 3) + ' more</span>' : '') +
       '</div>' +
       '<div class="salon-card__foot">' +
-      '<a class="btn btn--ghost btn--sm" href="salon-details.html?s=' + sl.slug + '">View Details</a>' +
-      '<a class="btn btn--primary btn--sm" href="booking.html?salon=' + sl.slug + '">Book Appointment</a>' +
+      '<a class="btn btn--ghost btn--sm" href="404.html">View Details</a>' +
+      '<a class="btn btn--primary btn--sm" href="404.html">Book Appointment</a>' +
       '</div></div></article>';
   };
 
@@ -112,7 +112,7 @@
       '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">' +
       '<span class="offer-card__expiry">' + Icon.get('clock') +
       (days > 0 ? 'Expires in ' + days + ' day' + (days === 1 ? '' : 's') + ' · ' + DATA.dateShort(o.expiry) : 'Expired') + '</span>' +
-      '<a href="booking.html?coupon=' + o.code + '" class="offer-card__copy" style="text-decoration:none">Apply Offer</a>' +
+      '<a href="404.html" class="offer-card__copy" style="text-decoration:none">Apply Offer</a>' +
       '</div></article>';
   };
 
@@ -132,7 +132,7 @@
       '<div class="card__foot">' +
       '<div class="post-card__author"><span class="avatar avatar--sm">' + p.author.split(' ').map(function (w) { return w[0]; }).slice(0, 2).join('') + '</span>' +
       '<div><b>' + p.author + '</b><span>Contributor</span></div></div>' +
-      '<a class="btn btn--link btn--sm" href="blog-details.html?p=' + p.slug + '">Read ' + Icon.get('arrow-right') + '</a>' +
+      '<a class="btn btn--link btn--sm" href="404.html">Read ' + Icon.get('arrow-right') + '</a>' +
       '</div></div></article>';
   };
 

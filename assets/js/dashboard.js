@@ -71,7 +71,6 @@
       }, 800);
     }
 
-    var initials = user.name.split(' ').map(function (w) { return w[0]; }).slice(0, 2).join('').toUpperCase();
     var upcoming = Store.getAppointments().filter(function (a) { return a.status === 'upcoming'; }).length;
     var badges = { appts: upcoming, today: 8 };
 
@@ -106,10 +105,7 @@
         '<div><h1>' + (cfg.title || 'Dashboard') + '</h1><p>' + (cfg.sub || 'Welcome back, ' + user.name.split(' ')[0]) + '</p></div>' +
         '<div class="dash-top__actions">' +
         '<div class="dash-search">' + Icon.get('search') + '<input type="search" placeholder="Search…" aria-label="Search dashboard" id="dash-search-input"></div>' +
-        '<button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">' +
-        '<span class="icon-sun">' + Icon.get('sun') + '</span><span class="icon-moon">' + Icon.get('moon') + '</span></button>' +
-        '<a class="btn-icon" href="index.html" aria-label="Back to website">' + Icon.get('home') + '</a>' +
-        '<span class="avatar avatar--sm avatar--ring" title="' + user.name + '">' + initials + '</span>' +
+        '<span class="dash-top__email" title="' + user.email + '">' + user.email + '</span>' +
         '</div>';
     }
 

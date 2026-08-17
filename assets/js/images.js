@@ -245,17 +245,36 @@
     return p[hash(seed) % p.length];
   }
 
-  /** Build a Full-HD CDN URL cropped to the requested aspect ratio. */
+  /* Photos with very high detail density (fabric, confetti, flat-lays) that
+     need a lower quality/size tier to stay under the 100 KB budget. */
+  var DENSE = {
+    '1583939003579-730e3918a45a': 1,
+    '1585747860715-2ba37e788b70': 1,
+    '1595777457583-95e059d581b8': 1,
+    '1596178065887-1198b6148b2b': 1,
+    '1512496015851-a90fb38ba796': 1
+  };
+
+  /** Build a WebP CDN URL cropped to the requested aspect ratio.
+      fm=webp forces WebP in every browser; a total-pixel cap plus tuned
+      quality keeps every photo in the library under 100 KB (verified per id). */
   function photoUrl(seed, kind, w, h) {
     w = w || 800;
     h = h || 600;
-    /* serve at 2× the layout size for retina sharpness, capped at Full HD */
-    var scale = Math.min(2, 1920 / w);
-    var W = Math.min(1920, Math.round(w * Math.max(1, scale)));
-    var H = Math.round(W * (h / w));
+    var id = photoId(seed, kind);
+    var dense = DENSE[id];
+    var maxArea = dense ? 225000 : 400000; /* px² */
+    var q = dense ? 45 : 65;
+    var ratio = h / w;
+    var W = Math.min(Math.round(w * 2), 1600); /* retina headroom before the cap */
+    var H = Math.round(W * ratio);
+    if (W * H > maxArea) {
+      W = Math.round(Math.sqrt(maxArea / ratio));
+      H = Math.round(W * ratio);
+    }
     var face = /person|portrait|man/.test(kind || '') ? '&crop=faces' : '';
-    return 'https://images.unsplash.com/photo-' + photoId(seed, kind) +
-      '?auto=format&fit=crop&q=80&w=' + W + '&h=' + H + face;
+    return 'https://images.unsplash.com/photo-' + id +
+      '?fm=webp&fit=crop&q=' + q + '&w=' + W + '&h=' + H + face;
   }
 
   /* ========================================================================

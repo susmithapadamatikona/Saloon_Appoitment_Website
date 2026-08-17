@@ -51,7 +51,7 @@
           <div class="btn-group">
             <button class="btn-icon btn-icon--lg btn-fav" id="sld-fav" aria-label="Save salon"><i data-icon="heart"></i></button>
             <button class="btn btn--ghost" id="sld-share"><i data-icon="share"></i>Share</button>
-            <a class="btn btn--primary btn--lg" id="sld-book" href="booking.html"><i data-icon="calendar-plus"></i>Book Appointment</a>
+            <a class="btn btn--primary btn--lg" id="sld-book" href="404.html"><i data-icon="calendar-plus"></i>Book Appointment</a>
           </div>
         </div>
 
@@ -167,7 +167,7 @@
       });
 
       var bookUrl = 'booking.html?salon=' + s.slug;
-      document.getElementById('sld-book').href = bookUrl;
+      document.getElementById('sld-book').href = '404.html';
       document.getElementById('sld-book-2').href = bookUrl;
       document.getElementById('sld-call').href = 'tel:' + s.phone.replace(/\s/g, '');
       document.getElementById('sld-directions').addEventListener('click', function () {

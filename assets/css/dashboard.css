@@ -133,6 +133,19 @@
   transition: all var(--t-base);
 }
 .dash-search:focus-within { border-color: var(--soft-pink); background: var(--surface); box-shadow: var(--sh-sm); }
+
+.dash-top__email {
+  padding: 9px 16px;
+  border-radius: var(--r-pill);
+  background: var(--bg-sunken);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text);
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 .dash-search svg { width: 17px; height: 17px; color: var(--text-faint); flex: none; }
 .dash-search input { border: 0; background: none; outline: none; width: 100%; font-size: var(--fs-base); color: var(--text); }
 
@@ -495,6 +508,7 @@
 }
 @media (max-width: 700px) {
   .dash-search { display: none; }
+  .dash-top__email { max-width: 130px; }
   .dash-top h1 { font-size: var(--fs-lg); }
   .dash-welcome { text-align: center; justify-content: center; }
   .dash-welcome p { margin-inline: auto; }

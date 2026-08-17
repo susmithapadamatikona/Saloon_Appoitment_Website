@@ -30,7 +30,6 @@
   .grid-2 { grid-template-columns: 1fr; }
   .stat-row { grid-template-columns: repeat(2, 1fr); }
   .stat + .stat::before { display: none; }
-  .cta-band { margin-bottom: -70px; }
 }
 
 /* ---------- Mobile landscape / small tablet ---------- */
@@ -42,6 +41,7 @@
   .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .grid-auto { grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); }
   .btn--xl { --btn-py: 16px; --btn-px: 30px; font-size: var(--fs-md); }
+  .btn-group { flex-wrap: wrap; }
   .toolbar { flex-direction: column; align-items: stretch; }
   .toolbar > * { width: 100%; }
   .segmented { width: 100%; }
@@ -52,13 +52,19 @@
 /* ---------- Mobile ---------- */
 @media (max-width: 600px) {
   :root { --gutter: 16px; }
+  .flex, .flex-between { flex-wrap: wrap; }
   h1 { letter-spacing: -.03em; }
   .section { padding-block: clamp(38px, 9vw, 56px); }
   .grid-auto, .grid-auto-sm, .grid-auto-lg { grid-template-columns: 1fr; }
+  /* single column on phones — a wide, shorter card reads tidier than a tall poster */
+  .cat-tile { aspect-ratio: 3/2; }
   .stat-row { grid-template-columns: 1fr 1fr; gap: var(--s-3); }
   .stat { padding: var(--s-4) var(--s-2); }
   .btn-group { width: 100%; }
   .btn-group .btn { flex: 1; }
+  /* Long primary labels ("Book Appointment") get their own full-width row
+     instead of being squeezed next to sibling buttons. */
+  .btn-group .btn--primary { flex: 1 1 100%; }
   .pagination { gap: 5px; }
   .page-btn { min-width: 38px; height: 38px; font-size: var(--fs-sm); }
   .modal { padding: 12px; }
@@ -104,9 +110,19 @@
 }
 
 /* ---------- Ensure no horizontal overflow anywhere ---------- */
-html, body { max-width: 100%; }
+/* clip (not hidden) — clips reveal-animation transforms and decorative
+   bleed without creating a new scroll container, so position:sticky keeps
+   working against the page scrollport. */
+html, body { max-width: 100%; overflow-x: clip; }
 .container, .section, .hero, main, footer, header { min-width: 0; }
 img, video, iframe, table, pre { max-width: 100%; }
+
+/* Grid/flex items default to min-width:auto, so wide content (images, nowrap
+   rows) can force a column past the viewport. Let layout children shrink. */
+.grid > *, .grid-2 > *, .grid-3 > *, .grid-4 > *,
+.grid-auto > *, .grid-auto-sm > *, .grid-auto-lg > *,
+.split > *, .detail-layout > *, .shop-layout > *, .booking-shell > *,
+.svc-detail__gallery > *, .svc-detail__thumbs > *, .slots-grid > * { min-width: 0; }
 
 /* ---------- High-contrast preference ---------- */
 @media (prefers-contrast: more) {
