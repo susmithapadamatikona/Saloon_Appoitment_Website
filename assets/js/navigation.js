@@ -85,7 +85,7 @@
       '<nav aria-label="Primary"><ul class="nav">' + navItems + '</ul></nav>' +
       '<div class="nav-actions">' +
       authArea +
-      '<a class="btn btn--primary btn--sm" href="404.html">' + Icon.get('calendar-plus') + 'Book Appointment</a>' +
+      '<a class="btn btn--primary btn--sm" href="booking.html">' + Icon.get('calendar-plus') + 'Book Appointment</a>' +
       '<button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">' +
       '<span></span><span></span><span></span></button>' +
       '</div></div></div>';
